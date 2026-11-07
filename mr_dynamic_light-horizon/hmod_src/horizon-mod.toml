@@ -1,0 +1,9 @@
+id = "mr_dynamic_light"
+name = "Dynamic light"
+version = "0.8.0"
+description = "Mobs on fire and some items emit light (datapack port). Data/functions/predicates/tags packaged as Horizon content mod."
+authors = ["Diesse"]
+api = "0.2"
+side = "both"
+capabilities = ["registries"]
+namespaces = ["diesse"]

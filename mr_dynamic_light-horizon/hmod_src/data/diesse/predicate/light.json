@@ -1,0 +1,14 @@
+{
+  "entity": "this",
+  "predicate": {
+    "location": {
+      "light": {
+        "light": {
+          "min": 5,
+          "max": 15
+        }
+      }
+    }
+  },
+  "type": "minecraft:entity_properties"
+}

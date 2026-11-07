@@ -1,0 +1,28 @@
+{
+  "values": [
+    "minecraft:torch",
+    "minecraft:jack_o_lantern",
+    "minecraft:lantern",
+    "minecraft:shroomlight",
+    "minecraft:end_rod",
+    "minecraft:glowstone",
+    "minecraft:campfire",
+    "minecraft:beacon",
+    "minecraft:lava_bucket",
+    "minecraft:sea_lantern",
+    "minecraft:blaze_powder",
+    "minecraft:blaze_rod",
+    "minecraft:glow_berries",
+    "minecraft:ochre_froglight",
+    "minecraft:pearlescent_froglight",
+    "minecraft:verdant_froglight",
+    "minecraft:copper_lantern",
+    "minecraft:exposed_copper_lantern",
+    "minecraft:weathered_copper_lantern",
+    "minecraft:oxidized_copper_lantern",
+    "minecraft:waxed_copper_lantern",
+    "minecraft:waxed_exposed_copper_lantern",
+    "minecraft:waxed_weathered_copper_lantern",
+    "minecraft:copper_torch"
+  ]
+}

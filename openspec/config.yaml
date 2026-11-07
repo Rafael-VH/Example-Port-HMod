@@ -1,0 +1,23 @@
+schema: spec-driven
+
+context: |
+  Workspace: Horizon mod ports (Fabric/Java mods -> Horizon, Rust reimplementation of MC JE 26.3).
+  Tooling: Horizon-Translator generates partial/full port bundles; Horizon launcher builds native mods (.hnmod) and loads content mods (.hmod).
+  Repo layout: each mod in <name>-horizon/ with PORTING.md (source of truth), mixins/, report/, optional todo/, source JAR.
+  Only fabric_api-horizon currently has .hnmod (full port). Others are partial bundles; many need mixin mapping, translated logic, and/or data/assets packaged as .hmod.
+  Active SDD conventions: preflight per session; artifacts in openspec/changes/<change>/ and Engram (hybrid) when available. Project Engram key: mods (see .engram/config.json).
+
+rules:
+  proposal:
+    - Ground claims in evidence from PORTING.md, report/*, JAR contents, and Horizon docs.
+    - Identify whether gaps are native mixin/code, data/assets requiring .hmod, or Horizon support blockers.
+    - Include rollback and verification steps.
+  specs:
+    - Use testable requirements and scenarios tied to source mod parity and Horizon 26.3 compatibility.
+    - Call out uncertainties/blockers explicitly (e.g., .hmod support for mcfunction/predicate/load|tick).
+  design:
+    - Prefer smallest correct change; preserve source mod behavior unless compatibility requires a documented diff.
+    - Document artifact split (native bundle vs .hmod content) and install/build steps.
+  tasks:
+    - Break work into verifiable phases with explicit checks (file parity, tool validation, runtime test).
+    - Do not commit/push without explicit user confirmation; record evidence in PORTING.md/README when status changes.

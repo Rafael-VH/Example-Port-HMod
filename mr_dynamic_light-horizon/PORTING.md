@@ -27,9 +27,10 @@ Native mods run with your rights and aren't sandboxed: build only code you have 
 
 ## Ready to use?
 
-**No: this isn't a full port**, so no `.hnmod` was made. What's left:
+**Parcial (avance realizado):** el bundle nativo no es un `.hnmod` completo, pero se generÃ³ un **content mod `.hmod`** con los 20 data files que faltaban (ver abajo). **Pendiente verificaciÃ³n runtime** en Horizon 26.3.
 
-- 20 data files (recipes, loot, tags, worldgenâ€¦) need a content mod (.hmod), which this tool doesn't make.
+### Estado original (translator)
+- 20 data files (recipes, loot, tags, worldgenâ€¦) need a content mod (.hmod), which this tool doesn't make. **(atendido con `.hmod` candidato, pendiente validar soporte runtime)**
 
 ## Licence
 
@@ -45,3 +46,37 @@ Native mods run with your rights and aren't sandboxed: build only code you have 
 This reads what the jar says about itself; it isn't legal advice.
 
 The decompiled source was only used for the conversion and has been deleted.
+
+---
+
+## Update (SDD apply, branch port/mr-dynamic-light, base 37c98a)
+
+### Artefactos añadidos
+- hmod_src/ — fuente del content mod (extraída de dynamic-light-0.8.jar).
+- mr_dynamic_light.hmod — paquete (ZIP) con horizon-mod.toml + data/ + metadata (pack.mcmeta, pack.png).
+
+### Data incluida (20 archivos, paridad con JAR)
+- data/diesse/function/dl/ (9): destroy, glow_squid, light, light_5, light_reflection, main, place, place_light, eset (.mcfunction)
+- data/diesse/predicate/ (7): glowing, light, light_5_m, light_5_o, light_m, light_o, on_fire (.json)
+- data/minecraft/tags/function/ (2): load.json, 	ick.json
+- data/minecraft/tags/item/ (2): light.json, light_5.json
+
+### Manifiesto (hmod_src/horizon-mod.toml)
+- id = "mr_dynamic_light", pi = "0.2", side = "both", capabilities = ["registries"], 
+amespaces = ["diesse"].
+- Nota: data/minecraft/tags/* se incluye como adición a tags vanilla (permitido por Horizon cuando aplica); validar carga real.
+
+### Verificación realizada
+- [x] T1: extracción desde JAR y conteo/paths verificados (20 archivos bajo data/).
+- [x] T2: .hmod generado (sin cargo-horizon-mod en este entorno; no se ejecutó cargo horizon-mod check).
+
+### Pendiente / riesgo (bloqueador potencial)
+- [ ] **T4 runtime:** confirmar en Horizon 26.3 que el content mod .hmod carga **mcfunction/predicate** y ejecuta tags **minecraft:load/	ick**. Horizon docs/mods.md menciona funciones en el contexto de datos/recarga, pero el soporte efectivo para este datapack debe validarse en juego.
+- Si no hay soporte: documentar evidencia y definir alternativa soportada (p. ej. mecanismo de data pack de Horizon, o reimplementación native) — **no asumir paridad**.
+
+### Uso previsto (a validar)
+1. Instalar/activar el content mod mr_dynamic_light.hmod en horizon-mods/ (o flujo equivalente del launcher).
+2. Mantener/instalar el native bundle de esta carpeta si se desea el hook mods (listado). Validar convivencia de IDs/artefactos en Horizon.
+3. Probar en mundo: tags #minecraft:light/#minecraft:light_5, y comportamiento de luz dinámica (portadores en mano, mobs en fuego/glow squid) según funciones/predicates.
+
+*Licencia del contenido original: CC0-1.0 (Diesse), ver JAR/fabric.mod.json.*
