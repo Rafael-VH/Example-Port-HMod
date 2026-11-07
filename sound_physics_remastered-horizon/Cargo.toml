@@ -1,0 +1,10 @@
+[package]
+name = "horizon-mod-sound-physics-remastered"
+version = "1.5.2+26.3"
+edition = "2024"
+publish = false
+description = "Sound Physics Remastered, ported from Fabric to a Horizon native mod by horizon-port."
+
+# The mod's logic and its tests: the same file the bundle adds to the game.
+[lib]
+path = "mixins/sound_physics_remastered/runtime.rs"

@@ -1,0 +1,185 @@
+[mod]
+id = "sound_physics_remastered"
+version = "1.5.2+26.3"
+priority = 100
+
+# Raw targets are exact functions of one Horizon commit: build on that commit.
+[compatibility]
+horizon_revision = "a46ce6898bd72016e061aaec1afc1375b384deac"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_sound_physics_remastered"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_sound_physics_remastered_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Off: @Accessor on Channel.source (ChannelAccessor.getSource)
+#   No Horizon function mapped for Channel.source (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "channel-accessor-get-source"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ClientLevel.tick (ClientLevelMixin.tick)
+#   No Horizon function mapped for ClientLevel.tick (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "client-level-mixin-tick"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ClientPacketListener.handleLogin (ClientPacketListenerMixin.handleLogin)
+#   No Horizon function mapped for ClientPacketListener.handleLogin (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "client-packet-listener-mixin-handle-login"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on DebugRenderer.refreshRendererList (DebugRendererMixin.refreshRendererList)
+#   No Horizon function mapped for DebugRenderer.refreshRendererList (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "debug-renderer-mixin-refresh-renderer-list"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on Entity.playSound (EntityMixin.playSound)
+#   The call it hooks (Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/Entity;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V) isn't mapped to a Rust function.
+# [[injection]]
+# id = "entity-mixin-play-sound"
+# kind = "MODIFY_ARG"
+# target = "horizon_client::game::consume::<Emitter<'_, '_> as EmissionWorld>::play_sound"
+
+# Off: @ModifyArgs(INVOKE) on Library.init (LibraryMixin.modifyContext)
+#   No Horizon function mapped for Library.init (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "library-mixin-modify-context"
+# kind = "MODIFY_ARGS"
+# target = "TODO"
+
+[[injection]]
+id = "local-player-mixin-play-sound"
+kind = "HEAD"
+target = "horizon_client::game::consume::<Emitter<'_, '_> as EmissionWorld>::play_sound"
+cancellable = true
+helper = "local-player-mixin-play-sound.rs"
+bindings = [
+  { name = "this", ty = "&mut Emitter<'_, '_>", value = "&mut *self" },
+  { name = "sound", ty = "&String", value = "&sound" },
+  { name = "volume", ty = "f32", value = "volume" },
+  { name = "pitch", ty = "f32", value = "pitch" },
+]
+
+# Off: @Inject(HEAD) on Minecraft.setLevel (MinecraftMixin.setLevel)
+#   No Horizon function mapped for Minecraft.setLevel (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "minecraft-mixin-set-level"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Minecraft.disconnect (MinecraftMixin.disconnect)
+#   No Horizon function mapped for Minecraft.disconnect (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "minecraft-mixin-disconnect"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @ModifyConstant on SoundEvent.getRange (SoundEventMixin.allowance1)
+#   No Horizon function mapped for SoundEvent.getRange (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sound-event-mixin-allowance1"
+# kind = "MODIFY_CONSTANT"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on SoundEngine.loadLibrary (SoundSystemMixin.loadLibrary)
+#   No Horizon function mapped for SoundEngine.loadLibrary (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sound-system-mixin-load-library"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on SoundEngine.play (SoundSystemMixin.play)
+#   No Horizon function mapped for SoundEngine.play (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sound-system-mixin-play"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on SoundEngine.tickInGameSound (SoundSystemMixin.tickNonPaused)
+#   No Horizon function mapped for SoundEngine.tickInGameSound (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sound-system-mixin-tick-non-paused"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Channel.setSelfPosition (SourceMixin.setSelfPosition)
+#   No Horizon function mapped for Channel.setSelfPosition (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "source-mixin-set-self-position"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Channel.play (SourceMixin.play)
+#   No Horizon function mapped for Channel.play (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "source-mixin-play"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on Channel.linearAttenuation (SourceMixin.injected)
+#   No Horizon function mapped for Channel.linearAttenuation (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "source-mixin-injected"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on Channel.linearAttenuation (SourceMixin.linearAttenuation2)
+#   No Horizon function mapped for Channel.linearAttenuation (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "source-mixin-linear-attenuation2"
+# kind = "RETURN"
+# target = "TODO"
