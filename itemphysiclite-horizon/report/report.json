@@ -1,0 +1,379 @@
+{
+  "id": "itemphysiclite",
+  "name": "ItemPhysicLite",
+  "version": "1.6.13",
+  "jar": "ItemPhysicLite_FABRIC_v1.6.13_mc26.3.jar",
+  "verdict": "Not convertible yet",
+  "counts": {
+    "auto": 0,
+    "content": 0,
+    "needs-mapping": 6,
+    "needs-translation": 2,
+    "unsupported": 0
+  },
+  "intermediary": false,
+  "entrypoints": {
+    "client": [
+      "team.creative.itemphysiclite.ItemPhysicLite"
+    ]
+  },
+  "features": [
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysiclite/mixin/EntityAccessor.getStuckSpeedMultiplier",
+      "detail": "@Accessor on Entity.stuckSpeedMultiplier",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Entity.stuckSpeedMultiplier: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysiclite/mixin/ItemEntityMixin",
+      "detail": "mixin into ItemEntity with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysiclite/mixin/ItemEntityRenderStateMixin",
+      "detail": "mixin into ItemEntityRenderState with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysiclite/mixin/ItemEntityRendererMixin.submit",
+      "detail": "@Inject(HEAD) on ItemEntityRenderer.submit",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ItemEntityRenderer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysiclite/mixin/ItemEntityRendererMixin.injectExtract",
+      "detail": "@Inject(TAIL) on ItemEntityRenderer.extractRenderState",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for ItemEntityRenderer.extractRenderState: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysiclite/mixin/ItemStackRenderStateAccessor.callFirstLayer",
+      "detail": "@Invoker on ItemStackRenderState.callFirstLayer",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for ItemStackRenderState.callFirstLayer: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysiclite/mixin/LayerRenderStateAccessor.getItemTransform",
+      "detail": "@Accessor on LayerRenderState.itemTransform",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for LayerRenderState.itemTransform: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysiclite/mixin/RenderTypeAccessor.getName",
+      "detail": "@Accessor on RenderType.name",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for RenderType.name: run `match`."
+    }
+  ],
+  "mappedCalls": [
+    {
+      "java": "net/minecraft/client/Minecraft#getInstance",
+      "kind": "method",
+      "uses": 2,
+      "horizon": "`self`"
+    },
+    {
+      "java": "net/minecraft/client/renderer/item/ItemStackRenderState#submit",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::item_render::ItemRenderState::submit (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/Level#isClientSide",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::level::is_client_side (suggested)"
+    }
+  ],
+  "unmappedCalls": [
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#popPose",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#pushPose",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#rotate",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#translate",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/DeltaTracker#getRealtimeDeltaTicks",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getDeltaTracker",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#isPaused",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#options",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EntityRenderer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EntityRenderer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/ItemEntityRenderer#extractRenderState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/ItemEntityRenderer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#ageInTicks",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#bobOffset",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#count",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#item",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#lightCoords",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#outlineColor",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#seed",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/item/ItemStackRenderState#callFirstLayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/item/ItemStackRenderState#usesBlockLight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/item/ItemStackRenderState$LayerRenderState#itemTransform",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/rendertype/RenderType#name",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/texture/OverlayTexture#NO_OVERLAY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/resources/model/cuboid/ItemTransform#scale",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#below",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#nextFloat",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#setSeed",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#onSyncedDataUpdated",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#stuckSpeedMultiplier",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#blockPosition",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getItem",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getXRot",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getYRot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#level",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#onGround",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#position",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#setXRot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getBlockState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getFluidState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#MUD",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#SNOW",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#SOUL_SAND",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/material/Fluid#getTickDelay",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/material/FluidState#getHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/material/FluidState#getType",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#lengthSqr",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#x",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#y",
+      "kind": "field",
+      "uses": 1
+    }
+  ],
+  "warnings": []
+}

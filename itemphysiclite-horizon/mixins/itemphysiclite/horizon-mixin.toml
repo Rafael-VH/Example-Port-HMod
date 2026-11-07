@@ -1,0 +1,67 @@
+[mod]
+id = "itemphysiclite"
+version = "1.6.13"
+priority = 100
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_itemphysiclite"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_itemphysiclite_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+# Off: @Accessor on Entity.stuckSpeedMultiplier (EntityAccessor.getStuckSpeedMultiplier)
+#   No Horizon function mapped for Entity.stuckSpeedMultiplier (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "entity-accessor-get-stuck-speed-multiplier"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ItemEntityRenderer.submit (ItemEntityRendererMixin.submit)
+#   No Horizon function mapped for ItemEntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-renderer-mixin-submit"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ItemEntityRenderer.extractRenderState (ItemEntityRendererMixin.injectExtract)
+#   No Horizon function mapped for ItemEntityRenderer.extractRenderState (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-renderer-mixin-inject-extract"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Invoker on ItemStackRenderState.callFirstLayer (ItemStackRenderStateAccessor.callFirstLayer)
+#   No Horizon function mapped for ItemStackRenderState.callFirstLayer (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-stack-render-state-accessor-call-first-layer"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Accessor on LayerRenderState.itemTransform (LayerRenderStateAccessor.getItemTransform)
+#   No Horizon function mapped for LayerRenderState.itemTransform (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "layer-render-state-accessor-get-item-transform"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on RenderType.name (RenderTypeAccessor.getName)
+#   No Horizon function mapped for RenderType.name (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "render-type-accessor-get-name"
+# kind = "GET"
+# target = "TODO"
