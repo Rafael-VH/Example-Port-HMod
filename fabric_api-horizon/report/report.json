@@ -1,0 +1,29 @@
+{
+  "id": "fabric-api",
+  "name": "Fabric API",
+  "version": "0.165.2+26.3",
+  "jar": "fabric-api-0.165.2-26.3.jar",
+  "verdict": "Convertible",
+  "counts": {
+    "auto": 0,
+    "content": 1,
+    "needs-mapping": 0,
+    "needs-translation": 0,
+    "unsupported": 0
+  },
+  "intermediary": false,
+  "entrypoints": {},
+  "features": [
+    {
+      "category": "content",
+      "in": "jar resources",
+      "detail": "1 asset files, 0 data files",
+      "horizon": "content mod (.hmod)",
+      "status": "content",
+      "note": "Recipes, loot, tags, models, textures, worldgen: horizon-port-pack carries these."
+    }
+  ],
+  "mappedCalls": [],
+  "unmappedCalls": [],
+  "warnings": []
+}

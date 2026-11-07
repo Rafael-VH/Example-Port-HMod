@@ -1,0 +1,10 @@
+[package]
+name = "horizon-mod-fabric-api"
+version = "0.165.2+26.3"
+edition = "2024"
+publish = false
+description = "Fabric API, ported from Fabric to a Horizon native mod by horizon-port."
+
+# The mod's logic and its tests: the same file the bundle adds to the game.
+[lib]
+path = "mixins/fabric_api/runtime.rs"
