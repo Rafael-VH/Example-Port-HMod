@@ -1,0 +1,22 @@
+// Not ported yet: the Java @Inject(HEAD) on LivingEntityRenderer.submit (MixinLivingEntityRenderer.emf$preRender).
+// Why it's off: No Horizon function mapped for LivingEntityRenderer.submit (run `match`, or map it in a --mappings file).
+// horizon-mixins kind: HEAD
+// Note: No Horizon function known for LivingEntityRenderer.submit: run `match`.
+//
+// Game calls the Java code makes here, and what they are in Horizon:
+//   Iterator.next -> (not mapped yet)
+//   List.iterator -> (not mapped yet)
+//   EntityModel.setupAnim -> (not mapped yet)
+//   EntityRenderer.<init> -> (not mapped yet)
+//   LivingEntityRenderer.getRenderType -> (not mapped yet)
+//   LivingEntityRenderer.submit -> (not mapped yet)
+//
+// Decompiled Java, traben/entity_model_features/mixin/mixins/rendering/MixinLivingEntityRenderer.java:113:
+// | @Inject(
+// |    method = "submit(Lnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/state/level/CameraRenderState;)V",
+// |    at = @At("HEAD")
+// | )
+// | private void emf$preRender(CallbackInfo ci) {
+// |    EMFState.isLayerPhase = false;
+// |    EMFState.isMainPhase = true;
+// | }

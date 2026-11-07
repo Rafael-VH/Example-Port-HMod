@@ -1,0 +1,3212 @@
+{
+  "id": "entity_model_features",
+  "name": "Entity Model Features",
+  "version": "3.3.12",
+  "jar": "entity_model_features-3.3.12-26.3-fabric.jar",
+  "verdict": "Partly convertible",
+  "counts": {
+    "auto": 1,
+    "content": 1,
+    "needs-mapping": 96,
+    "needs-translation": 15,
+    "unsupported": 0
+  },
+  "intermediary": false,
+  "entrypoints": {
+    "client": [
+      "traben.entity_model_features.EMFInit"
+    ],
+    "modmenu": [
+      "traben.entity_model_features.config.EMFModMenu"
+    ],
+    "ebe_v1": [
+      "traben.entity_model_features.mod_compat.EBEConfigModifier"
+    ]
+  },
+  "features": [
+    {
+      "category": "access",
+      "in": "entity_model_features_16.accesswidener",
+      "detail": "access widener (opens private game fields)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Native helpers already see the game's fields, once each field is mapped."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinBlockEntity",
+      "detail": "mixin into BlockEntity with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinBlockEntityRendererFactories.emf$clearMarker",
+      "detail": "@Inject(RETURN) on BlockEntityRenderers.createEntityRenderers",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for BlockEntityRenderers.createEntityRenderers: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinBlockEntityRendererFactories.setEmf$Model",
+      "detail": "@ModifyArg(INVOKE) on BlockEntityRenderers.createEntityRenderers at Ljava/util/Map;forEach(Ljava/util/function/BiConsumer;)V",
+      "horizon": "MODIFY_ARG",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for BlockEntityRenderers.createEntityRenderers: run `match`. The call it hooks (Map.forEach) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinCapeModels",
+      "detail": "mixin into CancelTarget with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinEntity",
+      "detail": "mixin into Entity with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinEntityModelLoader.emf$injectModelLoad",
+      "detail": "@Inject(RETURN) on EntityModelSet.bakeLayer",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for EntityModelSet.bakeLayer: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinEntityRenderer.radius",
+      "detail": "@ModifyExpressionValue(INVOKE) on EntityRenderer.extractShadow at Lnet/minecraft/client/renderer/entity/EntityRenderer;getShadowRadius(Lnet/minecraft/client/renderer/entity/state/EntityRenderState;)F",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for EntityRenderer.extractShadow: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinEntityRenderer.strength",
+      "detail": "@ModifyExpressionValue(INVOKE) on EntityRenderer.extractShadow at Lnet/minecraft/client/renderer/entity/EntityRenderer;getShadowStrength(Lnet/minecraft/client/renderer/entity/state/EntityRenderState;)F",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for EntityRenderer.extractShadow: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinGameRenderer.emf$injectCounter",
+      "detail": "@Inject(HEAD) on GameRenderer.render",
+      "horizon": "HEAD on hook `frame`",
+      "status": "auto",
+      "note": "Target mapping is approximate."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinModel.emf$discoverEMFModel",
+      "detail": "@Inject(TAIL) on Model.<init>",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for Model.<init>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinModel.emf$discoverEMFModel",
+      "detail": "@Inject(HEAD) on Model.renderType",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for Model.renderType: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinModelPart$Cuboid.emf$injectAnnouncerCube",
+      "detail": "@Inject(TAIL) on Cube.<init>",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for Cube.<init>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinModelPart.emf$injectAnnouncerPart",
+      "detail": "@Inject(HEAD) on ModelPart.render",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ModelPart.render: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinModelPartData.emf$injectAnnouncerData",
+      "detail": "@Inject(RETURN) on PartDefinition.bake",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for PartDefinition.bake: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinParrotEntityModel.emf$injectParrotShoulderLayer",
+      "detail": "@ModifyExpressionValue(INVOKE) on ParrotOnShoulderLayer.<init> at Lnet/minecraft/client/model/geom/EntityModelSet;bakeLayer(Lnet/minecraft/client/model/geom/ModelLayerLocation;)Lnet/minecraft/client/model/geom/ModelPart;",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for ParrotOnShoulderLayer.<init>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinParrotEntityModel.emf$parrot1",
+      "detail": "@Inject(HEAD) on ParrotOnShoulderLayer.submitOnShoulder",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ParrotOnShoulderLayer.submitOnShoulder: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinParrotEntityModel.emf$parrot2",
+      "detail": "@Inject(TAIL) on ParrotOnShoulderLayer.submitOnShoulder",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for ParrotOnShoulderLayer.submitOnShoulder: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinPlayerEntity.emf$injected",
+      "detail": "@Inject(HEAD) on Player.interactOn",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for Player.interactOn: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinResourceReloadEnd.emf$reloadFinish",
+      "detail": "@Inject(HEAD) on Minecraft.onResourceLoadFinished",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for Minecraft.onResourceLoadFinished: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/MixinResourceReloadStart.emf$reloadStart",
+      "detail": "@Inject(HEAD) on Minecraft.reloadResourcePacks",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for Minecraft.reloadResourcePacks: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/accessor/AgeableMobRendererAccessor.getBabyModel",
+      "detail": "@Accessor on AgeableMobRenderer.babyModel",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for AgeableMobRenderer.babyModel: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/accessor/CuboidAccessor.setPolygons",
+      "detail": "@Accessor on Cube.polygons",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Cube.polygons: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/accessor/CuboidAccessor.setMinX",
+      "detail": "@Accessor on Cube.minX",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Cube.minX: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/accessor/CuboidAccessor.setMinY",
+      "detail": "@Accessor on Cube.minY",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Cube.minY: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/accessor/CuboidAccessor.setMinZ",
+      "detail": "@Accessor on Cube.minZ",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Cube.minZ: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/accessor/CuboidAccessor.setMaxX",
+      "detail": "@Accessor on Cube.maxX",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Cube.maxX: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/accessor/CuboidAccessor.setMaxY",
+      "detail": "@Accessor on Cube.maxY",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Cube.maxY: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/accessor/CuboidAccessor.setMaxZ",
+      "detail": "@Accessor on Cube.maxZ",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Cube.maxZ: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/accessor/MinecraftClientAccessor.getDeltaTracker",
+      "detail": "@Accessor on Minecraft.deltaTracker",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Minecraft.deltaTracker: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/accessor/Mixin_GuiEntityTester.etf$beforeRenderToTexture",
+      "detail": "@Inject(HEAD) on GuiRenderer.render",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for GuiRenderer.render: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/accessor/Mixin_GuiEntityTester.etf$afterRenderToTexture",
+      "detail": "@Inject(TAIL) on GuiRenderer.render",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for GuiRenderer.render: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/exporting/MixinBabyModelTransform.emf$cancel",
+      "detail": "@Inject(HEAD) on BabyModelTransform.apply",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for BabyModelTransform.apply: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/exporting/MixinEntityModelSet.emf$unModifiedRoots",
+      "detail": "@Inject(RETURN) on EntityModelSet.vanilla",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for EntityModelSet.vanilla: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/exporting/MixinMeshTransformer.emf$cancel",
+      "detail": "@Inject(HEAD) on MeshTransformer.lambda$scaling$0",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for MeshTransformer.lambda$scaling$0: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinBannerRenderer.emf$injected",
+      "detail": "@Inject(HEAD) on BannerRenderer.submitPatterns",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for BannerRenderer.submitPatterns: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinBlockEntityWithoutLevelRenderer_skull.emf$setRenderFactory",
+      "detail": "@Inject(HEAD) on LayerRenderState.submit",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for LayerRenderState.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinDragonRenderer.emf$allowMultiPartRender4",
+      "detail": "@Inject(INVOKE) on EnderDragonRenderer.submit at Lnet/minecraft/client/renderer/SubmitNodeCollector;submitModel(Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/rendertype/RenderType;III)V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for EnderDragonRenderer.submit: run `match`. The call it hooks (SubmitNodeCollector.submitModel) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinEntityRenderDispatcher.emf$endOfRender",
+      "detail": "@Inject(RETURN) on EntityRenderDispatcher.submit",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for EntityRenderDispatcher.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinEntityRenderDispatcher.postSubmitTweaks",
+      "detail": "@Inject(INVOKE) on EntityRenderDispatcher.submit at Lnet/minecraft/client/renderer/entity/EntityRenderer;submit(Lnet/minecraft/client/renderer/entity/state/EntityRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/state/level/CameraRenderState;)V",
+      "horizon": "AFTER_CALL",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for EntityRenderDispatcher.submit: run `match`. The call it hooks (EntityRenderer.submit) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinEntityRenderDispatcher.preShadow",
+      "detail": "@Inject(INVOKE) on EntityRenderDispatcher.submit at Lnet/minecraft/client/renderer/SubmitNodeCollector;submitShadow(Lcom/mojang/blaze3d/vertex/PoseStack;FLjava/util/List;)V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for EntityRenderDispatcher.submit: run `match`. The call it hooks (SubmitNodeCollector.submitShadow) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinEntityRenderDispatcher.postShadow",
+      "detail": "@Inject(INVOKE) on EntityRenderDispatcher.submit at Lnet/minecraft/client/renderer/SubmitNodeCollector;submitShadow(Lcom/mojang/blaze3d/vertex/PoseStack;FLjava/util/List;)V",
+      "horizon": "AFTER_CALL",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for EntityRenderDispatcher.submit: run `match`. The call it hooks (SubmitNodeCollector.submitShadow) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinEntityRenderers.emf$locateTransient",
+      "detail": "@Inject(HEAD) on EntityRenderers.lambda$createEntityRenderers$0",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for EntityRenderers.lambda$createEntityRenderers$0: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinEntityRenderers.emf$reset",
+      "detail": "@Inject(TAIL) on EntityRenderers.lambda$createEntityRenderers$0",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for EntityRenderers.lambda$createEntityRenderers$0: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinItemFrameEntityRenderer",
+      "detail": "mixin into ItemFrameRenderer with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinLeashOffsets.getLeashHolder",
+      "detail": "@ModifyExpressionValue(INVOKE) on EntityRenderer.extractRenderState at Lnet/minecraft/world/entity/Leashable;getLeashHolder()Lnet/minecraft/world/entity/Entity;",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for EntityRenderer.extractRenderState: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinLeashOffsets.emf$leash",
+      "detail": "@ModifyExpressionValue(INVOKE) on EntityRenderer.extractRenderState at Lnet/minecraft/world/entity/Leashable;getLeashOffset(F)Lnet/minecraft/world/phys/Vec3;",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for EntityRenderer.extractRenderState: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinLeashOffsets.emf$leashHold",
+      "detail": "@ModifyExpressionValue(INVOKE) on EntityRenderer.extractRenderState at Lnet/minecraft/world/entity/Entity;getRopeHoldPosition(F)Lnet/minecraft/world/phys/Vec3;",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for EntityRenderer.extractRenderState: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinLeashOffsets.emf$leashQuad",
+      "detail": "@ModifyExpressionValue(INVOKE) on EntityRenderer.extractRenderState at Lnet/minecraft/world/entity/Leashable;getQuadLeashOffsets()[Lnet/minecraft/world/phys/Vec3;",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for EntityRenderer.extractRenderState: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinLeashOffsets.emf$leashQuadHolder",
+      "detail": "@ModifyExpressionValue(INVOKE) on EntityRenderer.extractRenderState at Lnet/minecraft/world/entity/Entity;getQuadLeashHolderOffsets()[Lnet/minecraft/world/phys/Vec3;",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for EntityRenderer.extractRenderState: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinLivingEntityRenderer.falseAnimation",
+      "detail": "@Inject(INVOKE) on LivingEntityRenderer.submit at Lnet/minecraft/client/model/EntityModel;setupAnim(Ljava/lang/Object;)V",
+      "horizon": "AFTER_CALL",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for LivingEntityRenderer.submit: run `match`. The call it hooks (EntityModel.setupAnim) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinLivingEntityRenderer.emf$getTextureRedirect",
+      "detail": "@ModifyExpressionValue(INVOKE) on LivingEntityRenderer.getRenderType at Lnet/minecraft/client/renderer/entity/LivingEntityRenderer;getTextureLocation(Lnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;)Lnet/minecraft/resources/Identifier;",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for LivingEntityRenderer.getRenderType: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinLivingEntityRenderer.emf$grabEntity",
+      "detail": "@Inject(INVOKE) on LivingEntityRenderer.submit at Ljava/util/List;iterator()Ljava/util/Iterator;",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for LivingEntityRenderer.submit: run `match`. The call it hooks (List.iterator) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinLivingEntityRenderer.emf$eachFeatureLoop",
+      "detail": "@Inject(INVOKE) on LivingEntityRenderer.submit at Ljava/util/Iterator;next()Ljava/lang/Object;",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for LivingEntityRenderer.submit: run `match`. The call it hooks (Iterator.next) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinLivingEntityRenderer.emf$preRender",
+      "detail": "@Inject(HEAD) on LivingEntityRenderer.submit",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for LivingEntityRenderer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinLivingEntityRenderer.emf$postRender",
+      "detail": "@Inject(TAIL) on LivingEntityRenderer.submit",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for LivingEntityRenderer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinPlayerEntityRenderer.emf$setHandAnimState",
+      "detail": "@Inject(HEAD) on AvatarRenderer.renderHand",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for AvatarRenderer.renderHand: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinPlayerEntityRenderer.emf$setHandAnims",
+      "detail": "@Inject(INVOKE) on AvatarRenderer.renderHand at Lnet/minecraft/client/renderer/SubmitNodeCollector;submitModelPart(Lnet/minecraft/client/model/geom/ModelPart;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/rendertype/RenderType;IILnet/minecraft/client/renderer/texture/UvMapping;)V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for AvatarRenderer.renderHand: run `match`. The call it hooks (SubmitNodeCollector.submitModelPart) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/MixinPlayerEntityRenderer.emf$unsetHand",
+      "detail": "@Inject(RETURN) on AvatarRenderer.renderHand",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for AvatarRenderer.renderHand: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/Mixin_SpecialModelRenderers_SetCurrentSpecifiedModel.emf$clearMarker",
+      "detail": "@Inject(RETURN) on LoadedBlockModels.bake",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for LoadedBlockModels.bake: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/Mixin_SpecialModelRenderers_SetCurrentSpecifiedModel.setEmf$Model",
+      "detail": "@Inject(HEAD) on LoadedBlockModels.lambda$bake$1",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for LoadedBlockModels.lambda$bake$1: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/Mixin_WrapFirstPersonHandRender",
+      "detail": "mixin into FirstPersonHandsAndItemsRenderer with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/arrows/MixinArrowRenderer",
+      "detail": "mixin into CancelTarget with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/arrows/MixinProjectileEntityRenderer",
+      "detail": "mixin into CancelTarget with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/arrows/MixinSpectralArrowRenderer",
+      "detail": "mixin into CancelTarget with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/arrows/MixinStuckArrowsFeatureRenderer.emf$start",
+      "detail": "@Inject(HEAD) on StuckInBodyLayer.submit",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for StuckInBodyLayer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/arrows/MixinStuckArrowsFeatureRenderer.emf$end",
+      "detail": "@Inject(RETURN) on StuckInBodyLayer.submit",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for StuckInBodyLayer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/MixinSulfurCubeInnerLayer_BlockOffset.offsetBlock",
+      "detail": "@Inject(INVOKE) on SulfurCubeInnerLayer.submit at Lcom/mojang/blaze3d/vertex/PoseStack;rotateDegrees(Lcom/mojang/math/Axis;F)V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for SulfurCubeInnerLayer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Dolphin_BlockOffset.offsetBlock",
+      "detail": "@Inject(INVOKE) on DolphinCarryingItemLayer.submit at Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for DolphinCarryingItemLayer.submit: run `match`. The call it hooks (PoseStack.translate) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Enderman_BlockOffset.offsetBlock",
+      "detail": "@Inject(INVOKE) on CarriedBlockLayer.submit at Lcom/mojang/blaze3d/vertex/PoseStack;rotateDegrees(Lcom/mojang/math/Axis;F)V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for CarriedBlockLayer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Fox_BlockOffset.offsetBlock",
+      "detail": "@WrapWithCondition(INVOKE) on FoxHeldItemLayer.submit at Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "Call `original` only when the condition holds. No Horizon function known for FoxHeldItemLayer.submit: run `match`. The call it hooks (PoseStack.translate) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Fox_BlockOffset.offsetBlock3",
+      "detail": "@WrapWithCondition(INVOKE) on FoxHeldItemLayer.submit at Lcom/mojang/blaze3d/vertex/PoseStack;rotate(Lcom/mojang/math/Axis;F)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "Call `original` only when the condition holds. No Horizon function known for FoxHeldItemLayer.submit: run `match`. The call it hooks (PoseStack.rotate) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Fox_BlockOffset.offsetBlock4",
+      "detail": "@WrapWithCondition(INVOKE) on FoxHeldItemLayer.submit at Lcom/mojang/blaze3d/vertex/PoseStack;rotateDegrees(Lcom/mojang/math/Axis;F)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "Call `original` only when the condition holds. No Horizon function known for FoxHeldItemLayer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Fox_BlockOffset.offsetBlock5",
+      "detail": "@WrapWithCondition(INVOKE) on FoxHeldItemLayer.submit at Lcom/mojang/blaze3d/vertex/PoseStack;rotateDegrees(Lcom/mojang/math/Axis;F)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "Call `original` only when the condition holds. No Horizon function known for FoxHeldItemLayer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Head_BlockOffset.offsetBlock",
+      "detail": "@WrapWithCondition(INVOKE) on CustomHeadLayer.submit at Lnet/minecraft/client/model/geom/ModelPart;translateAndRotate(Lcom/mojang/blaze3d/vertex/PoseStack;)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "Call `original` only when the condition holds. No Horizon function known for CustomHeadLayer.submit: run `match`. The call it hooks (ModelPart.translateAndRotate) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Head_BlockOffset.cancel",
+      "detail": "@WrapWithCondition(INVOKE) on CustomHeadLayer.submit at Lnet/minecraft/client/model/HeadedModel;translateToHead(Lcom/mojang/blaze3d/vertex/PoseStack;)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "Call `original` only when the condition holds. No Horizon function known for CustomHeadLayer.submit: run `match`. The call it hooks (HeadedModel.translateToHead) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Panda_BlockOffset.offsetBlock",
+      "detail": "@Inject(INVOKE) on PandaHoldsItemLayer.submit at Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for PandaHoldsItemLayer.submit: run `match`. The call it hooks (PoseStack.translate) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Parrot_ShoulderOffset.offsetBlock",
+      "detail": "@WrapWithCondition(INVOKE) on ParrotOnShoulderLayer.submitOnShoulder at Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "Call `original` only when the condition holds. No Horizon function known for ParrotOnShoulderLayer.submitOnShoulder: run `match`. The call it hooks (PoseStack.translate) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Villager_BlockOffset.offsetBlock",
+      "detail": "@WrapWithCondition(INVOKE) on CrossedArmsItemLayer.applyTranslation at Lnet/minecraft/client/model/VillagerLikeModel;translateToArms(Lnet/minecraft/client/renderer/entity/state/EntityRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "Call `original` only when the condition holds. No Horizon function known for CrossedArmsItemLayer.applyTranslation: run `match`. The call it hooks (VillagerLikeModel.translateToArms) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Witch_BlockOffset.offsetBlock",
+      "detail": "@WrapWithCondition(INVOKE) on WitchItemLayer.applyTranslation at Lnet/minecraft/client/model/geom/ModelPart;translateAndRotate(Lcom/mojang/blaze3d/vertex/PoseStack;)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "Call `original` only when the condition holds. No Horizon function known for WitchItemLayer.applyTranslation: run `match`. The call it hooks (ModelPart.translateAndRotate) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Witch_BlockOffset.cancel",
+      "detail": "@WrapWithCondition(INVOKE) on WitchItemLayer.applyTranslation at Lnet/minecraft/client/model/geom/ModelPart;translateAndRotate(Lcom/mojang/blaze3d/vertex/PoseStack;)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "Call `original` only when the condition holds. No Horizon function known for WitchItemLayer.applyTranslation: run `match`. The call it hooks (ModelPart.translateAndRotate) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/attachments/Mixin_Witch_BlockOffset.cancel2",
+      "detail": "@WrapWithCondition(INVOKE) on WitchItemLayer.applyTranslation at Lnet/minecraft/client/model/monster/witch/WitchModel;translateToHead(Lcom/mojang/blaze3d/vertex/PoseStack;)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "Call `original` only when the condition holds. No Horizon function known for WitchItemLayer.applyTranslation: run `match`. The call it hooks (WitchModel.translateToHead) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/feature/MixinCreeperChargeFeatureRenderer.emf$getTextureRedirect",
+      "detail": "@Inject(RETURN) on CreeperPowerLayer.getTextureLocation",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for CreeperPowerLayer.getTextureLocation: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/feature/MixinHeadFeatureRenderer.emf$setHand",
+      "detail": "@Inject(HEAD) on CustomHeadLayer.submit",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for CustomHeadLayer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/feature/MixinHeadFeatureRenderer.emf$unsetHand",
+      "detail": "@Inject(TAIL) on CustomHeadLayer.submit",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for CustomHeadLayer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/feature/MixinHeldItemFeatureRenderer.emf$setHand",
+      "detail": "@Inject(HEAD) on ItemInHandLayer.submitArmWithItem",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ItemInHandLayer.submitArmWithItem: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/feature/MixinHeldItemFeatureRenderer.emf$transform",
+      "detail": "@Inject(INVOKE) on ItemInHandLayer.submitArmWithItem at Lnet/minecraft/client/model/ArmedModel;translateToHand(Lnet/minecraft/client/renderer/entity/state/EntityRenderState;Lnet/minecraft/world/entity/HumanoidArm;Lcom/mojang/blaze3d/vertex/PoseStack;)V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for ItemInHandLayer.submitArmWithItem: run `match`. The call it hooks (ArmedModel.translateToHand) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/feature/MixinHeldItemFeatureRenderer.emf$transform2",
+      "detail": "@Inject(INVOKE) on ItemInHandLayer.submitArmWithItem at Lnet/minecraft/client/model/ArmedModel;translateToHand(Lnet/minecraft/client/renderer/entity/state/EntityRenderState;Lnet/minecraft/world/entity/HumanoidArm;Lcom/mojang/blaze3d/vertex/PoseStack;)V",
+      "horizon": "AFTER_CALL",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ItemInHandLayer.submitArmWithItem: run `match`. The call it hooks (ArmedModel.translateToHand) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/feature/MixinHeldItemFeatureRenderer.emf$unsetHand",
+      "detail": "@Inject(TAIL) on ItemInHandLayer.submitArmWithItem",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for ItemInHandLayer.submitArmWithItem: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/feature/MixinHumanoidArmorLayer",
+      "detail": "mixin into CancelTarget with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/feature/MixinSlimeOverlayFeatureRenderer.emf$setLayerForOverrides",
+      "detail": "@Inject(HEAD) on SlimeOuterLayer.submit",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for SlimeOuterLayer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/feature/MixinWolfCollarFeatureRenderer.setEmf$Model",
+      "detail": "@Inject(TAIL) on WolfCollarLayer.<init>",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for WolfCollarLayer.<init>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/model/MixinArmadilloModel.emf$assertLayerFactory",
+      "detail": "@Inject(TAIL) on ArmadilloModel.setupAnim",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for ArmadilloModel.setupAnim: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/model/MixinDragonModel",
+      "detail": "mixin into CancelTarget with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/model/MixinVillagerModel.emf$assertLayerFactory",
+      "detail": "@Inject(HEAD) on VillagerModel.setupAnim",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for VillagerModel.setupAnim: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/model/MixinWolfEntityModel.smf$setAngles",
+      "detail": "@Inject(HEAD) on WolfModel.setupAnim",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for WolfModel.setupAnim: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/model/Mixin_ChickenRenderer_WarmModel.emf$createWarmModels",
+      "detail": "@Inject(TAIL) on ChickenRenderer.<init>",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for ChickenRenderer.<init>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/model/Mixin_ChickenRenderer_WarmModel.emf$warmModel",
+      "detail": "@Inject(INVOKE) on ChickenRenderer.submit at Lnet/minecraft/client/renderer/entity/MobRenderer;submit(Lnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/state/level/CameraRenderState;)V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for ChickenRenderer.submit: run `match`. The call it hooks (MobRenderer.submit) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "class",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/model/Mixin_EnderDragonFireball_Model$1",
+      "detail": "extends EntityModel",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/model/Mixin_EnderDragonFireball_Model.emf$createModel",
+      "detail": "@Inject(TAIL) on DragonFireballRenderer.<init>",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for DragonFireballRenderer.<init>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/model/Mixin_EnderDragonFireball_Model.emf$renderModel",
+      "detail": "@Inject(HEAD) on DragonFireballRenderer.submit",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for DragonFireballRenderer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/model/Mixin_PigRenderer_WarmModel.emf$createWarmModels",
+      "detail": "@Inject(TAIL) on PigRenderer.<init>",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for PigRenderer.<init>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/model/Mixin_PigRenderer_WarmModel.emf$warmModel",
+      "detail": "@Inject(INVOKE) on PigRenderer.submit at Lnet/minecraft/client/renderer/entity/MobRenderer;submit(Lnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/state/level/CameraRenderState;)V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for PigRenderer.submit: run `match`. The call it hooks (MobRenderer.submit) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/model/Mixin_PlayerModel_ReApplyPoseToExtraCallsMadeByMods.emf$initRender",
+      "detail": "@Inject(TAIL) on PlayerModel.setupAnim",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for PlayerModel.setupAnim: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/submits/MixinFlameFeatureRenderer.width",
+      "detail": "@ModifyExpressionValue(FIELD) on FlameFeatureRenderer.prepare at Lnet/minecraft/client/renderer/entity/state/EntityRenderState;boundingBoxWidth:F",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for FlameFeatureRenderer.prepare: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/submits/MixinFlameFeatureRenderer.height",
+      "detail": "@ModifyExpressionValue(FIELD) on FlameFeatureRenderer.prepare at Lnet/minecraft/client/renderer/entity/state/EntityRenderState;boundingBoxHeight:F",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for FlameFeatureRenderer.prepare: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/submits/Mixin_HumanoidArmorLayer_AddBaseModelPoseRef.emf$initRender",
+      "detail": "@Inject(HEAD) on HumanoidArmorLayer.submit",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for HumanoidArmorLayer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/submits/Mixin_HumanoidArmorLayer_AddBaseModelPoseRef.emf$endRender",
+      "detail": "@Inject(TAIL) on HumanoidArmorLayer.submit",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for HumanoidArmorLayer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/submits/Mixin_ModelPartRenderer",
+      "detail": "mixin into CancelTarget with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_model_features/mixin/mixins/rendering/submits/Mixin_ModelRenderer.emf$animate",
+      "detail": "@Inject(INVOKE) on ModelFeatureRenderer.prepareModel at Lnet/minecraft/client/model/Model;setupAnim(Ljava/lang/Object;)V",
+      "horizon": "AFTER_CALL",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ModelFeatureRenderer.prepareModel: run `match`. The call it hooks (Model.setupAnim) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "class",
+      "in": "traben/entity_model_features/models/parts/EMFModelPart",
+      "detail": "extends ModelPart",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "traben/entity_model_features/models/parts/EMFModelPartCustom$EMFCube",
+      "detail": "extends Cube",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "content",
+      "in": "jar resources",
+      "detail": "15 asset files, 0 data files",
+      "horizon": "content mod (.hmod)",
+      "status": "content",
+      "note": "Recipes, loot, tags, models, textures, worldgen: horizon-port-pack carries these."
+    }
+  ],
+  "mappedCalls": [
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#rotateDegrees",
+      "kind": "method",
+      "uses": 4,
+      "horizon": "horizon_client_render::camera::rotate_degrees (suggested)"
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack$Pose#transformNormal",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::item_render::transform_normal (suggested)"
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getInstance",
+      "kind": "method",
+      "uses": 18,
+      "horizon": "`self`"
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#player",
+      "kind": "field",
+      "uses": 6,
+      "horizon": "`self.native_player()`"
+    },
+    {
+      "java": "net/minecraft/client/renderer/GameRenderer#render",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "hook `frame`"
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#BLOCK",
+      "kind": "field",
+      "uses": 1,
+      "horizon": "content"
+    },
+    {
+      "java": "net/minecraft/network/chat/MutableComponent#withStyle",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client_core::text::Text::with_style (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#atan2",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_core::geometry::trig::atan2 (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#ceil",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client_render::hud_layout::ceil (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#clamp",
+      "kind": "method",
+      "uses": 2,
+      "horizon": "horizon_client_render::chat::clamp (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#floor",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "horizon_client_render::gfx::occlusion::floor (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#frac",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "horizon_client_render::border_render::frac (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#lerp",
+      "kind": "method",
+      "uses": 4,
+      "horizon": "horizon_world::stepped_interpolation::lerp (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#rotLerp",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::stepped_interpolation::rot_lerp (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#wrapDegrees",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "horizon_world::stepped_interpolation::wrap_degrees (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getYRot",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "`self.native_player()?.yaw`"
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#onClimbable",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::mobs::ai::on_climbable (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getMaxY",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::game::Dim::max_y (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getMinY",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::game::Dim::min_y (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/Level#isClientSide",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::level::is_client_side (suggested)"
+    }
+  ],
+  "unmappedCalls": [
+    {
+      "java": "com/mojang/blaze3d/vertex/BufferBuilder#building",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#last",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#popPose",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#pushPose",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#rotate",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#translate",
+      "kind": "method",
+      "uses": 11
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack$Pose#pose",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack$Pose#translate",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/VertexConsumer#addVertex",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/VertexConsumer#setColor",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/VertexConsumer#setLineWidth",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/VertexConsumer#setNormal",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "java/util/Iterator#next",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "java/util/List#iterator",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "java/util/Map#forEach",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/ChatFormatting#YELLOW",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/CameraType#FIRST_PERSON",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/CameraType#THIRD_PERSON_BACK",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/CameraType#THIRD_PERSON_FRONT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/CameraType#isFirstPerson",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/DeltaTracker$Timer#getGameTimeDeltaPartialTick",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/DeltaTracker$Timer#getGameTimeDeltaTicks",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#crosshairPickEntity",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#deltaTracker",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#gameRenderer",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getCameraEntity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getEntityModels",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getEntityRenderDispatcher",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getFps",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getResourceManager",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#gui",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#isPaused",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#level",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#onResourceLoadFinished",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#options",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#reloadResourcePacks",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Options#getCameraType",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/gui/Gui#toastManager",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/components/Button#active",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/components/Button#setMessage",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/components/toasts/SystemToast#add",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/components/toasts/SystemToast$SystemToastId#PERIODIC_NOTIFICATION",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/render/GuiRenderer#render",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/AdultAndBabyModelPair#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/AdultAndBabyModelPair#getModel",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/ArmedModel#translateToHand",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/BabyModelTransform#apply",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/EntityModel#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/EntityModel#setupAnim",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/HeadedModel#translateToHead",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/HumanoidModel#body",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/HumanoidModel#head",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/HumanoidModel#leftArm",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/HumanoidModel#leftLeg",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/HumanoidModel#rightArm",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/HumanoidModel#rightLeg",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/HumanoidModel#root",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/Model#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/Model#renderType",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/model/Model#root",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/model/Model#setupAnim",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/VillagerLikeModel#translateToArms",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/armadillo/ArmadilloModel#setupAnim",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/chicken/AdultChickenModel#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/chicken/AdultChickenModel#createBodyLayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/chicken/BabyChickenModel#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/chicken/BabyChickenModel#createBodyLayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/parrot/ParrotModel#createBodyLayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/pig/BabyPigModel#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/pig/BabyPigModel#createBodyLayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/pig/PigModel#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/pig/PigModel#createBodyLayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/wolf/AdultWolfModel#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/wolf/AdultWolfModel#createBodyLayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/wolf/BabyWolfModel#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/wolf/BabyWolfModel#createBodyLayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/animal/wolf/WolfModel#setupAnim",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/geom/EntityModelSet#bakeLayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/EntityModelSet#roots",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/geom/EntityModelSet#vanilla",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/LayerDefinitions#createRoots",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelLayerLocation#<init>",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelLayerLocation#layer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelLayerLocation#model",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelLayerLocation#toString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelLayers#WOLF",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#children",
+      "kind": "field",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#cubes",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#getChild",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#getInitialPose",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#getRandomCube",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#hasChild",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#render",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#setInitialPose",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#skipDraw",
+      "kind": "field",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#translateAndRotate",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#visible",
+      "kind": "field",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#x",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#xRot",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#xScale",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#y",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#yRot",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#yScale",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#z",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#zRot",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart#zScale",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Cube#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Cube#compile",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Cube#maxX",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Cube#maxY",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Cube#maxZ",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Cube#minX",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Cube#minY",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Cube#minZ",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Cube#polygons",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Polygon#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Polygon#normal",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Polygon#vertices",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Vertex#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Vertex#u",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Vertex#v",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Vertex#x",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Vertex#y",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/ModelPart$Vertex#z",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/PartPose#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/PartPose#x",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/PartPose#xRot",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/geom/PartPose#xScale",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/PartPose#y",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/PartPose#yRot",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/geom/PartPose#yScale",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/PartPose#z",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/PartPose#zRot",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/geom/PartPose#zScale",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/builders/CubeDeformation#NONE",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/geom/builders/LayerDefinition#bakeRoot",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/client/model/geom/builders/MeshDefinition#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/builders/MeshDefinition#getRoot",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/model/geom/builders/MeshTransformer#lambda$scaling$0",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/geom/builders/PartDefinition#bake",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/model/monster/witch/WitchModel#translateToHead",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/npc/VillagerModel#setupAnim",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/model/player/PlayerModel#setupAnim",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/multiplayer/ClientLevel#tickRateManager",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#blockInteractionRange",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#blockPosition",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#getX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#getXRot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#getYRot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#getZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#isScoping",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#sendSystemMessage",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#xRotO",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#xo",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#yRotO",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#yo",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#zo",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/GameRenderer#gameRenderState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/GameRenderer#renderBuffers",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/RenderBuffers#stagedVertexBuffer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/SpriteCoordinateExpander#delegate",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/StagedVertexBuffer#appendDraw",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/StagedVertexBuffer#getVertexBuilder",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/SubmitNodeCollector#submitModel",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/SubmitNodeCollector#submitModelPart",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/SubmitNodeCollector#submitShadow",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/block/LoadedBlockModels#bake",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/block/LoadedBlockModels#lambda$bake$1",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/blockentity/BannerRenderer#submitPatterns",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/blockentity/BlockEntityRenderers#PROVIDERS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/blockentity/BlockEntityRenderers#createEntityRenderers",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/AgeableMobRenderer#babyModel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/ChickenRenderer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/ChickenRenderer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/DragonFireballRenderer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/DragonFireballRenderer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EnderDragonRenderer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EntityRenderDispatcher#getRenderer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EntityRenderDispatcher#submit",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EntityRenderer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EntityRenderer#createRenderState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EntityRenderer#extractRenderState",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EntityRenderer#extractShadow",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EntityRenderer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EntityRenderers#lambda$createEntityRenderers$0",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/LivingEntityRenderer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/LivingEntityRenderer#getRenderType",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/LivingEntityRenderer#isUpsideDownName",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/LivingEntityRenderer#submit",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/MobRenderer#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/MobRenderer#submit",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/PigRenderer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/PigRenderer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/RenderLayerParent#getModel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/CarriedBlockLayer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/CreeperPowerLayer#getTextureLocation",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/CrossedArmsItemLayer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/CrossedArmsItemLayer#applyTranslation",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/CustomHeadLayer#submit",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/DolphinCarryingItemLayer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/FoxHeldItemLayer#submit",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/HumanoidArmorLayer#submit",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/ItemInHandLayer#submitArmWithItem",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/PandaHoldsItemLayer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/ParrotOnShoulderLayer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/ParrotOnShoulderLayer#submitOnShoulder",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/RenderLayer#<init>",
+      "kind": "method",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/RenderLayer#getParentModel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/SlimeOuterLayer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/StuckInBodyLayer#submit",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/StuckInBodyLayer$PlacementStyle#ON_SURFACE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/SulfurCubeInnerLayer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/WitchItemLayer#applyTranslation",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/layers/WolfCollarLayer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/player/AvatarRenderer#renderHand",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/AvatarRenderState#id",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/AvatarRenderState#outlineColor",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/EntityRenderState#lightCoords",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/EntityRenderState#x",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/EntityRenderState#z",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/LivingEntityRenderState#walkAnimationPos",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/LivingEntityRenderState#walkAnimationSpeed",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/LivingEntityRenderState#xRot",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/LivingEntityRenderState#yRot",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/SulfurCubeRenderState#isBaby",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/feature/FlameFeatureRenderer#prepare",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/feature/ModelFeatureRenderer#prepareModel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/feature/ModelFeatureRenderer$Submit#model",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/renderer/feature/ModelFeatureRenderer$Submit#state",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/item/ItemStackRenderState$LayerRenderState#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/rendertype/RenderType#format",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/rendertype/RenderTypes#endGateway",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/rendertype/RenderTypes#entityCutout",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/rendertype/RenderTypes#entityCutoutCull",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/rendertype/RenderTypes#entityCutoutZOffset",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/rendertype/RenderTypes#entitySolid",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/rendertype/RenderTypes#entityTranslucent",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/rendertype/RenderTypes#lines",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/rendertype/RenderTypes#outline",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/state/GameRenderState#levelRenderState",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/state/level/CameraRenderState#hudFov",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/state/level/LevelRenderState#cameraRenderState",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/texture/MissingTextureAtlasSprite#getLocation",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/texture/OverlayTexture#NO_OVERLAY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#above",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#below",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#equals",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getX",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getY",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getZ",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#mutable",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#move",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/DefaultedRegistry#forEach",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/DefaultedRegistry#wrapAsHolder",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#DOWN",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Direction#EAST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#NORTH",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#SOUTH",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#UP",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#WEST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#values",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Holder#getRegisteredName",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Holder#unwrapKey",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Holder$Reference#is",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder$Reference#unwrapKey",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#ENTITY_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/CompoundTag#contains",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#getString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#literal",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#nullToEmpty",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#translatable",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/network/chat/MutableComponent#create",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/MutableComponent#getString",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/network/chat/contents/PlainTextContents$LiteralContents#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#equals",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#fromNamespaceAndPath",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#getNamespace",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#getPath",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#isValidPath",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#parse",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#toString",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#tryParse",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/ResourceKey#identifier",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/server/packs/PackResources#packId",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/Resource#open",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/Resource#sourcePackId",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/ResourceManager#getResource",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/ResourceManager#listPacks",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/ResourceManager#listResources",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/EntityTypeTags#BOAT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/ARGB#alpha",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/ARGB#color",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/ARGB#green",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Mth#abs",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Mth#catmullrom",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/util/Mth#cos",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Mth#degreesDifferenceAbs",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Mth#sin",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/util/Mth#sqrt",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#create",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#nextFloat",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#nextInt",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/InteractionHand#MAIN_HAND",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/InteractionHand#OFF_HAND",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/TickRateManager#isEntityFrozen",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/TickRateManager#isFrozen",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#equals",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getBbHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getBbWidth",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getType",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getUUID",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#isSwimming",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#isVisuallyCrawling",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#pick",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#yRot",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#yRotO",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityType#builtInRegistryHolder",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityType#getDescriptionId",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityType#toString",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityTypes#BLAZE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityTypes#BREEZE_WIND_CHARGE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityTypes#CAMEL_HUSK",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityTypes#HORSE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityTypes#SPECTRAL_ARROW",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityTypes#VILLAGER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/HumanoidArm#LEFT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/HumanoidArm#RIGHT",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#deathTime",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getCustomName",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getHealth",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getItemInHand",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getMainArm",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getMaxHealth",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getSwingAnimation",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getUsedItemHand",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getVehicle",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getXRot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#hurtTime",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#isBaby",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#isBlocking",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#isFallFlying",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#isPassenger",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#isUsingItem",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#jumping",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#level",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#walkAnimation",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#xRotO",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#yBodyRot",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#yBodyRotO",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#yHeadRot",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#yHeadRotO",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Mob#isAggressive",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/NeutralMob#getPersistentAngerEndTime",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/NeutralMob#isAngry",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/TamableAnimal#isInSittingPose",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/TamableAnimal#isTame",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Targeting#getTarget",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/WalkAnimationState#position",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/WalkAnimationState#speed",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/animal/camel/Camel#isCamelSitting",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/animal/chicken/Chicken#getVariant",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/animal/chicken/Chicken#isBaby",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/animal/feline/Cat#isInSittingPose",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/animal/fox/Fox#isSitting",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/animal/parrot/Parrot#isInSittingPose",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/animal/pig/Pig#getVariant",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/animal/pig/Pig#isBaby",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/animal/wolf/Wolf#isInSittingPose",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/monster/Blaze#isOnFire",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/monster/Enderman#isCreepy",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/monster/Guardian#getActiveAttackTarget",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/monster/Vex#isCharging",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/monster/illager/SpellcasterIllager#isCastingSpell",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/monster/illager/Vindicator#isAggressive",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#interactOn",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#isLocalPlayer",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/projectile/Projectile#isInWall",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/projectile/arrow/AbstractArrow#isInGround",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/vehicle/boat/AbstractBoat#getRowingTime",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/ItemStack#isEmpty",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#dimensionTypeRegistration",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getBlockState",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getFluidState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getGameTime",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getOverworldClockTime",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#CHEST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#ENCHANTING_TABLE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#ENDER_CHEST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#LECTERN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#TRAPPED_CHEST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/BlockEntity#getType",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/BlockEntityType#builtInRegistryHolder",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/BlockEntityTypes#BELL",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/BlockEntityTypes#CHEST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/BlockEntityTypes#DECORATED_POT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/BlockEntityTypes#ENCHANTING_TABLE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/BlockEntityTypes#ENDER_CHEST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/BlockEntityTypes#LECTERN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/BlockEntityTypes#SHULKER_BOX",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/BlockEntityTypes#SIGN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/BlockEntityTypes#TRAPPED_CHEST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#entityCanStandOn",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#getBlock",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#getFluidState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#is",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#isAir",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#toString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/dimension/BuiltinDimensionTypes#END",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/dimension/BuiltinDimensionTypes#NETHER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/material/FluidState#isEmpty",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#inflate",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#maxX",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#maxY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#maxZ",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#minX",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#minY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#minZ",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/BlockHitResult#getBlockPos",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/HitResult#getType",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/HitResult$Type#BLOCK",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#add",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#equals",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#subtract",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#x",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#z",
+      "kind": "field",
+      "uses": 1
+    }
+  ],
+  "warnings": []
+}

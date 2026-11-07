@@ -1,0 +1,729 @@
+[mod]
+id = "entity_model_features"
+version = "3.3.12"
+priority = 100
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_entity_model_features"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_entity_model_features_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "frame"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_frame"
+helper = "frame.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "elapsed", ty = "std::time::Duration", value = "elapsed" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Off: @Inject(RETURN) on BlockEntityRenderers.createEntityRenderers (MixinBlockEntityRendererFactories.emf$clearMarker)
+#   No Horizon function mapped for BlockEntityRenderers.createEntityRenderers (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-block-entity-renderer-factories-clear-marker"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on BlockEntityRenderers.createEntityRenderers (MixinBlockEntityRendererFactories.setEmf$Model)
+#   No Horizon function mapped for BlockEntityRenderers.createEntityRenderers (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-block-entity-renderer-factories-model"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on EntityModelSet.bakeLayer (MixinEntityModelLoader.emf$injectModelLoad)
+#   No Horizon function mapped for EntityModelSet.bakeLayer (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-model-loader-inject-model-load"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on EntityRenderer.extractShadow (MixinEntityRenderer.radius)
+#   No Horizon function mapped for EntityRenderer.extractShadow (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-renderer-radius"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on EntityRenderer.extractShadow (MixinEntityRenderer.strength)
+#   No Horizon function mapped for EntityRenderer.extractShadow (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-renderer-strength"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on Model.<init> (MixinModel.emf$discoverEMFModel)
+#   No Horizon function mapped for Model.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-model-discover-emf-model"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Model.renderType (MixinModel.emf$discoverEMFModel)
+#   No Horizon function mapped for Model.renderType (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-model-discover-emf-model-2"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on Cube.<init> (Cuboid.emf$injectAnnouncerCube)
+#   No Horizon function mapped for Cube.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "cuboid-inject-announcer-cube"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ModelPart.render (MixinModelPart.emf$injectAnnouncerPart)
+#   No Horizon function mapped for ModelPart.render (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-model-part-inject-announcer-part"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on PartDefinition.bake (MixinModelPartData.emf$injectAnnouncerData)
+#   No Horizon function mapped for PartDefinition.bake (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-model-part-data-inject-announcer-data"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on ParrotOnShoulderLayer.<init> (MixinParrotEntityModel.emf$injectParrotShoulderLayer)
+#   No Horizon function mapped for ParrotOnShoulderLayer.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-parrot-entity-model-inject-parrot-shoulder-layer"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ParrotOnShoulderLayer.submitOnShoulder (MixinParrotEntityModel.emf$parrot1)
+#   No Horizon function mapped for ParrotOnShoulderLayer.submitOnShoulder (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-parrot-entity-model-parrot1"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ParrotOnShoulderLayer.submitOnShoulder (MixinParrotEntityModel.emf$parrot2)
+#   No Horizon function mapped for ParrotOnShoulderLayer.submitOnShoulder (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-parrot-entity-model-parrot2"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Player.interactOn (MixinPlayerEntity.emf$injected)
+#   No Horizon function mapped for Player.interactOn (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-player-entity-injected"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Minecraft.onResourceLoadFinished (MixinResourceReloadEnd.emf$reloadFinish)
+#   No Horizon function mapped for Minecraft.onResourceLoadFinished (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-resource-reload-end-reload-finish"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Minecraft.reloadResourcePacks (MixinResourceReloadStart.emf$reloadStart)
+#   No Horizon function mapped for Minecraft.reloadResourcePacks (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-resource-reload-start-reload-start"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Accessor on AgeableMobRenderer.babyModel (AgeableMobRendererAccessor.getBabyModel)
+#   No Horizon function mapped for AgeableMobRenderer.babyModel (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "ageable-mob-renderer-accessor-get-baby-model"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Cube.polygons (CuboidAccessor.setPolygons)
+#   No Horizon function mapped for Cube.polygons (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "cuboid-accessor-set-polygons"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Cube.minX (CuboidAccessor.setMinX)
+#   No Horizon function mapped for Cube.minX (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "cuboid-accessor-set-min-x"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Cube.minY (CuboidAccessor.setMinY)
+#   No Horizon function mapped for Cube.minY (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "cuboid-accessor-set-min-y"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Cube.minZ (CuboidAccessor.setMinZ)
+#   No Horizon function mapped for Cube.minZ (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "cuboid-accessor-set-min-z"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Cube.maxX (CuboidAccessor.setMaxX)
+#   No Horizon function mapped for Cube.maxX (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "cuboid-accessor-set-max-x"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Cube.maxY (CuboidAccessor.setMaxY)
+#   No Horizon function mapped for Cube.maxY (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "cuboid-accessor-set-max-y"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Cube.maxZ (CuboidAccessor.setMaxZ)
+#   No Horizon function mapped for Cube.maxZ (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "cuboid-accessor-set-max-z"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Minecraft.deltaTracker (MinecraftClientAccessor.getDeltaTracker)
+#   No Horizon function mapped for Minecraft.deltaTracker (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "minecraft-client-accessor-get-delta-tracker"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on GuiRenderer.render (Mixin_GuiEntityTester.etf$beforeRenderToTexture)
+#   No Horizon function mapped for GuiRenderer.render (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-gui-entity-tester-before-render-to-texture"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on GuiRenderer.render (Mixin_GuiEntityTester.etf$afterRenderToTexture)
+#   No Horizon function mapped for GuiRenderer.render (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-gui-entity-tester-after-render-to-texture"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on BabyModelTransform.apply (MixinBabyModelTransform.emf$cancel)
+#   No Horizon function mapped for BabyModelTransform.apply (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-baby-model-transform-cancel"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on EntityModelSet.vanilla (MixinEntityModelSet.emf$unModifiedRoots)
+#   No Horizon function mapped for EntityModelSet.vanilla (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-model-set-un-modified-roots"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on MeshTransformer.lambda$scaling$0 (MixinMeshTransformer.emf$cancel)
+#   No Horizon function mapped for MeshTransformer.lambda$scaling$0 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-mesh-transformer-cancel"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on BannerRenderer.submitPatterns (MixinBannerRenderer.emf$injected)
+#   No Horizon function mapped for BannerRenderer.submitPatterns (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-banner-renderer-injected"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on LayerRenderState.submit (MixinBlockEntityWithoutLevelRenderer_skull.emf$setRenderFactory)
+#   No Horizon function mapped for LayerRenderState.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-block-entity-without-level-renderer-skull-set-render-factory"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on EnderDragonRenderer.submit (MixinDragonRenderer.emf$allowMultiPartRender4)
+#   No Horizon function mapped for EnderDragonRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-dragon-renderer-allow-multi-part-render4"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on EntityRenderDispatcher.submit (MixinEntityRenderDispatcher.emf$endOfRender)
+#   No Horizon function mapped for EntityRenderDispatcher.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-render-dispatcher-end-of-render"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on EntityRenderDispatcher.submit (MixinEntityRenderDispatcher.postSubmitTweaks)
+#   No Horizon function mapped for EntityRenderDispatcher.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-render-dispatcher-post-submit-tweaks"
+# kind = "AFTER_CALL"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on EntityRenderDispatcher.submit (MixinEntityRenderDispatcher.preShadow)
+#   No Horizon function mapped for EntityRenderDispatcher.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-render-dispatcher-pre-shadow"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on EntityRenderDispatcher.submit (MixinEntityRenderDispatcher.postShadow)
+#   No Horizon function mapped for EntityRenderDispatcher.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-render-dispatcher-post-shadow"
+# kind = "AFTER_CALL"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on EntityRenderers.lambda$createEntityRenderers$0 (MixinEntityRenderers.emf$locateTransient)
+#   No Horizon function mapped for EntityRenderers.lambda$createEntityRenderers$0 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-renderers-locate-transient"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on EntityRenderers.lambda$createEntityRenderers$0 (MixinEntityRenderers.emf$reset)
+#   No Horizon function mapped for EntityRenderers.lambda$createEntityRenderers$0 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-renderers-reset"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on EntityRenderer.extractRenderState (MixinLeashOffsets.getLeashHolder)
+#   No Horizon function mapped for EntityRenderer.extractRenderState (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-leash-offsets-get-leash-holder"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on EntityRenderer.extractRenderState (MixinLeashOffsets.emf$leash)
+#   No Horizon function mapped for EntityRenderer.extractRenderState (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-leash-offsets-leash"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on EntityRenderer.extractRenderState (MixinLeashOffsets.emf$leashHold)
+#   No Horizon function mapped for EntityRenderer.extractRenderState (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-leash-offsets-leash-hold"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on EntityRenderer.extractRenderState (MixinLeashOffsets.emf$leashQuad)
+#   No Horizon function mapped for EntityRenderer.extractRenderState (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-leash-offsets-leash-quad"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on EntityRenderer.extractRenderState (MixinLeashOffsets.emf$leashQuadHolder)
+#   No Horizon function mapped for EntityRenderer.extractRenderState (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-leash-offsets-leash-quad-holder"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on LivingEntityRenderer.submit (MixinLivingEntityRenderer.falseAnimation)
+#   No Horizon function mapped for LivingEntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-living-entity-renderer-false-animation"
+# kind = "AFTER_CALL"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on LivingEntityRenderer.getRenderType (MixinLivingEntityRenderer.emf$getTextureRedirect)
+#   No Horizon function mapped for LivingEntityRenderer.getRenderType (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-living-entity-renderer-get-texture-redirect"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on LivingEntityRenderer.submit (MixinLivingEntityRenderer.emf$grabEntity)
+#   No Horizon function mapped for LivingEntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-living-entity-renderer-grab-entity"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on LivingEntityRenderer.submit (MixinLivingEntityRenderer.emf$eachFeatureLoop)
+#   No Horizon function mapped for LivingEntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-living-entity-renderer-each-feature-loop"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on LivingEntityRenderer.submit (MixinLivingEntityRenderer.emf$preRender)
+#   No Horizon function mapped for LivingEntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-living-entity-renderer-pre-render"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on LivingEntityRenderer.submit (MixinLivingEntityRenderer.emf$postRender)
+#   No Horizon function mapped for LivingEntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-living-entity-renderer-post-render"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on AvatarRenderer.renderHand (MixinPlayerEntityRenderer.emf$setHandAnimState)
+#   No Horizon function mapped for AvatarRenderer.renderHand (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-player-entity-renderer-set-hand-anim-state"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on AvatarRenderer.renderHand (MixinPlayerEntityRenderer.emf$setHandAnims)
+#   No Horizon function mapped for AvatarRenderer.renderHand (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-player-entity-renderer-set-hand-anims"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on AvatarRenderer.renderHand (MixinPlayerEntityRenderer.emf$unsetHand)
+#   No Horizon function mapped for AvatarRenderer.renderHand (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-player-entity-renderer-unset-hand"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on LoadedBlockModels.bake (Mixin_SpecialModelRenderers_SetCurrentSpecifiedModel.emf$clearMarker)
+#   No Horizon function mapped for LoadedBlockModels.bake (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-special-model-renderers-set-current-specified-model-clear-marker"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on LoadedBlockModels.lambda$bake$1 (Mixin_SpecialModelRenderers_SetCurrentSpecifiedModel.setEmf$Model)
+#   No Horizon function mapped for LoadedBlockModels.lambda$bake$1 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-special-model-renderers-set-current-specified-model-model"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on StuckInBodyLayer.submit (MixinStuckArrowsFeatureRenderer.emf$start)
+#   No Horizon function mapped for StuckInBodyLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-stuck-arrows-feature-renderer-start"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on StuckInBodyLayer.submit (MixinStuckArrowsFeatureRenderer.emf$end)
+#   No Horizon function mapped for StuckInBodyLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-stuck-arrows-feature-renderer-end"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on SulfurCubeInnerLayer.submit (MixinSulfurCubeInnerLayer_BlockOffset.offsetBlock)
+#   No Horizon function mapped for SulfurCubeInnerLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-sulfur-cube-inner-layer-block-offset-offset-block"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on DolphinCarryingItemLayer.submit (Mixin_Dolphin_BlockOffset.offsetBlock)
+#   No Horizon function mapped for DolphinCarryingItemLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-dolphin-block-offset-offset-block"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on CarriedBlockLayer.submit (Mixin_Enderman_BlockOffset.offsetBlock)
+#   No Horizon function mapped for CarriedBlockLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-enderman-block-offset-offset-block"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @WrapWithCondition(INVOKE) on FoxHeldItemLayer.submit (Mixin_Fox_BlockOffset.offsetBlock)
+#   No Horizon function mapped for FoxHeldItemLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-fox-block-offset-offset-block"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapWithCondition(INVOKE) on FoxHeldItemLayer.submit (Mixin_Fox_BlockOffset.offsetBlock3)
+#   No Horizon function mapped for FoxHeldItemLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-fox-block-offset-offset-block3"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapWithCondition(INVOKE) on FoxHeldItemLayer.submit (Mixin_Fox_BlockOffset.offsetBlock4)
+#   No Horizon function mapped for FoxHeldItemLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-fox-block-offset-offset-block4"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapWithCondition(INVOKE) on FoxHeldItemLayer.submit (Mixin_Fox_BlockOffset.offsetBlock5)
+#   No Horizon function mapped for FoxHeldItemLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-fox-block-offset-offset-block5"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapWithCondition(INVOKE) on CustomHeadLayer.submit (Mixin_Head_BlockOffset.offsetBlock)
+#   No Horizon function mapped for CustomHeadLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-head-block-offset-offset-block"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapWithCondition(INVOKE) on CustomHeadLayer.submit (Mixin_Head_BlockOffset.cancel)
+#   No Horizon function mapped for CustomHeadLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-head-block-offset-cancel"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on PandaHoldsItemLayer.submit (Mixin_Panda_BlockOffset.offsetBlock)
+#   No Horizon function mapped for PandaHoldsItemLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-panda-block-offset-offset-block"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @WrapWithCondition(INVOKE) on ParrotOnShoulderLayer.submitOnShoulder (Mixin_Parrot_ShoulderOffset.offsetBlock)
+#   No Horizon function mapped for ParrotOnShoulderLayer.submitOnShoulder (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-parrot-shoulder-offset-offset-block"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapWithCondition(INVOKE) on CrossedArmsItemLayer.applyTranslation (Mixin_Villager_BlockOffset.offsetBlock)
+#   No Horizon function mapped for CrossedArmsItemLayer.applyTranslation (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-villager-block-offset-offset-block"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapWithCondition(INVOKE) on WitchItemLayer.applyTranslation (Mixin_Witch_BlockOffset.offsetBlock)
+#   No Horizon function mapped for WitchItemLayer.applyTranslation (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-witch-block-offset-offset-block"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapWithCondition(INVOKE) on WitchItemLayer.applyTranslation (Mixin_Witch_BlockOffset.cancel)
+#   No Horizon function mapped for WitchItemLayer.applyTranslation (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-witch-block-offset-cancel"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapWithCondition(INVOKE) on WitchItemLayer.applyTranslation (Mixin_Witch_BlockOffset.cancel2)
+#   No Horizon function mapped for WitchItemLayer.applyTranslation (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-witch-block-offset-cancel2"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on CreeperPowerLayer.getTextureLocation (MixinCreeperChargeFeatureRenderer.emf$getTextureRedirect)
+#   No Horizon function mapped for CreeperPowerLayer.getTextureLocation (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-creeper-charge-feature-renderer-get-texture-redirect"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on CustomHeadLayer.submit (MixinHeadFeatureRenderer.emf$setHand)
+#   No Horizon function mapped for CustomHeadLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-head-feature-renderer-set-hand"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on CustomHeadLayer.submit (MixinHeadFeatureRenderer.emf$unsetHand)
+#   No Horizon function mapped for CustomHeadLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-head-feature-renderer-unset-hand"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ItemInHandLayer.submitArmWithItem (MixinHeldItemFeatureRenderer.emf$setHand)
+#   No Horizon function mapped for ItemInHandLayer.submitArmWithItem (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-held-item-feature-renderer-set-hand"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on ItemInHandLayer.submitArmWithItem (MixinHeldItemFeatureRenderer.emf$transform)
+#   No Horizon function mapped for ItemInHandLayer.submitArmWithItem (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-held-item-feature-renderer-transform"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on ItemInHandLayer.submitArmWithItem (MixinHeldItemFeatureRenderer.emf$transform2)
+#   No Horizon function mapped for ItemInHandLayer.submitArmWithItem (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-held-item-feature-renderer-transform2"
+# kind = "AFTER_CALL"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ItemInHandLayer.submitArmWithItem (MixinHeldItemFeatureRenderer.emf$unsetHand)
+#   No Horizon function mapped for ItemInHandLayer.submitArmWithItem (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-held-item-feature-renderer-unset-hand"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SlimeOuterLayer.submit (MixinSlimeOverlayFeatureRenderer.emf$setLayerForOverrides)
+#   No Horizon function mapped for SlimeOuterLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-slime-overlay-feature-renderer-set-layer-for-overrides"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on WolfCollarLayer.<init> (MixinWolfCollarFeatureRenderer.setEmf$Model)
+#   No Horizon function mapped for WolfCollarLayer.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-wolf-collar-feature-renderer-model"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ArmadilloModel.setupAnim (MixinArmadilloModel.emf$assertLayerFactory)
+#   No Horizon function mapped for ArmadilloModel.setupAnim (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-armadillo-model-assert-layer-factory"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on VillagerModel.setupAnim (MixinVillagerModel.emf$assertLayerFactory)
+#   No Horizon function mapped for VillagerModel.setupAnim (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-villager-model-assert-layer-factory"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on WolfModel.setupAnim (MixinWolfEntityModel.smf$setAngles)
+#   No Horizon function mapped for WolfModel.setupAnim (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-wolf-entity-model-set-angles"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ChickenRenderer.<init> (Mixin_ChickenRenderer_WarmModel.emf$createWarmModels)
+#   No Horizon function mapped for ChickenRenderer.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-chicken-renderer-warm-model-create-warm-models"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on ChickenRenderer.submit (Mixin_ChickenRenderer_WarmModel.emf$warmModel)
+#   No Horizon function mapped for ChickenRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-chicken-renderer-warm-model-warm-model"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on DragonFireballRenderer.<init> (Mixin_EnderDragonFireball_Model.emf$createModel)
+#   No Horizon function mapped for DragonFireballRenderer.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-ender-dragon-fireball-model-create-model"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on DragonFireballRenderer.submit (Mixin_EnderDragonFireball_Model.emf$renderModel)
+#   No Horizon function mapped for DragonFireballRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-ender-dragon-fireball-model-render-model"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on PigRenderer.<init> (Mixin_PigRenderer_WarmModel.emf$createWarmModels)
+#   No Horizon function mapped for PigRenderer.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-pig-renderer-warm-model-create-warm-models"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on PigRenderer.submit (Mixin_PigRenderer_WarmModel.emf$warmModel)
+#   No Horizon function mapped for PigRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-pig-renderer-warm-model-warm-model"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on PlayerModel.setupAnim (Mixin_PlayerModel_ReApplyPoseToExtraCallsMadeByMods.emf$initRender)
+#   No Horizon function mapped for PlayerModel.setupAnim (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-player-model-re-apply-pose-to-extra-calls-made-by-mods-init-render"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(FIELD) on FlameFeatureRenderer.prepare (MixinFlameFeatureRenderer.width)
+#   No Horizon function mapped for FlameFeatureRenderer.prepare (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-flame-feature-renderer-width"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(FIELD) on FlameFeatureRenderer.prepare (MixinFlameFeatureRenderer.height)
+#   No Horizon function mapped for FlameFeatureRenderer.prepare (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-flame-feature-renderer-height"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on HumanoidArmorLayer.submit (Mixin_HumanoidArmorLayer_AddBaseModelPoseRef.emf$initRender)
+#   No Horizon function mapped for HumanoidArmorLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-humanoid-armor-layer-add-base-model-pose-ref-init-render"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on HumanoidArmorLayer.submit (Mixin_HumanoidArmorLayer_AddBaseModelPoseRef.emf$endRender)
+#   No Horizon function mapped for HumanoidArmorLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-humanoid-armor-layer-add-base-model-pose-ref-end-render"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on ModelFeatureRenderer.prepareModel (Mixin_ModelRenderer.emf$animate)
+#   No Horizon function mapped for ModelFeatureRenderer.prepareModel (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-model-renderer-animate"
+# kind = "AFTER_CALL"
+# target = "TODO"
