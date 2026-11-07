@@ -5,6 +5,23 @@ Port Java **Fabric** mods to **Horizon** (Minecraft: Java Edition 26.3 reimpleme
 - Horizon: https://github.com/horizon-rust/horizon
 - Horizon-Translator: https://github.com/merenotnoonereal/Horizon-Translator
 
+## Repositorios locales de referencia (contexto extra)
+Clones locales (solo lectura como referencia) para consultar código, docs y comportamiento real cuando falte contexto:
+- `E:\Horizon\Repositorios\horizon` — `horizon-rust/horizon` (`https://github.com/horizon-rust/horizon.git`)
+- `E:\Horizon\Repositorios\Horizon-Translator` — `merenotnoonereal/Horizon-Translator` (`https://github.com/merenotnoonereal/Horizon-Translator.git`)
+
+**Última verificación de actualizaciones registrada:** 2026-11-07.
+
+Regla de frescura (obligatoria al buscar contexto extra en estos repos):
+1. Cada día (según la fecha actual de la sesión), comparar con la **última verificación registrada**. Si la fecha cambió, verificar si los repos originales tienen commits nuevos.
+2. Verificar con GitHub CLI (sin modificar los clones aún):
+   - `gh api repos/horizon-rust/horizon/commits --jq '.[0].sha'` vs `git -C "E:\Horizon\Repositorios\horizon" rev-parse HEAD`
+   - `gh api repos/merenotnoonereal/Horizon-Translator/commits --jq '.[0].sha'` vs `git -C "E:\Horizon\Repositorios\Horizon-Translator" rev-parse HEAD`
+3. Si hay commits nuevos en el original, actualizar el clon local con GitHub CLI/git (después de confirmar que no hay cambios locales no deseados):
+   - `git -C "E:\Horizon\Repositorios\horizon" fetch origin && git -C "E:\Horizon\Repositorios\horizon" pull --ff-only`
+   - `git -C "E:\Horizon\Repositorios\Horizon-Translator" fetch origin && git -C "E:\Horizon\Repositorios\Horizon-Translator" pull --ff-only`
+4. Tras verificar/actualizar, actualizar en este archivo la fecha de **Última verificación de actualizaciones registrada** a la fecha actual. Si hubo cambios en `AGENTS.md`, pedir confirmación antes de commitear (regla general de git).
+
 ## Repo layout
 - `<mod>-horizon/` — one folder per mod port.
   - `PORTING.md` — **source of truth** for status, what’s on/off, TODOs, limits, license, build/install steps.
