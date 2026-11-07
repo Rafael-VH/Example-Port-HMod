@@ -1,0 +1,192 @@
+[mod]
+id = "itemphysic"
+version = "1.8.18"
+priority = 100
+
+# Raw targets are exact functions of one Horizon commit: build on that commit.
+[compatibility]
+horizon_revision = "a46ce6898bd72016e061aaec1afc1375b384deac"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_itemphysic"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_itemphysic_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+# Off: @Accessor on Entity.stuckSpeedMultiplier (EntityAccessor.getStuckSpeedMultiplier)
+#   No Horizon function mapped for Entity.stuckSpeedMultiplier (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "entity-accessor-get-stuck-speed-multiplier"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Invoker on Entity.callGetBlockPosBelowThatAffectsMyMovement (EntityAccessor.callGetBlockPosBelowThatAffectsMyMovement)
+#   No Horizon function mapped for Entity.callGetBlockPosBelowThatAffectsMyMovement (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "entity-accessor-call-get-block-pos-below-that-affects-my-movement"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Invoker on Entity.callIsInvulnerableToBase (EntityAccessor.callIsInvulnerableToBase)
+#   No Horizon function mapped for Entity.callIsInvulnerableToBase (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "entity-accessor-call-is-invulnerable-to-base"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Accessor on ItemEntity.target (ItemEntityAccessor.getTarget)
+#   No Horizon function mapped for ItemEntity.target (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-accessor-get-target"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Invoker on ItemEntity.callSetUnderwaterMovement (ItemEntityAccessor.callSetUnderwaterMovement)
+#   No Horizon function mapped for ItemEntity.callSetUnderwaterMovement (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-accessor-call-set-underwater-movement"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Invoker on ItemEntity.callSetUnderLavaMovement (ItemEntityAccessor.callSetUnderLavaMovement)
+#   No Horizon function mapped for ItemEntity.callSetUnderLavaMovement (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-accessor-call-set-under-lava-movement"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ItemEntity.hurt (ItemEntityMixin.hurtInject)
+#   No Horizon function mapped for ItemEntity.hurt (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-mixin-hurt-inject"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ItemEntity.playerTouch (ItemEntityMixin.playerTouchInject)
+#   No Horizon function mapped for ItemEntity.playerTouch (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-mixin-player-touch-inject"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ItemEntity.fireImmune (ItemEntityMixin.fireImmuneInject)
+#   No Horizon function mapped for ItemEntity.fireImmune (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-mixin-fire-immune-inject"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on ItemEntity.tick (ItemEntityMixin.updatePre)
+#   The call it hooks (Lnet/minecraft/world/entity/item/ItemEntity;isInWater()Z) isn't mapped to a Rust function.
+# [[injection]]
+# id = "item-entity-mixin-update-pre"
+# kind = "BEFORE_CALL"
+# target = "horizon_client::entities::ItemEntity::inside_block"
+
+# Off: @Redirect(INVOKE) on ItemEntity.tick (ItemEntityMixin.isInWaterRedirect)
+#   The call it hooks (Lnet/minecraft/world/entity/item/ItemEntity;isInWater()Z) isn't mapped to a Rust function.
+# [[injection]]
+# id = "item-entity-mixin-is-in-water-redirect"
+# kind = "WRAP_OPERATION"
+# target = "horizon_client::entities::ItemEntity::inside_block"
+
+# Off: @Redirect(INVOKE) on ItemEntity.tick (ItemEntityMixin.isInLavaRedirect)
+#   The call it hooks (Lnet/minecraft/world/entity/item/ItemEntity;isInLava()Z) isn't mapped to a Rust function.
+# [[injection]]
+# id = "item-entity-mixin-is-in-lava-redirect"
+# kind = "WRAP_OPERATION"
+# target = "horizon_client::entities::ItemEntity::inside_block"
+
+# Off: @Redirect(INVOKE) on ItemEntity.tick (ItemEntityMixin.isNoGravityRedirect)
+#   The call it hooks (Lnet/minecraft/world/entity/item/ItemEntity;applyGravity()V) isn't mapped to a Rust function.
+# [[injection]]
+# id = "item-entity-mixin-is-no-gravity-redirect"
+# kind = "WRAP_OPERATION"
+# target = "horizon_client::entities::ItemEntity::inside_block"
+
+# Off: @Inject(INVOKE) on ItemEntity.tick (ItemEntityMixin.update)
+#   The call it hooks (Lnet/minecraft/world/entity/item/ItemEntity;setDeltaMovement(Lnet/minecraft/world/phys/Vec3;)V) isn't mapped to a Rust function.
+# [[injection]]
+# id = "item-entity-mixin-update"
+# kind = "BEFORE_CALL"
+# target = "horizon_client::entities::ItemEntity::inside_block"
+
+# Off: @Redirect(INVOKE) on ItemEntity.tick (ItemEntityMixin.setDeltaMovementRedirect)
+#   The call it hooks (Lnet/minecraft/world/entity/item/ItemEntity;setDeltaMovement(Lnet/minecraft/world/phys/Vec3;)V) isn't mapped to a Rust function.
+# [[injection]]
+# id = "item-entity-mixin-set-delta-movement-redirect"
+# kind = "WRAP_OPERATION"
+# target = "horizon_client::entities::ItemEntity::inside_block"
+
+# Off: @Inject(HEAD) on ItemEntityRenderer.submit (ItemEntityRendererMixin.submit)
+#   No Horizon function mapped for ItemEntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-renderer-mixin-submit"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ItemEntityRenderer.extractRenderState (ItemEntityRendererMixin.injectExtract)
+#   No Horizon function mapped for ItemEntityRenderer.extractRenderState (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-renderer-mixin-inject-extract"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Invoker on ItemStackRenderState.callFirstLayer (ItemStackRenderStateAccessor.callFirstLayer)
+#   No Horizon function mapped for ItemStackRenderState.callFirstLayer (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-stack-render-state-accessor-call-first-layer"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Accessor on LayerRenderState.itemTransform (LayerRenderStateAccessor.getItemTransform)
+#   No Horizon function mapped for LayerRenderState.itemTransform (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "layer-render-state-accessor-get-item-transform"
+# kind = "GET"
+# target = "TODO"
+
+[[injection]]
+id = "minecraft-mixin-right-click-empty"
+kind = "RETURN"
+target = "horizon_client::first_person::Clicks::start_use_item"
+helper = "minecraft-mixin-right-click-empty.rs"
+bindings = [
+  { name = "value", ty = "()", value = "$value" },
+]
+
+# Off: @Inject(INVOKE) on Minecraft.startUseItem (MinecraftMixin.rightClickEarly)
+#   The call it hooks (Lnet/minecraft/world/InteractionHand;values()[Lnet/minecraft/world/InteractionHand;) isn't mapped to a Rust function.
+# [[injection]]
+# id = "minecraft-mixin-right-click-early"
+# kind = "BEFORE_CALL"
+# target = "horizon_client::first_person::Clicks::start_use_item"
+
+# Off: @Inject(HEAD) on MultiPlayerGameMode.dropItem (MultiPlayerGameModeMixin.drop)
+#   No Horizon function mapped for MultiPlayerGameMode.dropItem (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "multi-player-game-mode-mixin-drop"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Accessor on RenderType.name (RenderTypeAccessor.getName)
+#   No Horizon function mapped for RenderType.name (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "render-type-accessor-get-name"
+# kind = "GET"
+# target = "TODO"

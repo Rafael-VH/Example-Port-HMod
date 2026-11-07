@@ -1,0 +1,1817 @@
+{
+  "id": "itemphysic",
+  "name": "ItemPhysic",
+  "version": "1.8.18",
+  "jar": "ItemPhysic_FABRIC_v1.8.18_mc26.3.jar",
+  "verdict": "Partly convertible",
+  "counts": {
+    "auto": 1,
+    "content": 1,
+    "needs-mapping": 22,
+    "needs-translation": 2,
+    "unsupported": 0
+  },
+  "intermediary": false,
+  "entrypoints": {
+    "main": [
+      "team.creative.itemphysic.ItemPhysic"
+    ],
+    "client": [
+      "team.creative.itemphysic.ItemPhysic"
+    ]
+  },
+  "features": [
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/EntityAccessor.getStuckSpeedMultiplier",
+      "detail": "@Accessor on Entity.stuckSpeedMultiplier",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Entity.stuckSpeedMultiplier: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/EntityAccessor.callGetBlockPosBelowThatAffectsMyMovement",
+      "detail": "@Invoker on Entity.callGetBlockPosBelowThatAffectsMyMovement",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for Entity.callGetBlockPosBelowThatAffectsMyMovement: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/EntityAccessor.callIsInvulnerableToBase",
+      "detail": "@Invoker on Entity.callIsInvulnerableToBase",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for Entity.callIsInvulnerableToBase: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityAccessor.getTarget",
+      "detail": "@Accessor on ItemEntity.target",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for ItemEntity.target: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityAccessor.callSetUnderwaterMovement",
+      "detail": "@Invoker on ItemEntity.callSetUnderwaterMovement",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for ItemEntity.callSetUnderwaterMovement: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityAccessor.callSetUnderLavaMovement",
+      "detail": "@Invoker on ItemEntity.callSetUnderLavaMovement",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for ItemEntity.callSetUnderLavaMovement: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityMixin.hurtInject",
+      "detail": "@Inject(HEAD) on ItemEntity.hurt",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ItemEntity.hurt: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityMixin.playerTouchInject",
+      "detail": "@Inject(HEAD) on ItemEntity.playerTouch",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ItemEntity.playerTouch: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityMixin.fireImmuneInject",
+      "detail": "@Inject(HEAD) on ItemEntity.fireImmune",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ItemEntity.fireImmune: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityMixin.updatePre",
+      "detail": "@Inject(INVOKE) on ItemEntity.tick at Lnet/minecraft/world/entity/item/ItemEntity;isInWater()Z",
+      "horizon": "BEFORE_CALL on horizon_client::entities::ItemEntity::inside_block",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. The call it hooks (ItemEntity.isInWater) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityMixin.isInWaterRedirect",
+      "detail": "@Redirect(INVOKE) on ItemEntity.tick at Lnet/minecraft/world/entity/item/ItemEntity;isInWater()Z",
+      "horizon": "WRAP_OPERATION on horizon_client::entities::ItemEntity::inside_block",
+      "status": "needs-mapping",
+      "note": "A redirect is a WRAP_OPERATION that doesn't call `original`. The call it hooks (ItemEntity.isInWater) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityMixin.isInLavaRedirect",
+      "detail": "@Redirect(INVOKE) on ItemEntity.tick at Lnet/minecraft/world/entity/item/ItemEntity;isInLava()Z",
+      "horizon": "WRAP_OPERATION on horizon_client::entities::ItemEntity::inside_block",
+      "status": "needs-mapping",
+      "note": "A redirect is a WRAP_OPERATION that doesn't call `original`. The call it hooks (ItemEntity.isInLava) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityMixin.isNoGravityRedirect",
+      "detail": "@Redirect(INVOKE) on ItemEntity.tick at Lnet/minecraft/world/entity/item/ItemEntity;applyGravity()V",
+      "horizon": "WRAP_OPERATION on horizon_client::entities::ItemEntity::inside_block",
+      "status": "needs-mapping",
+      "note": "A redirect is a WRAP_OPERATION that doesn't call `original`. The call it hooks (ItemEntity.applyGravity) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityMixin.update",
+      "detail": "@Inject(INVOKE) on ItemEntity.tick at Lnet/minecraft/world/entity/item/ItemEntity;setDeltaMovement(Lnet/minecraft/world/phys/Vec3;)V",
+      "horizon": "BEFORE_CALL on horizon_client::entities::ItemEntity::inside_block",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. The call it hooks (ItemEntity.setDeltaMovement) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityMixin.setDeltaMovementRedirect",
+      "detail": "@Redirect(INVOKE) on ItemEntity.tick at Lnet/minecraft/world/entity/item/ItemEntity;setDeltaMovement(Lnet/minecraft/world/phys/Vec3;)V",
+      "horizon": "WRAP_OPERATION on horizon_client::entities::ItemEntity::inside_block",
+      "status": "needs-mapping",
+      "note": "A redirect is a WRAP_OPERATION that doesn't call `original`. The call it hooks (ItemEntity.setDeltaMovement) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityMixinClient",
+      "detail": "mixin into ItemEntity with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityRenderStateMixin",
+      "detail": "mixin into ItemEntityRenderState with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityRendererMixin.submit",
+      "detail": "@Inject(HEAD) on ItemEntityRenderer.submit",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ItemEntityRenderer.submit: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemEntityRendererMixin.injectExtract",
+      "detail": "@Inject(TAIL) on ItemEntityRenderer.extractRenderState",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for ItemEntityRenderer.extractRenderState: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/ItemStackRenderStateAccessor.callFirstLayer",
+      "detail": "@Invoker on ItemStackRenderState.callFirstLayer",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for ItemStackRenderState.callFirstLayer: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/LayerRenderStateAccessor.getItemTransform",
+      "detail": "@Accessor on LayerRenderState.itemTransform",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for LayerRenderState.itemTransform: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/MinecraftMixin.rightClickEmpty",
+      "detail": "@Inject(TAIL) on Minecraft.startUseItem",
+      "horizon": "RETURN on horizon_client::first_person::Clicks::start_use_item",
+      "status": "auto",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/MinecraftMixin.rightClickEarly",
+      "detail": "@Inject(INVOKE) on Minecraft.startUseItem at Lnet/minecraft/world/InteractionHand;values()[Lnet/minecraft/world/InteractionHand;",
+      "horizon": "BEFORE_CALL on horizon_client::first_person::Clicks::start_use_item",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. The call it hooks (InteractionHand.values) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/MultiPlayerGameModeMixin.drop",
+      "detail": "@Inject(HEAD) on MultiPlayerGameMode.dropItem",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for MultiPlayerGameMode.dropItem: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/itemphysic/mixin/RenderTypeAccessor.getName",
+      "detail": "@Accessor on RenderType.name",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for RenderType.name: run `match`."
+    },
+    {
+      "category": "content",
+      "in": "jar resources",
+      "detail": "8 asset files, 0 data files",
+      "horizon": "content mod (.hmod)",
+      "status": "content",
+      "note": "Recipes, loot, tags, models, textures, worldgen: horizon-port-pack carries these."
+    }
+  ],
+  "mappedCalls": [
+    {
+      "java": "net/minecraft/client/KeyMapping#<init>",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "`self.native_mod_key(MOD_ID, name, default)`"
+    },
+    {
+      "java": "net/minecraft/client/KeyMapping#isDown",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "`self.native_mapping(name) for vanilla keys; track key hook presses for the mod's own`"
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#font",
+      "kind": "field",
+      "uses": 1,
+      "horizon": "`(implicit)`"
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getInstance",
+      "kind": "method",
+      "uses": 2,
+      "horizon": "`self`"
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#hasControlDown",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::game::Game<'_>::has_control_down (suggested)"
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#player",
+      "kind": "field",
+      "uses": 2,
+      "horizon": "`self.native_player()`"
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#startUseItem",
+      "kind": "method",
+      "uses": 2,
+      "horizon": "horizon_client::first_person::Clicks::start_use_item (suggested)"
+    },
+    {
+      "java": "net/minecraft/client/gui/Font#width",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "`self.native_text_width(text)`"
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#swing",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::mobs::ai::Mob::swing (suggested)"
+    },
+    {
+      "java": "net/minecraft/client/renderer/item/ItemStackRenderState#submit",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::item_render::ItemRenderState::submit (suggested)"
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#swing",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::mobs::ai::Mob::swing (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#tick",
+      "kind": "method",
+      "uses": 6,
+      "horizon": "horizon_client::entities::ItemEntity::inside_block (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Inventory#add",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::cauldron::add (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getViewVector",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::mobs::goals::Mob::view_vector (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#swing",
+      "kind": "method",
+      "uses": 2,
+      "horizon": "horizon_client::mobs::ai::Mob::swing (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/item/ItemStack#getCount",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "horizon_world::loot::LootStack::get_count (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/Level#isClientSide",
+      "kind": "method",
+      "uses": 4,
+      "horizon": "horizon_world::level::is_client_side (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#intersects",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_core::geometry::Aabb::intersects_corners (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#closerThan",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client_render::hud_overlays::closer_than (suggested)"
+    }
+  ],
+  "unmappedCalls": [
+    {
+      "java": "com/mojang/blaze3d/platform/InputConstants#UNKNOWN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/platform/InputConstants$Key#getValue",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/platform/Window#getGuiScaledHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/platform/Window#getGuiScaledWidth",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#popPose",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#pushPose",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#rotate",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#translate",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/DeltaTracker#getGameTimeDeltaPartialTick",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/DeltaTracker#getRealtimeDeltaTicks",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/KeyMapping#getTranslatedKeyMessage",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/KeyMapping#isUnbound",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/KeyMapping$Category#GAMEPLAY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getDeltaTracker",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getWindow",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#gui",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#hitResult",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#isPaused",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#level",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#options",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Options#keyDrop",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Options#keyUse",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/Gui#screen",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/GuiGraphicsExtractor#text",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/multiplayer/MultiPlayerGameMode#dropItem",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#getInventory",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#getMainHandItem",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#sendOverlayMessage",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EntityRenderer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/EntityRenderer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/ItemEntityRenderer#extractRenderState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/ItemEntityRenderer#submit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#ageInTicks",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#bobOffset",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#count",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#item",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#lightCoords",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#outlineColor",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/ItemEntityRenderState#seed",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/item/ItemStackRenderState#callFirstLayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/item/ItemStackRenderState#usesBlockLight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/item/ItemStackRenderState$LayerRenderState#itemTransform",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/rendertype/RenderType#name",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/texture/OverlayTexture#NO_OVERLAY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/resources/model/cuboid/ItemTransform#scale",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#below",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#containing",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#getApproximateNearest",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/particles/ParticleTypes#SMOKE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#getString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#literal",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#translatable",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#tryBuild",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#addFreshEntity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getEntity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#playSound",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#awardStat",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#containerMenu",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#getInventory",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#level",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/sounds/SoundEvents#GENERIC_BURN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/sounds/SoundEvents#ITEM_PICKUP",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/sounds/SoundEvents#WOOL_FALL",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/sounds/SoundSource#PLAYERS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/stats/StatType#get",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/stats/Stats#DROP",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/stats/Stats#ITEM_DROPPED",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/stats/Stats#ITEM_PICKED_UP",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockItemTags#LOGS_THAT_BURN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#FLOWERS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#ICE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#LEAVES",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#LOGS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#MINEABLE_WITH_AXE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#PLANKS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#SMALL_FLOWERS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#SNOW",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#WOOL",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#WOOL_CARPETS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/DamageTypeTags#IS_EXPLOSION",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/DamageTypeTags#IS_FIRE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/FluidTags#LAVA",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/FluidTags#WATER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Mth#cos",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Mth#sin",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Mth#square",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#nextDouble",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#nextFloat",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#setSeed",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/InteractionHand#MAIN_HAND",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/InteractionHand#values",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/InteractionResult#CONSUME",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/InteractionResult#PASS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/damagesource/DamageSource#is",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/damagesource/DamageSources#cactus",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/damagesource/DamageSources#inFire",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/damagesource/DamageSources#lava",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/damagesource/DamageSources#onFire",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#callGetBlockPosBelowThatAffectsMyMovement",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#callIsInvulnerableToBase",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#checkFallDamage",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getBoundingBox",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getFluidInteractionBox",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#isAlive",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#isPickable",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#isSpectator",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#onSyncedDataUpdated",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#stuckSpeedMultiplier",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#applyGravity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#blockPosition",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#callSetUnderLavaMovement",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#callSetUnderwaterMovement",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#damageSources",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#discard",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#fallDistance",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#fireImmune",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getBoundingBox",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getDeltaMovement",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getFluidHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getGravity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getItem",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getRandom",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getUUID",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getXRot",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getY",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getYRot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#getZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#hasPickUpDelay",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#hurt",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#isInLava",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#isInWater",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#isNoGravity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#isRemoved",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#level",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#onGround",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#playSound",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#playerTouch",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#setDeltaMovement",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#setItem",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#setPickUpDelay",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#setThrower",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#setXRot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/item/ItemEntity#target",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Inventory#getSelectedItem",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Inventory#getSelectedSlot",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Inventory#removeFromSelected",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Inventory#removeItem",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#awardStat",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#blockInteractionRange",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#entityInteractionRange",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getBoundingBox",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getEyePosition",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getEyeY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getInventory",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getRandom",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getUUID",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getXRot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getYRot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#isCrouching",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#isSpectator",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#level",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#onItemPickup",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#take",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/projectile/ProjectileUtil#getEntityHitResult",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/inventory/AbstractContainerMenu#findSlot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/inventory/AbstractContainerMenu#setRemoteSlot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Item$TooltipContext#of",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/ItemStack#EMPTY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/ItemStack#canBeHurtBy",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/ItemStack#copy",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/ItemStack#getItem",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/item/ItemStack#getTooltipLines",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/ItemStack#isEmpty",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/item/ItemStack#setCount",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#ACACIA_BOAT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#ACACIA_DOOR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#APPLE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#ARROW",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#BAKED_POTATO",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#BEETROOT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#BEETROOT_SEEDS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#BEETROOT_SOUP",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#BIRCH_BOAT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#BIRCH_DOOR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#BONE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#BOOK",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#BOW",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#BOWL",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#BREAD",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#CAKE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#CARROT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#COOKED_MUTTON",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#COOKED_RABBIT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#DARK_OAK_BOAT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#DARK_OAK_DOOR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#EGG",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#ELYTRA",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#ENCHANTED_BOOK",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#FEATHER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#FILLED_MAP",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#FISHING_ROD",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#JUNGLE_BOAT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#JUNGLE_DOOR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#LEAD",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#LEATHER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#LEATHER_BOOTS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#LEATHER_CHESTPLATE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#LEATHER_HELMET",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#LEATHER_LEGGINGS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#MAP",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#MELON",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#MELON_SEEDS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#MUTTON",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#NAME_TAG",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#NETHER_STAR",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/item/Items#OAK_BOAT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#OAK_DOOR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#PAINTING",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#PAPER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#POISONOUS_POTATO",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#POTATO",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#PUMPKIN_PIE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#PUMPKIN_SEEDS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#RABBIT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#RABBIT_STEW",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#ROTTEN_FLESH",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#SADDLE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#SHEARS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#SHIELD",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#SNOWBALL",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#SPIDER_EYE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#SPRUCE_BOAT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#SPRUCE_DOOR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#STRING",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#SUGAR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#WHEAT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#WHEAT_SEEDS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#WRITABLE_BOOK",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/Items#WRITTEN_BOOK",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/TooltipFlag#NORMAL",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/item/component/SwingAnimation#DEFAULT",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/ClipContext#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/ClipContext$Block#COLLIDER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/ClipContext$Fluid#NONE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#addParticle",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#clip",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getBlockState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getEntities",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getFluidState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#playSound",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#BARRIER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#BEDROCK",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#CACTUS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#CAKE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#COBWEB",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#MUD",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#OBSIDIAN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#SNOW",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#SOUL_SAND",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#SPONGE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#WET_SPONGE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/material/Fluid#is",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/material/FluidState#getHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/material/FluidState#getType",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/material/FluidState#isEmpty",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#clip",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#contains",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#expandTowards",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#inflate",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/phys/BlockHitResult#miss",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/EntityHitResult#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/EntityHitResult#getEntity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/EntityHitResult#getLocation",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/HitResult#getLocation",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/HitResult#getType",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/HitResult$Type#ENTITY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/HitResult$Type#MISS",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#add",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#distanceTo",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#distanceToSqr",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#lengthSqr",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#multiply",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#scale",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#subtract",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#x",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#y",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#z",
+      "kind": "field",
+      "uses": 2
+    }
+  ],
+  "warnings": []
+}
