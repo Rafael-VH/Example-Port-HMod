@@ -1,0 +1,134 @@
+[mod]
+id = "chunky"
+version = "1.5.66"
+priority = 100
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_chunky"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_chunky_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "command"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_command"
+helper = "command.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "command", ty = "&str", value = "command" },
+  { name = "ran", ty = "&mut bool", value = "&mut *ran" },
+]
+
+# Off: @Accessor on ChunkHolder.pendingFullStateConfirmation (ChunkHolderAccess.chunky$getPendingFullStateConfirmation)
+#   No Horizon function mapped for ChunkHolder.pendingFullStateConfirmation (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-holder-access-get-pending-full-state-confirmation"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on ChunkHolder.updateFutures (ChunkHolderMixin.boostUnloadedPriority)
+#   No Horizon function mapped for ChunkHolder.updateFutures (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-holder-mixin-boost-unloaded-priority"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @Invoker on ChunkMap.getVisibleChunkIfPresent (ChunkMapMixin.invokeGetVisibleChunkIfPresent)
+#   No Horizon function mapped for ChunkMap.getVisibleChunkIfPresent (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-map-mixin-invoke-get-visible-chunk-if-present"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Invoker on ChunkMap.readChunk (ChunkMapMixin.invokeReadChunk)
+#   No Horizon function mapped for ChunkMap.readChunk (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-map-mixin-invoke-read-chunk"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Invoker on ChunkMap.invokeTick (ChunkMapMixin.invokeTick)
+#   No Horizon function mapped for ChunkMap.invokeTick (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-map-mixin-invoke-tick"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Accessor on ChunkMap.mainThreadExecutor (ChunkMapMixin.getMainThreadExecutor)
+#   No Horizon function mapped for ChunkMap.mainThreadExecutor (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-map-mixin-get-main-thread-executor"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @WrapWithCondition(INVOKE) on ChunkMap.onLevelChange (ChunkMapPatchMixin.suppressRaceCondition)
+#   No Horizon function mapped for ChunkMap.onLevelChange (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-map-patch-mixin-suppress-race-condition"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Accessor on MinecraftServer.emptyTicks (MinecraftServerAccess.setEmptyTicks)
+#   No Horizon function mapped for MinecraftServer.emptyTicks (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "minecraft-server-access-set-empty-ticks"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on MinecraftServer.tickServer (MinecraftServerMixin.tickPaused)
+#   `horizon_client::game::levels::Game<'_>::tick_server` has a `?` in its body: horizon-mixins doesn't rewrite such bodies with BEFORE_CALL. A HEAD hook on it, or a BEFORE_CALL on a function it calls, may work instead.
+# [[injection]]
+# id = "minecraft-server-mixin-tick-paused"
+# kind = "BEFORE_CALL"
+# target = "horizon_client::game::levels::Game<'_>::tick_server"
+
+# Off: @Invoker on ServerChunkCache.getChunkFutureMainThread (ServerChunkCacheMixin.invokeGetChunkFutureMainThread)
+#   No Horizon function mapped for ServerChunkCache.getChunkFutureMainThread (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "server-chunk-cache-mixin-invoke-get-chunk-future-main-thread"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Invoker on ServerChunkCache.invokeRunDistanceManagerUpdates (ServerChunkCacheMixin.invokeRunDistanceManagerUpdates)
+#   No Horizon function mapped for ServerChunkCache.invokeRunDistanceManagerUpdates (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "server-chunk-cache-mixin-invoke-run-distance-manager-updates"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Invoker on ServerChunkCache.invokeBroadcastChangedChunks (ServerChunkCacheMixin.invokeBroadcastChangedChunks)
+#   No Horizon function mapped for ServerChunkCache.invokeBroadcastChangedChunks (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "server-chunk-cache-mixin-invoke-broadcast-changed-chunks"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Accessor on ServerLevel.entityManager (ServerLevelMixin.getEntityManager)
+#   No Horizon function mapped for ServerLevel.entityManager (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "server-level-mixin-get-entity-manager"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on IntegratedServer.tickServer (IntegratedServerMixin.tickPaused)
+#   No Horizon function mapped for IntegratedServer.tickServer (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "integrated-server-mixin-tick-paused"
+# kind = "BEFORE_CALL"
+# target = "TODO"

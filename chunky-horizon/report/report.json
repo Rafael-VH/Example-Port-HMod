@@ -1,0 +1,928 @@
+{
+  "id": "chunky",
+  "name": "Chunky",
+  "version": "1.5.66",
+  "jar": "Chunky-Fabric-1.5.66.jar",
+  "verdict": "Partly convertible",
+  "counts": {
+    "auto": 0,
+    "content": 1,
+    "needs-mapping": 14,
+    "needs-translation": 1,
+    "unsupported": 0
+  },
+  "intermediary": false,
+  "entrypoints": {
+    "main": [
+      "org.popcraft.chunky.ChunkyFabric"
+    ]
+  },
+  "features": [
+    {
+      "category": "event",
+      "in": "org/popcraft/chunky/ChunkyFabric",
+      "detail": "CommandRegistrationCallback.EVENT",
+      "horizon": "hook `command`",
+      "status": "needs-translation",
+      "note": "Server commands. Horizon's command hook is client-side."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/ChunkHolderAccess.chunky$getPendingFullStateConfirmation",
+      "detail": "@Accessor on ChunkHolder.pendingFullStateConfirmation",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for ChunkHolder.pendingFullStateConfirmation: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/ChunkHolderMixin.boostUnloadedPriority",
+      "detail": "@ModifyArg(INVOKE) on ChunkHolder.updateFutures at Lnet/minecraft/server/level/ChunkHolder$LevelChangeListener;onLevelChange(Lnet/minecraft/world/level/ChunkPos;Ljava/util/function/IntSupplier;ILjava/util/function/IntConsumer;)V",
+      "horizon": "MODIFY_ARG",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ChunkHolder.updateFutures: run `match`. The call it hooks (LevelChangeListener.onLevelChange) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/ChunkMapMixin.invokeGetVisibleChunkIfPresent",
+      "detail": "@Invoker on ChunkMap.getVisibleChunkIfPresent",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for ChunkMap.getVisibleChunkIfPresent: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/ChunkMapMixin.invokeReadChunk",
+      "detail": "@Invoker on ChunkMap.readChunk",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for ChunkMap.readChunk: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/ChunkMapMixin.invokeTick",
+      "detail": "@Invoker on ChunkMap.invokeTick",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for ChunkMap.invokeTick: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/ChunkMapMixin.getMainThreadExecutor",
+      "detail": "@Accessor on ChunkMap.mainThreadExecutor",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for ChunkMap.mainThreadExecutor: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/ChunkMapPatchMixin.suppressRaceCondition",
+      "detail": "@WrapWithCondition(INVOKE) on ChunkMap.onLevelChange at Lnet/minecraft/server/level/ChunkTaskDispatcher;onLevelChange(Lnet/minecraft/world/level/ChunkPos;Ljava/util/function/IntSupplier;ILjava/util/function/IntConsumer;)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "Call `original` only when the condition holds. No Horizon function known for ChunkMap.onLevelChange: run `match`. The call it hooks (ChunkTaskDispatcher.onLevelChange) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/MinecraftServerAccess.setEmptyTicks",
+      "detail": "@Accessor on MinecraftServer.emptyTicks",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for MinecraftServer.emptyTicks: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/MinecraftServerMixin.tickPaused",
+      "detail": "@Inject(INVOKE) on MinecraftServer.tickServer at Lnet/minecraft/server/MinecraftServer;tickConnection()V",
+      "horizon": "BEFORE_CALL on horizon_client::game::levels::Game<'_>::tick_server",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. The call it hooks (MinecraftServer.tickConnection) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/ServerChunkCacheMixin.invokeGetChunkFutureMainThread",
+      "detail": "@Invoker on ServerChunkCache.getChunkFutureMainThread",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for ServerChunkCache.getChunkFutureMainThread: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/ServerChunkCacheMixin.invokeRunDistanceManagerUpdates",
+      "detail": "@Invoker on ServerChunkCache.invokeRunDistanceManagerUpdates",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for ServerChunkCache.invokeRunDistanceManagerUpdates: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/ServerChunkCacheMixin.invokeBroadcastChangedChunks",
+      "detail": "@Invoker on ServerChunkCache.invokeBroadcastChangedChunks",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for ServerChunkCache.invokeBroadcastChangedChunks: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/ServerLevelMixin.getEntityManager",
+      "detail": "@Accessor on ServerLevel.entityManager",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for ServerLevel.entityManager: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "org/popcraft/chunky/mixin/client/IntegratedServerMixin.tickPaused",
+      "detail": "@Inject(INVOKE) on IntegratedServer.tickServer at Lnet/minecraft/client/server/IntegratedServer;tickPaused()V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for IntegratedServer.tickServer: run `match`. The call it hooks (IntegratedServer.tickPaused) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "content",
+      "in": "jar resources",
+      "detail": "1 asset files, 0 data files",
+      "horizon": "content mod (.hmod)",
+      "status": "content",
+      "note": "Recipes, loot, tags, models, textures, worldgen: horizon-port-pack carries these."
+    }
+  ],
+  "mappedCalls": [
+    {
+      "java": "net/minecraft/server/MinecraftServer#tickServer",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::game::levels::Game<'_>::tick_server (suggested)"
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getHeight",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::level::feature_world::<LevelFeatureWorld<'_, '_, L> as PlacementContext>::height (suggested)"
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getMinY",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::game::Dim::min_y (suggested)"
+    }
+  ],
+  "unmappedCalls": [
+    {
+      "java": "net/minecraft/client/server/IntegratedServer#tickPaused",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/server/IntegratedServer#tickServer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#checkPermission",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#getEntity",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#getLevel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#getPlayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#getPosition",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#getRotation",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#getServer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#getTextName",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#permissions",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#sendSuccess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/arguments/DimensionArgument#dimension",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#containing",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#move",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#DOWN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder$Reference#value",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Registry#getOptional",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/RegistryAccess$Frozen#get",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#DIMENSION",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#SOUND_EVENT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/CompoundTag#contains",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/CompoundTag#getString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/StringTag#TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/visitors/CollectFields#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/visitors/CollectFields#getResult",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/visitors/FieldSelector#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#getString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#nullToEmpty",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#equals",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#getPath",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#toString",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#tryBuild",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#tryParse",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/resources/ResourceKey#create",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/ResourceKey#identifier",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#createCommandSourceStack",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#emptyTicks",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#getAbsoluteMaxWorldSize",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#getAllLevels",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#getLevel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#getPlayerList",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#getRunningThread",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#getWorldPath",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#isDedicatedServer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#isSingleplayer",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#isSingleplayerOwner",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#registryAccess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#tickConnection",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/ServerInterface#getProperties",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/dedicated/DedicatedServerProperties#maxWorldSize",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkHolder#getLatestStatus",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkHolder#pendingFullStateConfirmation",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkHolder#updateFutures",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkHolder$LevelChangeListener#onLevelChange",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkLevel#MAX_LEVEL",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkMap#getUpdatingChunkIfPresent",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkMap#getVisibleChunkIfPresent",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkMap#invokeTick",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkMap#mainThreadExecutor",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkMap#onLevelChange",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkMap#readChunk",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkTaskDispatcher#onLevelChange",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerBossEvent#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerBossEvent#addPlayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerBossEvent#isVisible",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerBossEvent#removeAllPlayers",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/level/ServerBossEvent#removePlayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerBossEvent#setCreateWorldFog",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerBossEvent#setDarkenScreen",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerBossEvent#setName",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerBossEvent#setPlayBossMusic",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerBossEvent#setProgress",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerBossEvent#setVisible",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerChunkCache#addTicketWithRadius",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerChunkCache#chunkMap",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/level/ServerChunkCache#chunkScanner",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerChunkCache#getChunkFutureMainThread",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerChunkCache#invokeBroadcastChangedChunks",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerChunkCache#invokeRunDistanceManagerUpdates",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerChunkCache#removeTicketWithRadius",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#dimension",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#entityManager",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getBlockState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getChunk",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getChunkSource",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getLogicalHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getRespawnData",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getSeaLevel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getServer",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getWorldBorder",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#levelEvent",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#playSound",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#createCommandSourceStack",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#getName",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#getRootVehicle",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#getUUID",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#getX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#getXRot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#getYRot",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#getZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#level",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#nameAndId",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#sendOverlayMessage",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#sendSystemMessage",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#teleportTo",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/TicketType#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/permissions/PermissionLevel#GAMEMASTERS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/permissions/PermissionSet#hasPermission",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/permissions/Permissions#COMMANDS_GAMEMASTER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/players/PlayerList#getPlayerByName",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/players/PlayerList#getPlayers",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/sounds/SoundSource#MASTER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/profiling/InactiveProfiler#INSTANCE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/BossEvent$BossBarColor#BLUE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/BossEvent$BossBarColor#GREEN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/BossEvent$BossBarColor#PURPLE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/BossEvent$BossBarColor#RED",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/BossEvent$BossBarOverlay#PROGRESS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#level",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#teleportTo",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/ChunkPos#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/ChunkPos#pack",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#END",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#NETHER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#OVERWORLD",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#isAir",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#isSolid",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/border/WorldBorder#getCenterX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/border/WorldBorder#getCenterZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/border/WorldBorder#getSize",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/status/ChunkStatus#FULL",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/storage/ChunkScanAccess#scanChunk",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/dimension/DimensionType#getStorageFolder",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/entity/PersistentEntitySectionManager#tick",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Heightmap$Types#MOTION_BLOCKING",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/storage/LevelData$RespawnData#pitch",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/storage/LevelData$RespawnData#pos",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/storage/LevelData$RespawnData#yaw",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/storage/LevelResource#ROOT",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec2#x",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec2#y",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#x",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#y",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#z",
+      "kind": "method",
+      "uses": 1
+    }
+  ],
+  "warnings": []
+}
