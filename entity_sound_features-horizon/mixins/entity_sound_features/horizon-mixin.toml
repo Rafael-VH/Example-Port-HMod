@@ -1,0 +1,98 @@
+[mod]
+id = "entity_sound_features"
+version = "0.8.2"
+priority = 100
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_entity_sound_features"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_entity_sound_features_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Off: @Inject(HEAD) on ClientLevel.playSound (MixinClientLevel.esf$discoverEntity)
+#   No Horizon function mapped for ClientLevel.playSound (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-client-level-discover-entity"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ClientLevel.playSound (MixinClientLevel.esf$clearEntity)
+#   No Horizon function mapped for ClientLevel.playSound (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-client-level-clear-entity"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Minecraft.reloadResourcePacks (MixinResourceReload.emf$reloadStart)
+#   No Horizon function mapped for Minecraft.reloadResourcePacks (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-resource-reload-reload-start"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on Preparations.listResources (Preparations.esf$addESFDirectorySounds)
+#   No Horizon function mapped for Preparations.listResources (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "preparations-add-esf-directory-sounds"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on WeighedSoundEvents.<init> (MixinWeighedSoundEvents.esf$init)
+#   No Horizon function mapped for WeighedSoundEvents.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-weighed-sound-events-init"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on WeighedSoundEvents.getSound (MixinWeighedSoundEvents.esf$soundModify)
+#   `horizon_client_render::sound_events::SoundRegistry::sound` has a `?` in its body: horizon-mixins doesn't rewrite such bodies with RETURN. A HEAD hook on it, or a RETURN on a function it calls, may work instead.
+# [[injection]]
+# id = "mixin-weighed-sound-events-sound-modify"
+# kind = "RETURN"
+# target = "horizon_client_render::sound_events::SoundRegistry::sound"

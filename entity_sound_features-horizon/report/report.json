@@ -1,0 +1,500 @@
+{
+  "id": "entity_sound_features",
+  "name": "Entity Sound Features",
+  "version": "0.8.2",
+  "jar": "entity_sound_features-0.8.2-26.1-fabric.jar",
+  "verdict": "Partly convertible",
+  "counts": {
+    "auto": 1,
+    "content": 1,
+    "needs-mapping": 5,
+    "needs-translation": 2,
+    "unsupported": 0
+  },
+  "intermediary": false,
+  "entrypoints": {
+    "client": [
+      "traben.entity_sound_features.ESFInit"
+    ],
+    "modmenu": [
+      "traben.entity_sound_features.ESFModMenu"
+    ]
+  },
+  "features": [
+    {
+      "category": "access",
+      "in": "entity_sound_features_12.accesswidener",
+      "detail": "access widener (opens private game fields)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Native helpers already see the game's fields, once each field is mapped."
+    },
+    {
+      "category": "class",
+      "in": "traben/entity_sound_features/ESFSound",
+      "detail": "extends Sound",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_sound_features/mixin/mixins/MixinClientLevel.esf$discoverEntity",
+      "detail": "@Inject(HEAD) on ClientLevel.playSound",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ClientLevel.playSound: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_sound_features/mixin/mixins/MixinClientLevel.esf$clearEntity",
+      "detail": "@Inject(TAIL) on ClientLevel.playSound",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for ClientLevel.playSound: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_sound_features/mixin/mixins/MixinResourceReload.emf$reloadStart",
+      "detail": "@Inject(HEAD) on Minecraft.reloadResourcePacks",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for Minecraft.reloadResourcePacks: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_sound_features/mixin/mixins/MixinSoundManager$Preparations.esf$addESFDirectorySounds",
+      "detail": "@Inject(TAIL) on Preparations.listResources",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for Preparations.listResources: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_sound_features/mixin/mixins/MixinWeighedSoundEvents.esf$init",
+      "detail": "@Inject(TAIL) on WeighedSoundEvents.<init>",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for WeighedSoundEvents.<init>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "traben/entity_sound_features/mixin/mixins/MixinWeighedSoundEvents.esf$soundModify",
+      "detail": "@Inject(RETURN) on WeighedSoundEvents.getSound",
+      "horizon": "RETURN on horizon_client_render::sound_events::SoundRegistry::sound",
+      "status": "auto",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on."
+    },
+    {
+      "category": "content",
+      "in": "jar resources",
+      "detail": "5 asset files, 0 data files",
+      "horizon": "content mod (.hmod)",
+      "status": "content",
+      "note": "Recipes, loot, tags, models, textures, worldgen: horizon-port-pack carries these."
+    }
+  ],
+  "mappedCalls": [
+    {
+      "java": "net/minecraft/client/Minecraft#getInstance",
+      "kind": "method",
+      "uses": 5,
+      "horizon": "`self`"
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#player",
+      "kind": "field",
+      "uses": 2,
+      "horizon": "`self.native_player()`"
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound#getAttenuationDistance",
+      "kind": "method",
+      "uses": 2,
+      "horizon": "horizon_client_render::sound_events::Sound::attenuation_distance (suggested)"
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound#getPath",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client_render::sound_events::Sound::path (suggested)"
+    },
+    {
+      "java": "net/minecraft/client/sounds/WeighedSoundEvents#getSound",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "horizon_client_render::sound_events::SoundRegistry::sound (suggested)"
+    },
+    {
+      "java": "net/minecraft/client/sounds/WeighedSoundEvents#getWeight",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client_render::sound_events::SoundRegistry::weight (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#clamp",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client_render::chat::clamp (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#intersects",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_core::geometry::Aabb::intersects_corners (suggested)"
+    }
+  ],
+  "unmappedCalls": [
+    {
+      "java": "net/minecraft/client/Minecraft#getResourceManager",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getSoundManager",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#reloadResourcePacks",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/multiplayer/ClientLevel#playSound",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/renderer/blockentity/BlockEntityRenderers#PROVIDERS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/entity/state/EntityRenderState#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound#getLocation",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound#getPitch",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound#getType",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound#getVolume",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound#getWeight",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound#shouldPreload",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound#shouldStream",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound$Type#FILE",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound$Type#SOUND_EVENT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound$Type#ordinal",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/Sound$Type#values",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/SoundEventRegistration#getSounds",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/SoundEventRegistration#getSubtitle",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/SoundInstance#getIdentifier",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundEngine#instanceToChannel",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundEngine#loaded",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundEngine#soundDeleteTime",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundEngine#tickCount",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager#EMPTY_SOUND",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager#GSON",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager#getSoundEvent",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager#soundEngine",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager$Preparations#listResources",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/WeighedSoundEvents#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/sounds/WeighedSoundEvents#addSound",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/WeighedSoundEvents#preloadIfRequired",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#toShortString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/DefaultedRegistry#forEach",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#ENTITY_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/CommonComponents#OPTION_OFF",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#getString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#translatable",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/network/chat/MutableComponent#getString",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/resources/FileToIdConverter#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/FileToIdConverter#listMatchingResources",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#equals",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#getNamespace",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#getPath",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#toString",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#tryParse",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/Resource#openAsReader",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/ResourceManager#getResource",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/sounds/SoundEvent#createFixedRangeEvent",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/sounds/SoundEvent#location",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/sounds/SoundSource#BLOCKS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/GsonHelper#fromJson",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#create",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/valueproviders/ConstantFloat#of",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/valueproviders/MultipliedFloats#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#distanceToSqr",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getBoundingBox",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getSoundSource",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityType#getDescriptionId",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getBlockEntity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getBlockState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getGameTime",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#playSound",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#hasBlockEntity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/entity/LevelEntityGetter#getAll",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#contains",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#<init>",
+      "kind": "method",
+      "uses": 1
+    }
+  ],
+  "warnings": []
+}
