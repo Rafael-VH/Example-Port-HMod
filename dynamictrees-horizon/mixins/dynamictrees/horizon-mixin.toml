@@ -1,0 +1,122 @@
+[mod]
+id = "dynamictrees"
+version = "1.7.2"
+priority = 100
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_dynamictrees"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_dynamictrees_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "command"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_command"
+helper = "command.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "command", ty = "&str", value = "command" },
+  { name = "ran", ty = "&mut bool", value = "&mut *ran" },
+]
+
+# Off: @Inject(HEAD) on class_2589.method_5437 (MixinBrewingStandBlockEntity.canPlaceItem)
+#   No Horizon function mapped for class_2589.method_5437 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-brewing-stand-block-entity-can-place-item"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on class_1711.method_7631 (MixinBrewingStandMenu.mayPlaceItem)
+#   No Horizon function mapped for class_1711.method_7631 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-brewing-stand-menu-may-place-item"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on class_2261.method_9558 (MixinBushBlock.canSurvive)
+#   No Horizon function mapped for class_2261.method_9558 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-bush-block-can-survive"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on class_2852.method_12395 (MixinChunkSerializer.read)
+#   No Horizon function mapped for class_2852.method_12395 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-chunk-serializer-read"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on class_2852.method_12410 (MixinChunkSerializer.write)
+#   No Horizon function mapped for class_2852.method_12410 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-chunk-serializer-write"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on MinecraftServer.<init> (MixinMinecraftServer.onServerConstruction)
+#   No Horizon function mapped for MinecraftServer.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-minecraft-server-on-server-construction"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on class_1845.method_8077 (MixinPotionBrewing.isIngredient)
+#   No Horizon function mapped for class_1845.method_8077 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-potion-brewing-is-ingredient"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on class_1845.method_59700 (MixinPotionBrewing.isContainer)
+#   No Horizon function mapped for class_1845.method_59700 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-potion-brewing-is-container"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on class_1845.method_8072 (MixinPotionBrewing.hasMix)
+#   No Horizon function mapped for class_1845.method_8072 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-potion-brewing-has-mix"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on class_1845.method_8078 (MixinPotionBrewing.mix)
+#   No Horizon function mapped for class_1845.method_8078 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-potion-brewing-mix"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on class_2473.method_10507 (MixinSaplingBlock.onAdvanceTree)
+#   No Horizon function mapped for class_2473.method_10507 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-sapling-block-on-advance-tree"
+# kind = "HEAD"
+# target = "TODO"

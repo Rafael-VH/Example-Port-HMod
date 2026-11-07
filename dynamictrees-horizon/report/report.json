@@ -1,0 +1,6715 @@
+{
+  "id": "dynamictrees",
+  "name": "Dynamic Trees",
+  "version": "1.7.2",
+  "jar": "dynamictrees-fabric-1.21.1-1.7.2-BETA.jar",
+  "verdict": "Partly convertible",
+  "counts": {
+    "auto": 3,
+    "content": 1,
+    "needs-mapping": 11,
+    "needs-translation": 38,
+    "unsupported": 3
+  },
+  "intermediary": true,
+  "entrypoints": {
+    "main": [
+      "com.dtteam.dynamictrees.DynamicTreesFabric"
+    ],
+    "client": [
+      "com.dtteam.dynamictrees.DynamicTreesFabricClient"
+    ],
+    "dynamictrees": []
+  },
+  "features": [
+    {
+      "category": "access",
+      "in": "META-INF/dynamictrees.accesswidener",
+      "detail": "access widener (opens private game fields)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Native helpers already see the game's fields, once each field is mapped."
+    },
+    {
+      "category": "event",
+      "in": "com/dtteam/dynamictrees/DynamicTreesFabricClient",
+      "detail": "ClientTickEvents.START_CLIENT_TICK",
+      "horizon": "hook `tick`",
+      "status": "auto",
+      "note": "The Fabric API layer (jfabricapi.rs) runs START_CLIENT_TICK, then the level ticks (START/END_LEVEL_TICK, while in a world), then END_CLIENT_TICK, from Horizon's tick hook, in the window's Game only."
+    },
+    {
+      "category": "event",
+      "in": "com/dtteam/dynamictrees/DynamicTreesFabricClient",
+      "detail": "EntityRendererRegistry.register",
+      "horizon": null,
+      "status": "unsupported",
+      "note": "Custom entity renderers aren't supported."
+    },
+    {
+      "category": "event",
+      "in": "com/dtteam/dynamictrees/DynamicTreesFabricClient",
+      "detail": "ClientTickEvents.START_WORLD_TICK",
+      "horizon": "hook `tick`",
+      "status": "auto",
+      "note": "The Fabric API layer (jfabricapi.rs) runs START_CLIENT_TICK, then the level ticks (START/END_LEVEL_TICK, while in a world), then END_CLIENT_TICK, from Horizon's tick hook, in the window's Game only."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/api/worldgen/RandomXOR",
+      "detail": "extends class_7384",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/block/BlockWithDynamicHardness$DynamicHardnessBlockState",
+      "detail": "extends class_2680",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/block/BlockWithDynamicHardness",
+      "detail": "extends class_2248",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/block/branch/SurfaceRootBlock",
+      "detail": "extends class_2248",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/block/fruit/FruitBlock",
+      "detail": "extends class_2248",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/block/leaves/DynamicLeavesBlock",
+      "detail": "extends class_2397",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/block/pod/PodBlock",
+      "detail": "extends class_2383",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/block/sapling/DynamicSaplingBlock",
+      "detail": "extends class_2248",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/block/sapling/PottedSaplingBlock",
+      "detail": "extends class_2237",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/block/sapling/PottedSaplingBlockEntity",
+      "detail": "extends class_2586",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/block/soil/SpeciesBlockEntity",
+      "detail": "extends class_2586",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/client/RetexturedBakedQuad",
+      "detail": "extends class_777",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/client/ThickBranchRingsSprite",
+      "detail": "extends class_7764",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/entity/FallingTreeEntity",
+      "detail": "extends class_1297",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/entity/LingeringEffectorEntity",
+      "detail": "extends class_1297",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/entity/render/FallingTreeRenderer",
+      "detail": "extends class_897",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/entity/render/LingeringEffectorRenderer",
+      "detail": "extends class_897",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "event",
+      "in": "com/dtteam/dynamictrees/event/handler/CommonEventHandler",
+      "detail": "ServerTickEvents.START_WORLD_TICK",
+      "horizon": "hook `tick`",
+      "status": "auto",
+      "note": "The tick hook runs in every Game, the server's too: run server logic only when `!self.native_window()`."
+    },
+    {
+      "category": "event",
+      "in": "com/dtteam/dynamictrees/event/handler/CommonEventHandler",
+      "detail": "CommandRegistrationCallback.EVENT",
+      "horizon": "hook `command`",
+      "status": "needs-translation",
+      "note": "Server commands. Horizon's command hook is client-side."
+    },
+    {
+      "category": "event",
+      "in": "com/dtteam/dynamictrees/event/handler/CommonEventHandler",
+      "detail": "PlayerBlockBreakEvents.BEFORE",
+      "horizon": null,
+      "status": "unsupported",
+      "note": "No block-break hook yet: needs a raw target in Horizon's game code."
+    },
+    {
+      "category": "event",
+      "in": "com/dtteam/dynamictrees/event/handler/VanillaSaplingEventHandler",
+      "detail": "UseBlockCallback.EVENT",
+      "horizon": null,
+      "status": "unsupported",
+      "note": "No interaction hook yet: needs a raw target in Horizon's game code."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/item/DendroPotion",
+      "detail": "extends class_1792",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/item/DirtBucket",
+      "detail": "extends class_1792",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/item/Seed",
+      "detail": "extends class_1792",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/item/Staff",
+      "detail": "extends class_1792",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/loot/entry/ItemBySpeciesLootPoolEntry",
+      "detail": "extends class_85",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/loot/entry/SeedItemLootPoolEntry",
+      "detail": "extends class_85",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/loot/entry/WeightedItemLootPoolEntry",
+      "detail": "extends class_85",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/loot/function/MultiplyByLogsCount",
+      "detail": "extends class_120",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/loot/function/MultiplyBySticksCount",
+      "detail": "extends class_120",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/loot/function/MultiplyCount",
+      "detail": "extends class_120",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "mixin",
+      "in": "com/dtteam/dynamictrees/mixin/MixinBrewingStandBlockEntity.canPlaceItem",
+      "detail": "@Inject(HEAD) on class_2589.method_5437",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for class_2589.method_5437: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "com/dtteam/dynamictrees/mixin/MixinBrewingStandMenu.mayPlaceItem",
+      "detail": "@Inject(HEAD) on class_1711.method_7631",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for class_1711.method_7631: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "com/dtteam/dynamictrees/mixin/MixinBushBlock.canSurvive",
+      "detail": "@Inject(HEAD) on class_2261.method_9558",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for class_2261.method_9558: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "com/dtteam/dynamictrees/mixin/MixinChunkSerializer.read",
+      "detail": "@Inject(HEAD) on class_2852.method_12395",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for class_2852.method_12395: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "com/dtteam/dynamictrees/mixin/MixinChunkSerializer.write",
+      "detail": "@Inject(RETURN) on class_2852.method_12410",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for class_2852.method_12410: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "com/dtteam/dynamictrees/mixin/MixinMinecraftServer.onServerConstruction",
+      "detail": "@Inject(RETURN) on MinecraftServer.<init>",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for MinecraftServer.<init>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "com/dtteam/dynamictrees/mixin/MixinPotionBrewing.isIngredient",
+      "detail": "@Inject(HEAD) on class_1845.method_8077",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for class_1845.method_8077: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "com/dtteam/dynamictrees/mixin/MixinPotionBrewing.isContainer",
+      "detail": "@Inject(HEAD) on class_1845.method_59700",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for class_1845.method_59700: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "com/dtteam/dynamictrees/mixin/MixinPotionBrewing.hasMix",
+      "detail": "@Inject(HEAD) on class_1845.method_8072",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for class_1845.method_8072: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "com/dtteam/dynamictrees/mixin/MixinPotionBrewing.mix",
+      "detail": "@Inject(HEAD) on class_1845.method_8078",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for class_1845.method_8078: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "com/dtteam/dynamictrees/mixin/MixinSaplingBlock.onAdvanceTree",
+      "detail": "@Inject(HEAD) on class_2473.method_10507",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for class_2473.method_10507: run `match`."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/model/FallingTreeEntityModel",
+      "detail": "extends class_583",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/recipe/MegaSeedRecipe",
+      "detail": "extends class_1852",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/recipe/SeedConversionRecipe",
+      "detail": "extends class_1852",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/treepack/TreePackResources",
+      "detail": "extends class_3259",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/worldgen/feature/CaveRootedTreePlacement",
+      "detail": "extends class_6797",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/worldgen/feature/DTReplaceNyliumFungiBlockStateProvider",
+      "detail": "extends class_4651",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/worldgen/feature/DynamicTreeFeature",
+      "detail": "extends class_3031",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/worldgen/structure/DTCancelVanillaTreePoolElement",
+      "detail": "extends class_3784",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "com/dtteam/dynamictrees/worldgen/structure/TreePoolElement",
+      "detail": "extends class_3784",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "content",
+      "in": "jar resources",
+      "detail": "332 asset files, 135 data files",
+      "horizon": "content mod (.hmod)",
+      "status": "content",
+      "note": "Recipes, loot, tags, models, textures, worldgen: horizon-port-pack carries these."
+    }
+  ],
+  "mappedCalls": [],
+  "unmappedCalls": [
+    {
+      "java": "com/mojang/blaze3d/systems/RenderSystem#setShaderTexture",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1011#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1011#method_4305",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1011#method_4307",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1011#method_4315",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1011#method_4323",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_104#method_478",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1047#method_4539",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1058#method_4570",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1058#method_4575",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1058#method_4577",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1058#method_4580",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1058#method_45851",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1058#method_4593",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1058#method_4594",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1059#field_5275",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1074#method_4662",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1086#field_5350",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_1087#method_4707",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1091#comp_2875",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1091#comp_2876",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1109#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_114#method_506",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1144#method_4870",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1144#method_4873",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_120#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_120#method_521",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_124#field_1054",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_124#field_1060",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_124#field_1061",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_124#field_1063",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_124#field_1065",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_124#field_1068",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_124#field_1075",
+      "kind": "field",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/class_124#field_1076",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_124#field_1079",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_124#field_1080",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1268#field_5808",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1269#field_5811",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_1269#field_5812",
+      "kind": "field",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_1269#field_5814",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_1269#method_29236",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1271#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1271#method_22427",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1271#method_22430",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_128#method_560",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_128#method_562",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1282#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1297#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1297#field_6017",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1297#method_18798",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1297#method_18800",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1297#method_23317",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1297#method_23318",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1297#method_23321",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1297#method_5728",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1297#method_5773",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1297#method_5829",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1297#method_5863",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1297#method_5864",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1299#field_6081",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1299#field_6104",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1299#method_20210",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1299#method_5883",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1299$class_1300#method_5903",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1299$class_1300#method_5905",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1304#field_6173",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1309#method_18798",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1309#method_18800",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1309#method_37908",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1309#method_5643",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1309#method_5715",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1309#method_5828",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1309#method_5836",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1309#method_5864",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1309#method_5996",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1309#method_6047",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1311#field_17715",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1322#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1322$class_1323#field_6328",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1324#method_6194",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_141#method_621",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_148#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_151#getMessage",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1542#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1542#field_6012",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1542#method_18800",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1542#method_24515",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1542#method_37908",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1542#method_5768",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1542#method_6983",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1542#method_6988",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_156#method_18349",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_156#method_40083",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_156#method_654",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_1656#field_7477",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1656#field_7479",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1657#method_18276",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1657#method_19538",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1657#method_31549",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1657#method_37908",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1657#method_56673",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1657#method_5715",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1657#method_5735",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1657#method_5745",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1657#method_5998",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_1657#method_6047",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1657#method_6122",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1657#method_7259",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1657#method_7270",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1657#method_7281",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1657#method_7328",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1657#method_7337",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_1657#method_7343",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_169#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1708$class_1711#method_7631",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1723#field_21668",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_173#field_1172",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_173#field_1178",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1747#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1747#method_7711",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1750#method_7718",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1750#method_8037",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1750#method_8045",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_176$class_177#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_176$class_177#method_780",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_176$class_177#method_781",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_176$class_177#method_782",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1761$class_7704#method_45420",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1761$class_7913#method_47317",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1761$class_7913#method_47320",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1761$class_7913#method_47321",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1761$class_7913#method_47324",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1767#field_7944",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1767#field_7945",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1767#field_7947",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1767#field_7952",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1767#field_7957",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1767#field_7963",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1767#field_7964",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1767#field_7966",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1767#method_7789",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1767#method_7792",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1767#values",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1792#<init>",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_1792#field_8003",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1792#method_58404",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1792#method_7836",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1792#method_7851",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1792#method_7854",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1792$class_1793#<init>",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_1792$class_1793#method_57349",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1792$class_1793#method_7889",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1799#<init>",
+      "kind": "method",
+      "uses": 27
+    },
+    {
+      "java": "net/minecraft/class_1799#field_8037",
+      "kind": "field",
+      "uses": 16
+    },
+    {
+      "java": "net/minecraft/class_1799#method_31573",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1799#method_31574",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1799#method_31577",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1799#method_57360",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1799#method_57376",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1799#method_57379",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1799#method_57824",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1799#method_57825",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1799#method_57826",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1799#method_7909",
+      "kind": "method",
+      "uses": 17
+    },
+    {
+      "java": "net/minecraft/class_1799#method_7914",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1799#method_7933",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1799#method_7934",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_1799#method_7936",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1799#method_7939",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_1799#method_7947",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_1799#method_7960",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/class_1799#method_7970",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1799#method_7972",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_1799#method_7973",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1802#field_17516",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1802#field_8074",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1802#field_8162",
+      "kind": "field",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_1802#field_8242",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1802#field_8324",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1802#field_8469",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1802#field_8550",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1802#field_8574",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1802#field_8597",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1802#field_8600",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1802#field_8665",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1802#field_8777",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1802#field_8868",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_181#field_1224",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_181#field_1225",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_181#field_1226",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_181#field_1228",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_181#field_1229",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_181#field_24424",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1814#field_8903",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_182#method_800",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1832#method_58419",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1838#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1838#method_20287",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1838#method_8036",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1838#method_8037",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1838#method_8038",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1838#method_8041",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1838#method_8045",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1844#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1845#method_59700",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1845#method_8072",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1845#method_8077",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1845#method_8078",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1852#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1866#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1890#method_8225",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1893#field_9099",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1893#field_9130",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_1920#method_8320",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1921#method_23576",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1921#method_23579",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1922#method_8320",
+      "kind": "method",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/class_1922#method_8321",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1923#<init>",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_1923#field_9180",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1923#field_9181",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1923#method_8326",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1923#method_8327",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1923#method_8328",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1923#method_8329",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1926#method_8342",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1926#method_8343",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1927#method_55107",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1927#method_55109",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1928#field_19392",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1928#field_19399",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1928#method_8355",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1928#method_8356",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#getClass",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_16358",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_17745",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_18467",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_22347",
+      "kind": "method",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/class_1936#method_22348",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_22350",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_22352",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_22387",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_1936#method_23753",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_1936#method_29556",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_31600",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1936#method_31607",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1936#method_35230",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_39281",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8314",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8316",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8320",
+      "kind": "method",
+      "uses": 42
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8321",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8396",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8397",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8405",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8406",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8409",
+      "kind": "method",
+      "uses": 15
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8597",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8608",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8624",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8650",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_1936#method_8652",
+      "kind": "method",
+      "uses": 32
+    },
+    {
+      "java": "net/minecraft/class_1937#field_9229",
+      "kind": "field",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/class_1937#field_9236",
+      "kind": "field",
+      "uses": 17
+    },
+    {
+      "java": "net/minecraft/class_1937#method_17742",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_18467",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_22345",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_22347",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_1937#method_22348",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_22352",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1937#method_23753",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_1937#method_27983",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_1937#method_30349",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_1937#method_31605",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_31607",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_33596",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1937#method_39279",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8316",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8320",
+      "kind": "method",
+      "uses": 37
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8321",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8333",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8396",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8406",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8409",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8413",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8438",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8444",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8450",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8452",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8469",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8486",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8492",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8497",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8501",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8503",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8505",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8510",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8587",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8597",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8608",
+      "kind": "method",
+      "uses": 16
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8628",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8649",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8650",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_1937#method_8652",
+      "kind": "method",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/class_1944#field_9284",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_1950#method_22354",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1953#field_9310",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1959#method_30970",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1959#method_39927",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1959#method_8696",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1959#method_8698",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_1959#method_8712",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_201#method_871",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2035#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2073$class_2074#method_58179",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2073$class_2074#method_8973",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2073$class_2074#method_8977",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2096$class_2100#method_9053",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_212#method_900",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_212$class_213#method_22584",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2168#method_9213",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2168#method_9222",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2168#method_9225",
+      "kind": "method",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/class_2168#method_9226",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2168#method_9259",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_2170#method_9244",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2170#method_9247",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_2172#method_9265",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_2172#method_9270",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_223#method_945",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2232#method_9441",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2232#method_9443",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2237#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2237#method_9556",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10036",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10112",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10124",
+      "kind": "field",
+      "uses": 29
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10214",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10240",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10251",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10313",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10382",
+      "kind": "field",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10431",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10477",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10479",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10495",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10503",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10515",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10520",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10556",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10559",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10566",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10580",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_10597",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_16540",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_20421",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2246#field_22122",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2246#field_28685",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2246#field_28686",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#<init>",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_2248#method_23349",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_23350",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_36555",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_8389",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9496",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9499",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9507",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9520",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9539",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9541",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9545",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9556",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9559",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9560",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9564",
+      "kind": "method",
+      "uses": 39
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9574",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9576",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9577",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9588",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2248#method_9612",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2261#method_9558",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2262#method_9696",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2262#method_9698",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2316#field_10921",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2319#method_41999",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2320#field_10929",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338#<init>",
+      "kind": "method",
+      "uses": 27
+    },
+    {
+      "java": "net/minecraft/class_2338#equals",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_2338#field_10980",
+      "kind": "field",
+      "uses": 27
+    },
+    {
+      "java": "net/minecraft/class_2338#field_25064",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10059",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10062",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10069",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10074",
+      "kind": "method",
+      "uses": 20
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10076",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10077",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10081",
+      "kind": "method",
+      "uses": 25
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10084",
+      "kind": "method",
+      "uses": 28
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10086",
+      "kind": "method",
+      "uses": 14
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10087",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10088",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10089",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10093",
+      "kind": "method",
+      "uses": 31
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10094",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10097",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10260",
+      "kind": "method",
+      "uses": 38
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10262",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10263",
+      "kind": "method",
+      "uses": 38
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10264",
+      "kind": "method",
+      "uses": 41
+    },
+    {
+      "java": "net/minecraft/class_2338#method_10268",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338#method_20437",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_2338#method_25503",
+      "kind": "method",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/class_2338#method_46558",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338#method_49637",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_2338#method_49638",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#<init>",
+      "kind": "method",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10062",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10074",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10084",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10086",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10093",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10098",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10100",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10101",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10103",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10104",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10260",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10263",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_10264",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_25504",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_30927",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_33097",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_33098",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2338$class_2339#method_33099",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2350#equals",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_2350#field_11033",
+      "kind": "field",
+      "uses": 24
+    },
+    {
+      "java": "net/minecraft/class_2350#field_11034",
+      "kind": "field",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/class_2350#field_11035",
+      "kind": "field",
+      "uses": 14
+    },
+    {
+      "java": "net/minecraft/class_2350#field_11036",
+      "kind": "field",
+      "uses": 30
+    },
+    {
+      "java": "net/minecraft/class_2350#field_11039",
+      "kind": "field",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/class_2350#field_11043",
+      "kind": "field",
+      "uses": 16
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10139",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10142",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10143",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10146",
+      "kind": "method",
+      "uses": 12
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10148",
+      "kind": "method",
+      "uses": 12
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10151",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10153",
+      "kind": "method",
+      "uses": 28
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10161",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10163",
+      "kind": "method",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10164",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10165",
+      "kind": "method",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10166",
+      "kind": "method",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10168",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10170",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2350#method_10171",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2350#ordinal",
+      "kind": "method",
+      "uses": 25
+    },
+    {
+      "java": "net/minecraft/class_2350#values",
+      "kind": "method",
+      "uses": 25
+    },
+    {
+      "java": "net/minecraft/class_2350$class_2351#field_11048",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2350$class_2351#field_11051",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_2350$class_2351#field_11052",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2350$class_2351#method_10179",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2350$class_2352#field_11056",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2350$class_2352#field_11060",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2350$class_2352#method_10181",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2350$class_2353#field_11062",
+      "kind": "field",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_2350$class_2353#iterator",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2350$class_2353#method_10183",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2350$class_2353#method_29716",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2362#method_16231",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2378#method_10221",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_2378#method_10223",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2378#method_10230",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2378#method_40260",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2378#method_40264",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2378#method_40290",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2378#method_46771",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_238#<init>",
+      "kind": "method",
+      "uses": 15
+    },
+    {
+      "java": "net/minecraft/class_238#field_1320",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_238#field_1321",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_238#field_1322",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_238#field_1323",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_238#field_1324",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_238#field_1325",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_238#method_1003",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_238#method_1006",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_238#method_1009",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_238#method_1012",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_238#method_1014",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_238#method_54784",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_238#method_989",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_238#method_991",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_238#method_994",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_238#method_996",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_238#method_997",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_238#method_999",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2381#field_11166",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2381#field_11167",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2381#field_11169",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2381#field_11170",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2381#field_11171",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2381#field_11172",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2382#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2382#field_11176",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2382#method_10260",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/class_2382#method_10263",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/class_2382#method_10264",
+      "kind": "method",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/class_2383#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2383#field_11177",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2388#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_239#method_17783",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_239#method_17784",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_239$class_240#field_1332",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2397#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2397#field_11199",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2397#field_11200",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2397#method_9496",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2397#method_9530",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2397#method_9548",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2397#method_9554",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2398#field_11211",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2398#field_11216",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2398#field_11217",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2398#field_11231",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2398#field_11245",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_243#<init>",
+      "kind": "method",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/class_243#equals",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_243#field_1350",
+      "kind": "field",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/class_243#field_1351",
+      "kind": "field",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/class_243#field_1352",
+      "kind": "field",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/class_243#field_1353",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_243#method_1019",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_243#method_1020",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_243#method_1021",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_243#method_10214",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_243#method_10215",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_243#method_10216",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_243#method_1023",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_243#method_1024",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_243#method_1025",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_243#method_1027",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_243#method_1029",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_243#method_1031",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_243#method_18805",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_243#method_24953",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2464#field_11455",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2464#field_11458",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_247#field_1366",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_247#field_16885",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16886",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_247#field_16887",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16888",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16889",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16890",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16891",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16892",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16893",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16894",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16895",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16896",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16897",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16898",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_247#field_16899",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2470#method_26383",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2473#method_10507",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2487#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10539",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10545",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10547",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10548",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10549",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10550",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10556",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10558",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10561",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10566",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10569",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10570",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10574",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10577",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10580",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10582",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2487#method_10583",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11526",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11528",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11529",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11531",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11532",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11533",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11534",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11535",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11537",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11538",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11542",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11543",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11544",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11545",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11547",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2498#field_11548",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_16498",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_17579",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_17580",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2498#field_17581",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_17734",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_18852",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_21214",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22138",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22139",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22140",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22141",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22142",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22143",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22144",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22145",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22146",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22147",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22148",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22149",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22150",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22151",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22152",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22153",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_22154",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2498#field_23082",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_23083",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_23265",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_24119",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_24120",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_24121",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_25183",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_27196",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_27197",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_27198",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_27199",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_27200",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_27201",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_27202",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_27203",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_27204",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28060",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28061",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28116",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28427",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28692",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28693",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28694",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28695",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28696",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28697",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28698",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28699",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28700",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28701",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_28702",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_29033",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_29034",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_29035",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#field_29036",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#method_10595",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#method_10597",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2498#method_10598",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2498#method_10599",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2499#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2499#add",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2499#iterator",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2541#field_11696",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2541#field_11699",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2541#field_11702",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2541#field_11706",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2558#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2558$class_2559#field_21462",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2561#method_27661",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2561#method_43469",
+      "kind": "method",
+      "uses": 21
+    },
+    {
+      "java": "net/minecraft/class_2561#method_43470",
+      "kind": "method",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/class_2561#method_43471",
+      "kind": "method",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/class_2568#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2568$class_5247#field_24342",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2583#method_10949",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2583#method_10958",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2583#method_10977",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_2586#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2586#method_11014",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2586#method_16887",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2589#method_5437",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_259#method_1072",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_259#method_1073",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/class_259#method_1077",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/class_259#method_1078",
+      "kind": "method",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/class_259#method_1082",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_259#method_1084",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_259#method_17786",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_259#method_31943",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2591#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2591#field_20431",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2591#method_11032",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2622#method_38585",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_265#method_1092",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_265#method_1096",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_265#method_1107",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_265#method_1110",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2680#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2680#method_11654",
+      "kind": "method",
+      "uses": 23
+    },
+    {
+      "java": "net/minecraft/class_2680#method_11657",
+      "kind": "method",
+      "uses": 27
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26164",
+      "kind": "method",
+      "uses": 12
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26165",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26167",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26172",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26184",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26189",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26193",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26194",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26202",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26204",
+      "kind": "method",
+      "uses": 65
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26206",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26213",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26214",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26215",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26216",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26218",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26222",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26225",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26227",
+      "kind": "method",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26231",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2680#method_26234",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_27852",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2680#method_28498",
+      "kind": "method",
+      "uses": 14
+    },
+    {
+      "java": "net/minecraft/class_2680#method_45474",
+      "kind": "method",
+      "uses": 12
+    },
+    {
+      "java": "net/minecraft/class_2680#method_51176",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_51367",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_55225",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_55780",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2680#method_55781",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2689#method_11664",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_2689$class_2690#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2689$class_2690#method_11667",
+      "kind": "method",
+      "uses": 12
+    },
+    {
+      "java": "net/minecraft/class_2689$class_2690#method_11668",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2741#field_12482",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2741#field_12497",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2741#field_12498",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2741#field_12508",
+      "kind": "field",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_2741#field_12517",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2741#field_12521",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2741#field_12550",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2741#field_12556",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2746#method_11825",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2754#method_11850",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2756#field_12607",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2756#field_12609",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2758#method_11867",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/class_2791#method_12004",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2791#method_12005",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2818#field_12855",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2818#method_12031",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2852#method_12395",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2852#method_12410",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2874#comp_643",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2893$class_2895#field_13178",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2893$class_2895#ordinal",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_290#field_1590",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2902$class_2903#field_13194",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2902$class_2903#field_13202",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2902$class_2903#valueOf",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2919#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2919$class_6675#field_35142",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2919$class_6675#method_39006",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_293#method_1362",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2943#field_13318",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2945#method_12778",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2945#method_12789",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2945#method_12791",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2945$class_9222#method_56912",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2960#equals",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_2960#field_25139",
+      "kind": "field",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_2960#method_12829",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2960#method_12832",
+      "kind": "method",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/class_2960#method_12836",
+      "kind": "method",
+      "uses": 16
+    },
+    {
+      "java": "net/minecraft/class_2960#method_20208",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2960#method_20209",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_2960#method_48331",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_2960#method_60654",
+      "kind": "method",
+      "uses": 17
+    },
+    {
+      "java": "net/minecraft/class_2960#method_60655",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/class_2960#toString",
+      "kind": "method",
+      "uses": 16
+    },
+    {
+      "java": "net/minecraft/class_2975#comp_332",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2975#comp_333",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_2975#method_30648",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3031#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_309#method_1455",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_310#field_1687",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_310#field_1690",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_310#field_1713",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_310#field_1724",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_310#field_1769",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_310#field_1774",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_310#method_1483",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_310#method_1505",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_310#method_1541",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_310#method_1549",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_310#method_1551",
+      "kind": "method",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/class_3111#field_24893",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3141#field_13744",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3141#method_30649",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_315#field_1827",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3218#field_9236",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3218#method_22339",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3218#method_22340",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3218#method_23753",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3218#method_27983",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3218#method_37118",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3218#method_8320",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_3218#method_8409",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3218#method_8501",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_3218#method_8503",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3218#method_8532",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3218#method_8650",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_322#getColor",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3226#field_14013",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3233#method_23753",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_324#method_1697",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3259#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3259#method_45183",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3264#field_14190",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3298#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3298#method_43039",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3300#method_14486",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3300#method_14488",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3300#method_14489",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3302$class_4045#method_18352",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3341#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3414#method_47908",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3417#field_14609",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3417#field_14675",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3417#field_14810",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3419#field_15245",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_3419#field_15254",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3448#method_14956",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3468#field_15372",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3468#field_15412",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3481#field_15475",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3481#field_15503",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3481#field_20339",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3481#field_21952",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3481#field_29823",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3481#field_36268",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3481#field_44470",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3486#field_15518",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3489#field_42612",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3499$class_3501#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3518#method_15276",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3532#method_15340",
+      "kind": "method",
+      "uses": 21
+    },
+    {
+      "java": "net/minecraft/class_3532#method_15350",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3532#method_15357",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3532#method_15362",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_3532#method_15363",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/class_3532#method_15374",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_3532#method_15375",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3532#method_15385",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3532#method_15391",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3532#method_15393",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3532#method_16436",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3532#method_17822",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3532#method_32854",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3537#method_15416",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3537#method_39127",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3541#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3541#method_22416",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3543#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3543#method_16451",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3545#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_3545#method_15441",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3545#method_15442",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3609#method_15729",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_3609#method_15789",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_3610#method_15759",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_3610#method_15767",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3610#method_15769",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_3610#method_15772",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3610#method_17776",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3610#method_39360",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3611#method_15789",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3612#field_15910",
+      "kind": "field",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/class_3619#field_15971",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_3619#field_15972",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15976",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15977",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15978",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15979",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15980",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15981",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15982",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15983",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15984",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15985",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15986",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15987",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15988",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15989",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15990",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15991",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15992",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15993",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15994",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15995",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15996",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15997",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15998",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_15999",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16000",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16001",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16002",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16003",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16004",
+      "kind": "field",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16005",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16007",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16008",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16009",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16010",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16012",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16013",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16014",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16015",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16016",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16017",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16018",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16019",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16020",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16022",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16023",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16024",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16025",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16026",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16027",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16028",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16029",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_16030",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_25702",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_25703",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_25704",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_25705",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_25706",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_25707",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_25708",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_33532",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_33533",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3620#field_33617",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3726#method_16194",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_3726#method_16195",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3727#method_32480",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3737#method_10310",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3746#method_16358",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3748#field_23262",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3751$class_4991#field_23329",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3751$class_4991#method_15434",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3782#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3784#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3784#field_24953",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3784#method_16601",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3784#method_16622",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3784#method_16624",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3784#method_16626",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3784#method_16627",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3784#method_16628",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3784#method_30426",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3785#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3785#field_16680",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3785#field_16864",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3785#method_46736",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3785$class_3786#field_16686",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3785$class_3786#field_16687",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3815#field_26253",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3902#field_17274",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_3902#field_51563",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3959#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3959$class_242#field_1345",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3959$class_242#field_1348",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_3959$class_242#method_17751",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3959$class_3960#field_17558",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3959$class_3960#field_17559",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3959$class_3960#get",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3962#field_17566",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3965#method_17777",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_3965#method_17778",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3965#method_17780",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_3965#method_17783",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_3965#method_17784",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_3965#method_29328",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4076#method_18675",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_42#method_280",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4239#method_46346",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_44#method_32448",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4481#field_20419",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4482#method_35292",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4482$class_9309#method_57584",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4538#method_22347",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4538#method_23753",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4538#method_8320",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_4538#method_8393",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4559$class_4560#method_22523",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4559$class_4560#method_22524",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4587#method_22903",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4587#method_22904",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_4587#method_22907",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_4587#method_22909",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4587#method_23760",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4588#method_22919",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4597#getBuffer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4608#field_21444",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4651#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4651#field_24937",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4651#method_23455",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4652#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_47#method_294",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_47#method_296",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_4730#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_4865#field_22509",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_22488",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_23351",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_23352",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_26235",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_26236",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_26243",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_26245",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_26250",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_29292",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_31710",
+      "kind": "method",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_36557",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_36558",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_42327",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_50012",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_50013",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_51369",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_9618",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_9624",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_9626",
+      "kind": "method",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_9628",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_9629",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_9630",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_9631",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_9632",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_9634",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_9637",
+      "kind": "method",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/class_4970$class_2251#method_9640",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/class_4990#method_26387",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5000#method_26425",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5134#field_23721",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5134#field_23723",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5134#field_47758",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_52#field_948",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_52#method_324",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_52#method_51878",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_52$class_53#method_334",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_52$class_53#method_336",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5250#getString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5250#method_10852",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_5250#method_27692",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_5250#method_27693",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5250#method_27694",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/class_5281#method_8410",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5281#method_8412",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5321#method_29177",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_5321#method_29179",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_5338#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5339#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5341$class_210#method_16780",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5341$class_210#method_893",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5342#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5352#field_25348",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5352#field_25349",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5425#method_8410",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5444#method_34383",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5455#method_30530",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5455$class_6890#method_30530",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5469#field_26259",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5469#field_26266",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5485#method_30983",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_55#method_347",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_55$class_56#method_351",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_55$class_56#method_352",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_55$class_56#method_356",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5662#method_32462",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5712#field_28733",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_5819#method_39332",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5819#method_43047",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_5819#method_43048",
+      "kind": "method",
+      "uses": 23
+    },
+    {
+      "java": "net/minecraft/class_5819#method_43049",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5819#method_43055",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5819#method_43056",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5819#method_43057",
+      "kind": "method",
+      "uses": 26
+    },
+    {
+      "java": "net/minecraft/class_5819#method_43058",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_5819#method_43059",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_5821#method_33652",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_5821#method_33655",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_583#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6005#method_34991",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6008$class_6010#comp_2542",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6008$class_6010#method_34981",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6012#method_34992",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_638#method_8532",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6756#method_39363",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_6760#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_6796#comp_335",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6796#method_39643",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_6797#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6862#comp_327",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_6862#method_40092",
+      "kind": "method",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/class_6880#comp_349",
+      "kind": "method",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/class_6880#equals",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6880#method_40220",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_6880#method_40225",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6880#method_40228",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6880#method_40230",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_6880$class_6883#comp_349",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6885#forEach",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_6885#iterator",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_6885#method_40239",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_6885#method_40240",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6885#method_40241",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6885#method_40243",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6885#method_40247",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6885#method_40248",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6885#method_45925",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_6885#method_46768",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_6885#spliterator",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_702#method_3056",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_703#method_3084",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7225$class_7226#method_42017",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7225$class_7226#method_46747",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_7225$class_7226#method_46767",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7225$class_7874#method_46762",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_7384#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7384#method_43156",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_761#method_18146",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7654#method_45112",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_77#method_411",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_776#method_3349",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_7764#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7764#field_40539",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_7764#method_45807",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_7764#method_45815",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_7764#method_52848",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_777#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_777#method_24874",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_777#method_3357",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_777#method_3358",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_777#method_3359",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_777#method_3360",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_777#method_35788",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_7771#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_783#<init>",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_7833#field_40714",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_7833#field_40715",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7833#field_40717",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7833#rotationDegrees",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_785#<init>",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_785#field_4228",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_785#field_4230",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_785#field_4231",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_785#field_4232",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_787#<init>",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_7889$class_7890#method_35922",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_7889$class_7890#method_46829",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/class_7891#method_46838",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7922#method_10221",
+      "kind": "method",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/class_7922#method_10223",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_7922#method_39673",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7922#method_40294",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41133",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41134",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41135",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41144",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41148",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41149",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41162",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41172",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41175",
+      "kind": "field",
+      "uses": 17
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41177",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41178",
+      "kind": "field",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41179",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41181",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41189",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_41192",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_44687",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7923#field_49658",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7924#field_41197",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7924#field_41215",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7924#field_41236",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_7924#field_41239",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7924#field_41245",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_7924#field_41247",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7924#field_41249",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7924#field_41254",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_7924#field_41265",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_7924#field_41266",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7924#field_42534",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7924#field_50079",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_7948$class_7949#method_47670",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_7951#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_796#<init>",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_796#method_3467",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_796#method_3468",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_806#field_4292",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_809#field_4301",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_85#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_85$class_86#method_417",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_85$class_86#method_421",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_85$class_86#method_438",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_8567$class_8568#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_8567$class_8568#method_51870",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_8567$class_8568#method_51874",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_8567$class_8568#method_51875",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/class_8567$class_8568#method_51876",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_8567$class_8568#method_51877",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_8684#loadSprite",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_897#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_897#method_3936",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9062#field_47728",
+      "kind": "field",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/class_9062#field_47731",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/class_9062#field_47733",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_9062#method_55644",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9135#field_48554",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9135#field_49675",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9139#method_56431",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9224#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9274#field_49217",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9282#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9282#comp_2384",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9282#field_49312",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9282#field_49313",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9285#method_57480",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9285$class_9286#method_57486",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9285$class_9286#method_57487",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9331#method_57873",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9331$class_9332#method_57880",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9331$class_9332#method_57881",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9331$class_9332#method_57882",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9334#field_49629",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9334#field_49636",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9334#field_49651",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9334#field_50072",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9334#field_50073",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9356#method_58173",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9361#field_49807",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/class_9383$class_9385#method_58295",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/class_9694#method_59989",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#method_30611",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#method_58576",
+      "kind": "method",
+      "uses": 4
+    }
+  ],
+  "warnings": [
+    "The jar uses intermediary names (class_1234, method_5678): it was made for Minecraft before 26.1. Only 26.1+ jars name the game by Mojang's names, which the mapping table uses."
+  ]
+}
