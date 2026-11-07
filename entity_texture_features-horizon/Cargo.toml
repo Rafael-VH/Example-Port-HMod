@@ -1,0 +1,10 @@
+[package]
+name = "horizon-mod-entity-texture-features"
+version = "7.2.7"
+edition = "2024"
+publish = false
+description = "Entity Texture Features, ported from Fabric to a Horizon native mod by horizon-port."
+
+# The mod's logic and its tests: the same file the bundle adds to the game.
+[lib]
+path = "mixins/entity_texture_features/runtime.rs"

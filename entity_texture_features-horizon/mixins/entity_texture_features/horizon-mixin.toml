@@ -1,0 +1,631 @@
+[mod]
+id = "entity_texture_features"
+version = "7.2.7"
+priority = 100
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_entity_texture_features"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_entity_texture_features_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "frame"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_frame"
+helper = "frame.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "elapsed", ty = "std::time::Duration", value = "elapsed" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Off: @Inject(RETURN) on Identifier.isValidPath (MixinIdentifier.etf$illegalPathOverride)
+#   No Horizon function mapped for Identifier.isValidPath (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-identifier-illegal-path-override"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on LevelRenderer.submitEntities (MixinLevelRenderer.emf$verify)
+#   No Horizon function mapped for LevelRenderer.submitEntities (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-level-renderer-verify"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on LevelRenderer.submitBlockEntities (MixinLevelRenderer.emf$verify)
+#   No Horizon function mapped for LevelRenderer.submitBlockEntities (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-level-renderer-verify-2"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on LevelRenderer.submitEntities (MixinLevelRenderer.emf$verifyEnd)
+#   No Horizon function mapped for LevelRenderer.submitEntities (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-level-renderer-verify-end"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on LevelRenderer.submitBlockEntities (MixinLevelRenderer.emf$verifyEnd)
+#   No Horizon function mapped for LevelRenderer.submitBlockEntities (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-level-renderer-verify-end-2"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ModelPart.render (MixinModelPart.etf$findOutIfInitialModelPart)
+#   No Horizon function mapped for ModelPart.render (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-model-part-find-out-if-initial-model-part"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on ModelPart.render (MixinModelPart.etf$doEmissiveIfInitialPart)
+#   No Horizon function mapped for ModelPart.render (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-model-part-do-emissive-if-initial-part"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on ModelPart.render (MixinModelPart.etf$modify)
+#   No Horizon function mapped for ModelPart.render (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-model-part-modify"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on PackSelectionScreen.repositionElements (MixinPackScreen.etf$etfButtonResize)
+#   No Horizon function mapped for PackSelectionScreen.repositionElements (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-pack-screen-etf-button-resize"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on PackSelectionScreen.init (MixinPackScreen.etf$etfButton)
+#   No Horizon function mapped for PackSelectionScreen.init (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-pack-screen-etf-button"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SkinTextureDownloader.setNoAlpha (MixinPlayerSkinTexture.etf$cancelling)
+#   No Horizon function mapped for SkinTextureDownloader.setNoAlpha (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-player-skin-texture-cancelling"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on SkinTextureDownloader.processLegacySkin (MixinPlayerSkinTexture.etf$differentAlpha)
+#   `horizon_client_render::skins::process_legacy_skin` has a closure in its body: horizon-mixins doesn't rewrite such bodies with BEFORE_CALL. A HEAD hook on it, or a BEFORE_CALL on a function it calls, may work instead.
+# [[injection]]
+# id = "mixin-player-skin-texture-different-alpha"
+# kind = "BEFORE_CALL"
+# target = "horizon_client_render::skins::process_legacy_skin"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entitySolid (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entitySolid (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.eyes (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.eyes (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-2"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.energySwirl (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.energySwirl (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-3"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entitySmoothCutout (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entitySmoothCutout (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-4"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.itemEntityTranslucentCull (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.itemEntityTranslucentCull (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-5"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entityCutoutCull (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entityCutoutCull (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-6"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entityCutout (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entityCutout (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-7"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entityCutoutNoCullZOffset (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entityCutoutNoCullZOffset (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-8"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entityDecal (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entityDecal (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-9"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entityNoOutline (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entityNoOutline (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-10"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entitySmoothCutout (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entitySmoothCutout (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-11"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entityTranslucent (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entityTranslucent (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-12"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entityTranslucentEmissive (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entityTranslucentEmissive (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-13"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.armorCutoutNoCull (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.armorCutoutNoCull (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-14"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entityShadow (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entityShadow (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-15"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entityTranslucentCullItemTarget (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entityTranslucentCullItemTarget (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-16"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entityCutoutZOffset (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entityCutoutZOffset (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-17"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entityCutoutDissolve (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entityCutoutDissolve (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-18"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypes.entitySolidZOffsetForward (MixinRenderLayer.etf$mixinAllEntityLayers)
+#   No Horizon function mapped for RenderTypes.entitySolidZOffsetForward (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-render-layer-mixin-all-entity-layers-19"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @Accessor on Tooltip.cachedTooltip (TooltipAccessor.setCachedTooltip)
+#   No Horizon function mapped for Tooltip.cachedTooltip (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "tooltip-accessor-set-cached-tooltip"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on BaseSpawner.getOrCreateDisplayEntity (MixinMobSpawnerLogic.etf$stabiliseMobSpawnerUUID)
+#   No Horizon function mapped for BaseSpawner.getOrCreateDisplayEntity (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-mob-spawner-logic-stabilise-mob-spawner-uuid"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on Blaze.aiStep (MixinBlazeEntity.mixin)
+#   No Horizon function mapped for Blaze.aiStep (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-blaze-entity-mixin"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on BlockEntityRenderDispatcher.submit (MixinBlockEntityRenderDispatcher.etf$grabContext)
+#   No Horizon function mapped for BlockEntityRenderDispatcher.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-block-entity-render-dispatcher-grab-context"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on BlockEntityRenderDispatcher.submit (MixinBlockEntityRenderDispatcher.etf$clearContext)
+#   No Horizon function mapped for BlockEntityRenderDispatcher.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-block-entity-render-dispatcher-clear-context"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on BlockEntityRenderState.extractBase (MixinBlockEntityRenderState.etf$createRenderState)
+#   No Horizon function mapped for BlockEntityRenderState.extractBase (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-block-entity-render-state-create-render-state"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on BlockEntityRenderState.extractBase (MixinBlockEntityRenderState.etf$vanillaLightOverride)
+#   No Horizon function mapped for BlockEntityRenderState.extractBase (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-block-entity-render-state-vanilla-light-override"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on EntityRenderDispatcher.submit (MixinEntityRenderDispatcher.etf$grabContext)
+#   No Horizon function mapped for EntityRenderDispatcher.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-render-dispatcher-grab-context"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on EntityRenderDispatcher.submit (MixinEntityRenderDispatcher.etf$clearContext)
+#   No Horizon function mapped for EntityRenderDispatcher.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-render-dispatcher-clear-context"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on GlowSquid.aiStep (MixinGlowSquidEntity.mixin)
+#   No Horizon function mapped for GlowSquid.aiStep (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-glow-squid-entity-mixin"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on Mob.addAdditionalSaveData (MixinMob_LeashNBTFix.etf$catchLeashCrash)
+#   No Horizon function mapped for Mob.addAdditionalSaveData (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-mob-leash-nbt-fix-catch-leash-crash"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on Phantom.tick (MixinPhantomEntity.mixin)
+#   No Horizon function mapped for Phantom.tick (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-phantom-entity-mixin"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Player.interactOn (MixinPlayerEntity_DebugClick.etf$injected)
+#   No Horizon function mapped for Player.interactOn (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-player-entity-debug-click-injected"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on EnderDragonRenderer.submit (MixinEnderDragonEntityRenderer.etf$returnAlteredTexture2)
+#   No Horizon function mapped for EnderDragonRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-ender-dragon-entity-renderer-return-altered-texture2"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on EntityRenderer.extractRenderState (MixinEntityRenderer.etf$createRenderState)
+#   No Horizon function mapped for EntityRenderer.extractRenderState (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-renderer-create-render-state"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyReturnValue(RETURN) on EntityRenderer.getPackedLightCoords (MixinEntityRenderer.etf$vanillaLightOverrideCancel)
+#   No Horizon function mapped for EntityRenderer.getPackedLightCoords (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-renderer-vanilla-light-override-cancel"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on EntityRenderer.submit (MixinEntityRenderer.etf$protectPostRenderersLikeNametag)
+#   No Horizon function mapped for EntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-renderer-protect-post-renderers-like-nametag"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on EntityRenderer.submit (MixinEntityRenderer.etf$revertForRenderersThatCallSuperFirst)
+#   No Horizon function mapped for EntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-entity-renderer-revert-for-renderers-that-call-super-first"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on LivingEntityRenderer.submit (MixinLivingEntityRenderer.etf$markFeatures)
+#   No Horizon function mapped for LivingEntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-living-entity-renderer-mark-features"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on LivingEntityRenderer.submit (MixinLivingEntityRenderer.etf$markFeaturesEnd)
+#   No Horizon function mapped for LivingEntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-living-entity-renderer-mark-features-end"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on LivingEntityRenderer.submit (MixinLivingEntityRenderer.emf$grabEntity)
+#   No Horizon function mapped for LivingEntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-living-entity-renderer-grab-entity"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on LivingEntityRenderer.submit (MixinLivingEntityRenderer.emf$eachFeatureLoop)
+#   No Horizon function mapped for LivingEntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-living-entity-renderer-each-feature-loop"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on LivingEntityRenderer.submit (MixinLivingEntityRenderer.emf$postRender)
+#   No Horizon function mapped for LivingEntityRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-living-entity-renderer-post-render"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on PaintingRenderer.submit (MixinPaintingEntityRenderer.etf$getSprites)
+#   No Horizon function mapped for PaintingRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-painting-entity-renderer-get-sprites"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on AvatarRenderer.<init> (MixinPlayerEntityRenderer.etf$addFeatures)
+#   No Horizon function mapped for AvatarRenderer.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-player-entity-renderer-add-features"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on AvatarRenderer.renderHand (MixinPlayerEntityRenderer.etf$renderHandFeatures)
+#   No Horizon function mapped for AvatarRenderer.renderHand (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-player-entity-renderer-render-hand-features"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on AvatarRenderer.getTextureLocation (MixinPlayerEntityRenderer.etf$getTexture)
+#   No Horizon function mapped for AvatarRenderer.getTextureLocation (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-player-entity-renderer-get-texture"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on WingsLayer.submit (MixinElytraFeatureRenderer.etf$markPatchable)
+#   No Horizon function mapped for WingsLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-elytra-feature-renderer-mark-patchable"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on WingsLayer.submit (MixinElytraFeatureRenderer.etf$markPatchableEnd)
+#   No Horizon function mapped for WingsLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-elytra-feature-renderer-mark-patchable-end"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on EyesLayer.submit (MixinEyeFeatureRenderer.etf$allowModifiableEyes)
+#   No Horizon function mapped for EyesLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-eye-feature-renderer-allow-modifiable-eyes"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on EyesLayer.submit (MixinEyeFeatureRenderer.emf$markEyeLight)
+#   No Horizon function mapped for EyesLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-eye-feature-renderer-mark-eye-light"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on MushroomCowMushroomLayer.submit (MixinMooshroomMushroomFeatureRenderer.etf$injected)
+#   No Horizon function mapped for MushroomCowMushroomLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-mooshroom-mushroom-feature-renderer-injected"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on MushroomCowMushroomLayer.submitMushroomBlock (MixinMooshroomMushroomFeatureRenderer.etf$injected)
+#   No Horizon function mapped for MushroomCowMushroomLayer.submitMushroomBlock (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-mooshroom-mushroom-feature-renderer-injected-2"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on ParrotOnShoulderLayer.submitOnShoulder (MixinShoulderParrotFeatureRenderer.etf$modifySubmit)
+#   No Horizon function mapped for ParrotOnShoulderLayer.submitOnShoulder (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-shoulder-parrot-feature-renderer-modify-submit"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on ParrotOnShoulderLayer.submitOnShoulder (MixinShoulderParrotFeatureRenderer.etf$resetEntity)
+#   No Horizon function mapped for ParrotOnShoulderLayer.submitOnShoulder (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-shoulder-parrot-feature-renderer-reset-entity"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on WardenModel.createTendrilsLayer (MixinWardenExtraTextureParts.etf$modifyParts1)
+#   No Horizon function mapped for WardenModel.createTendrilsLayer (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-warden-extra-texture-parts-modify-parts1"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on WardenModel.createHeartLayer (MixinWardenExtraTextureParts.etf$modifyParts1)
+#   No Horizon function mapped for WardenModel.createHeartLayer (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-warden-extra-texture-parts-modify-parts1-2"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on WardenModel.createBioluminescentLayer (MixinWardenExtraTextureParts.etf$modifyParts1)
+#   No Horizon function mapped for WardenModel.createBioluminescentLayer (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-warden-extra-texture-parts-modify-parts1-3"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on WardenModel.createPulsatingSpotsLayer (MixinWardenExtraTextureParts.etf$modifyParts1)
+#   No Horizon function mapped for WardenModel.createPulsatingSpotsLayer (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-warden-extra-texture-parts-modify-parts1-4"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on Minecraft.disconnect* (MixinMinecraftClient.etf$injected)
+#   No Horizon function mapped for Minecraft.disconnect* (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-minecraft-client-injected"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Minecraft.runTick (MixinMinecraftClient.etf$recycleSubmitData)
+#   No Horizon function mapped for Minecraft.runTick (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-minecraft-client-recycle-submit-data"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Minecraft.onResourceLoadFinished (MixinResourceReload.etf$injected)
+#   No Horizon function mapped for Minecraft.onResourceLoadFinished (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-resource-reload-injected"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on PictureInPictureRenderer.prepare (Mixin_GuiEntityRenderer.emf$initRender2)
+#   No Horizon function mapped for PictureInPictureRenderer.prepare (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-gui-entity-renderer-init-render2"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on PictureInPictureRenderer.prepare (Mixin_GuiEntityRenderer.emf$endRender)
+#   No Horizon function mapped for PictureInPictureRenderer.prepare (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-gui-entity-renderer-end-render"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ModelFeatureRenderer.prepareModel (Mixin_ModelRenderer.emf$initRender)
+#   No Horizon function mapped for ModelFeatureRenderer.prepareModel (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-model-renderer-init-render"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ModelFeatureRenderer.prepareModel (Mixin_ModelRenderer.emf$endRender)
+#   No Horizon function mapped for ModelFeatureRenderer.prepareModel (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-model-renderer-end-render"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on Submit.<init> (Mixin_ModelSubmit_AddData.emf$initBackupState)
+#   No Horizon function mapped for Submit.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-model-submit-add-data-init-backup-state"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ChestSpecialRenderer.submit (Mixin_ChestSpecialRenderer_PassState.emf$dummyState)
+#   No Horizon function mapped for ChestSpecialRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-chest-special-renderer-pass-state-dummy-state"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ChestSpecialRenderer.submit (Mixin_ChestSpecialRenderer_PassState.emf$reset)
+#   No Horizon function mapped for ChestSpecialRenderer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mixin-chest-special-renderer-pass-state-reset"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on RenderTypeFeatureRenderer.getVertexBuilder (Immediate.etf$modifyRenderLayer)
+#   No Horizon function mapped for RenderTypeFeatureRenderer.getVertexBuilder (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "immediate-modify-render-layer"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on RenderTypeFeatureRenderer.getVertexBuilder (Immediate.etf$injectIntoGetBufferReturn)
+#   No Horizon function mapped for RenderTypeFeatureRenderer.getVertexBuilder (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "immediate-inject-into-get-buffer-return"
+# kind = "RETURN"
+# target = "TODO"
