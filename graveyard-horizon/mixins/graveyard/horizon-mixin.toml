@@ -1,0 +1,252 @@
+[mod]
+id = "graveyard"
+version = "4.0.0+mc26.3"
+priority = 100
+
+# Raw targets are exact functions of one Horizon commit: build on that commit.
+[compatibility]
+horizon_revision = "a46ce6898bd72016e061aaec1afc1375b384deac"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_graveyard"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_graveyard_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "command"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_command"
+helper = "command.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "command", ty = "&str", value = "command" },
+  { name = "ran", ty = "&mut bool", value = "&mut *ran" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Off: @Inject(TAIL) on BellBlockEntity.onHit (BellBlockEntityMixin.graveyard$redeemTormentedVillagers)
+#   No Horizon function mapped for BellBlockEntity.onHit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "bell-block-entity-mixin-redeem-tormented-villagers"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on BlockEntityType.onlyOpCanSetNbt (BlockEntityTypeMixin.graveyard$gravestoneIsOpOnly)
+#   No Horizon function mapped for BlockEntityType.onlyOpCanSetNbt (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "block-entity-type-mixin-gravestone-is-op-only"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ClientPacketListener.handleOpenSignEditor (ClientPlayNetworkHandlerMixin.openSignEditor)
+#   No Horizon function mapped for ClientPacketListener.handleOpenSignEditor (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "client-play-network-handler-mixin-open-sign-editor"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on CrafterBlock.getPotentialResults (CrafterBlockMixin.graveyard$skipStaffRecipes)
+#   No Horizon function mapped for CrafterBlock.getPotentialResults (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "crafter-block-mixin-skip-staff-recipes"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on CraftingMenu.slotChangedCraftingGrid (CraftingScreenHandlerMixin.graveyard$requireKnownStaffRecipe)
+#   No Horizon function mapped for CraftingMenu.slotChangedCraftingGrid (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "crafting-screen-handler-mixin-require-known-staff-recipe"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on CraftingMenu.quickMoveStack (CraftingScreenHandlerMixin.graveyard$blockLockedStaffShiftClick)
+#   No Horizon function mapped for CraftingMenu.quickMoveStack (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "crafting-screen-handler-mixin-block-locked-staff-shift-click"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Creeper.explodeCreeper (CreeperEntityMixin.explode)
+#   No Horizon function mapped for Creeper.explodeCreeper (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "creeper-entity-mixin-explode"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SimpleRegionStorage.upgradeChunkTag (EntityChunkUpgradeMixin.graveyard$upgradeAroundModEntities)
+#   No Horizon function mapped for SimpleRegionStorage.upgradeChunkTag (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "entity-chunk-upgrade-mixin-upgrade-around-mod-entities"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on InventoryChangeTrigger.trigger (InventoryChangedCriterionMixin.graveyard$countSkeletonDecoration)
+#   No Horizon function mapped for InventoryChangeTrigger.trigger (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "inventory-changed-criterion-mixin-count-skeleton-decoration"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on LevelDatToSavedDataFileFix.extractWorldGenSettingsToFile (LevelStorageMixin.graveyard$dropPastDimension)
+#   No Horizon function mapped for LevelDatToSavedDataFileFix.extractWorldGenSettingsToFile (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "level-storage-mixin-drop-past-dimension"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @Accessor on Mob.goalSelector (MobEntityAccessor.graveyard$getGoalSelector)
+#   No Horizon function mapped for Mob.goalSelector (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mob-entity-accessor-get-goal-selector"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Mob.checkSpawnRules (MobEntitySpawnMixin.graveyard$gateAutomaticSpawn)
+#   No Horizon function mapped for Mob.checkSpawnRules (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mob-entity-spawn-mixin-gate-automatic-spawn"
+# kind = "HEAD"
+# target = "TODO"
+
+[[injection]]
+id = "mob-entity-spawn-mixin-discard-gated-structure-mob"
+kind = "HEAD"
+target = "horizon_client::mobs::creaking_heart::finalize_spawn"
+helper = "mob-entity-spawn-mixin-discard-gated-structure-mob.rs"
+bindings = [
+  { name = "m", ty = "&mut Mob", value = "&mut *m" },
+  { name = "lr", ty = "&mut LegacyRandom", value = "&mut *lr" },
+]
+
+# Off: @Inject(HEAD) on ChunkSystemConverters.convertEntityChunkCompoundTag (MoonriseEntityChunkMixin.graveyard$upgradeAroundModEntities)
+#   No Horizon function mapped for ChunkSystemConverters.convertEntityChunkCompoundTag (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "moonrise-entity-chunk-mixin-upgrade-around-mod-entities"
+# kind = "HEAD"
+# target = "TODO"
+
+[[injection]]
+id = "potion-entity-mixin-extinguish-smoldering"
+kind = "HEAD"
+target = "horizon_client::game::splash_water::Game<'_>::douse_fire"
+helper = "potion-entity-mixin-extinguish-smoldering.rs"
+bindings = [
+  { name = "this", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "pos", ty = "&[i32; 3]", value = "&pos" },
+]
+
+# Off: @Inject(HEAD) on ServerGamePacketListenerImpl.updateSignText (ServerPlayNetworkHandlerMixin.signUpdate)
+#   No Horizon function mapped for ServerGamePacketListenerImpl.updateSignText (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "server-play-network-handler-mixin-sign-update"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on SinglePoolElement.getShuffledJigsawBlocks (SinglePoolElementMixin.graveyard$applyPoolAliases)
+#   No Horizon function mapped for SinglePoolElement.getShuffledJigsawBlocks (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "single-pool-element-mixin-apply-pool-aliases"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on SinglePoolElement.getSettings (SinglePoolElementMixin.graveyard$keepWorldWaterOut)
+#   No Horizon function mapped for SinglePoolElement.getSettings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "single-pool-element-mixin-keep-world-water-out"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on TreeFeature.doPlace (TreeFeatureMixin.noTreesInStructuresGenerate)
+#   No Horizon function mapped for TreeFeature.doPlace (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "tree-feature-mixin-no-trees-in-structures-generate"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Accessor on AbstractContainerScreen.leftPos (HandledScreenAccessor.graveyard$getX)
+#   No Horizon function mapped for AbstractContainerScreen.leftPos (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "handled-screen-accessor-get-x"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on AbstractContainerScreen.topPos (HandledScreenAccessor.graveyard$getY)
+#   No Horizon function mapped for AbstractContainerScreen.topPos (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "handled-screen-accessor-get-y"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on AbstractContainerScreen.imageWidth (HandledScreenAccessor.graveyard$getBackgroundWidth)
+#   No Horizon function mapped for AbstractContainerScreen.imageWidth (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "handled-screen-accessor-get-background-width"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SoundEngine.play (SoundEngineMixin.graveyard$readPlayedSound)
+#   No Horizon function mapped for SoundEngine.play (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sound-engine-mixin-read-played-sound"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SoundEngine.calculateVolume (SoundEngineMixin.graveyard$readTickedSound)
+#   No Horizon function mapped for SoundEngine.calculateVolume (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sound-engine-mixin-read-ticked-sound"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on SoundEngine.calculateVolume (SoundEngineMixin.graveyard$scaleVolume)
+#   No Horizon function mapped for SoundEngine.calculateVolume (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sound-engine-mixin-scale-volume"
+# kind = "RETURN"
+# target = "TODO"

@@ -1,0 +1,10 @@
+[package]
+name = "horizon-mod-graveyard"
+version = "4.0.0+mc26.3"
+edition = "2024"
+publish = false
+description = "The Graveyard, ported from Fabric to a Horizon native mod by horizon-port."
+
+# The mod's logic and its tests: the same file the bundle adds to the game.
+[lib]
+path = "mixins/graveyard/runtime.rs"
