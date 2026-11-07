@@ -1,0 +1,109 @@
+[mod]
+id = "presencefootsteps"
+version = "1.14.0+26.3"
+priority = 100
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_presencefootsteps"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_presencefootsteps_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "key"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_key"
+helper = "key.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "key", ty = "&str", value = "key" },
+  { name = "pressed", ty = "bool", value = "pressed" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Off: @Inject(HEAD) on Entity.walkingStepSound (IEntity.onPlayStepSounds)
+#   No Horizon function mapped for Entity.walkingStepSound (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "i-entity-on-play-step-sounds"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Accessor on LivingEntity.jumping (ILivingEntity.isJumping)
+#   No Horizon function mapped for LivingEntity.jumping (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "i-living-entity-is-jumping"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on Properties.ofLegacyCopy (MBlockSettings.onCopy)
+#   No Horizon function mapped for Properties.ofLegacyCopy (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "m-block-settings-on-copy"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on ClientPacketListener.handleSoundEvent (MClientPlayNetworkHandler.onHandleSoundEffect)
+#   No Horizon function mapped for ClientPacketListener.handleSoundEvent (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "m-client-play-network-handler-on-handle-sound-effect"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @ModifyReturnValue(RETURN) on SoundEngine.calculateVolume (MSoundSystem.adjustSoundVolume)
+#   No Horizon function mapped for SoundEngine.calculateVolume (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "m-sound-system-adjust-sound-volume"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Accessor on StairBlock.baseState (MStairsBlock.getBaseBlockState)
+#   No Horizon function mapped for StairBlock.baseState (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "m-stairs-block-get-base-block-state"
+# kind = "GET"
+# target = "TODO"
