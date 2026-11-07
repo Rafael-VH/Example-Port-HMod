@@ -1,0 +1,29 @@
+{
+  "id": "mr_dynamic_lightscreepermeyt",
+  "name": "Dynamic Lights",
+  "version": "1-v1.4.6-mc1.17.x-26.3",
+  "jar": "dynamic-lights-creepermeyt-v1.4.6-mc1.17.x-26.3.jar",
+  "verdict": "Convertible",
+  "counts": {
+    "auto": 0,
+    "content": 1,
+    "needs-mapping": 0,
+    "needs-translation": 0,
+    "unsupported": 0
+  },
+  "intermediary": false,
+  "entrypoints": {},
+  "features": [
+    {
+      "category": "content",
+      "in": "jar resources",
+      "detail": "0 asset files, 253 data files",
+      "horizon": "content mod (.hmod)",
+      "status": "content",
+      "note": "Recipes, loot, tags, models, textures, worldgen: horizon-port-pack carries these."
+    }
+  ],
+  "mappedCalls": [],
+  "unmappedCalls": [],
+  "warnings": []
+}
