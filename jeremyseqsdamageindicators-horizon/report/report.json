@@ -1,0 +1,573 @@
+{
+  "id": "jeremyseqsdamageindicators",
+  "name": "JeremySeq's Damage Indicator",
+  "version": "2.3.0",
+  "jar": "jdamageindicators-fabric-26.3-2.3.0.jar",
+  "verdict": "Convertible",
+  "counts": {
+    "auto": 3,
+    "content": 1,
+    "needs-mapping": 0,
+    "needs-translation": 0,
+    "unsupported": 0
+  },
+  "intermediary": false,
+  "entrypoints": {
+    "main": [
+      "dev.jeremyseq.fabric.DamageIndicators"
+    ],
+    "client": [
+      "dev.jeremyseq.fabric.DamageIndicatorsClient"
+    ]
+  },
+  "features": [
+    {
+      "category": "event",
+      "in": "dev/jeremyseq/fabric/FabricClientEvents",
+      "detail": "HudElementRegistry.addLast",
+      "horizon": "hook `hud`",
+      "status": "auto",
+      "note": null
+    },
+    {
+      "category": "event",
+      "in": "dev/jeremyseq/fabric/FabricClientTickHandler",
+      "detail": "ClientTickEvents.END_CLIENT_TICK",
+      "horizon": "hook `tick`",
+      "status": "auto",
+      "note": "The Fabric API layer (jfabricapi.rs) runs START_CLIENT_TICK, then the level ticks (START/END_LEVEL_TICK, while in a world), then END_CLIENT_TICK, from Horizon's tick hook, in the window's Game only."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/jeremyseq/mixin/PlayerAttackMixin.checkCrit",
+      "detail": "@Inject(HEAD) on Player.attack",
+      "horizon": "HEAD on horizon_client::game::Game<'_>::attack",
+      "status": "auto",
+      "note": null
+    },
+    {
+      "category": "content",
+      "in": "jar resources",
+      "detail": "4 asset files, 0 data files",
+      "horizon": "content mod (.hmod)",
+      "status": "content",
+      "note": "Recipes, loot, tags, models, textures, worldgen: horizon-port-pack carries these."
+    }
+  ],
+  "mappedCalls": [
+    {
+      "java": "net/minecraft/client/Minecraft#font",
+      "kind": "field",
+      "uses": 2,
+      "horizon": "`(implicit)`"
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getInstance",
+      "kind": "method",
+      "uses": 5,
+      "horizon": "`self`"
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#player",
+      "kind": "field",
+      "uses": 4,
+      "horizon": "`self.native_player()`"
+    },
+    {
+      "java": "net/minecraft/client/gui/Font#width",
+      "kind": "method",
+      "uses": 2,
+      "horizon": "`self.native_text_width(text)`"
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getX",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "`self.native_player()?.x`"
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getY",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "`self.native_player()?.y`"
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getZ",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "`self.native_player()?.z`"
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#attack",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::game::Game<'_>::attack (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getAttackStrengthScale",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::game::Game<'_>::attack_strength_scale (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#hasEffect",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::mobs::PlayerView::has_effect (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#onGround",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::game::minecarts::Minecart::on_ground (suggested)"
+    }
+  ],
+  "unmappedCalls": [
+    {
+      "java": "com/mojang/blaze3d/platform/NativeImage#close",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/platform/NativeImage#read",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/platform/Window#getGuiScaledHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/platform/Window#getGuiScaledWidth",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#rotate",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#scale",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "com/mojang/blaze3d/vertex/PoseStack#translate",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/Camera#position",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/Camera#rotation",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/CameraType#isMirrored",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/DeltaTracker#getGameTimeDeltaTicks",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#gameRenderer",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getWindow",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#gui",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#hitResult",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#level",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#options",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Options#getCameraType",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/Font$DisplayMode#SEE_THROUGH",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/gui/Gui#hud",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/GuiGraphicsExtractor#blit",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/GuiGraphicsExtractor#fill",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/GuiGraphicsExtractor#pose",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/Hud#isHidden",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/multiplayer/ClientLevel#getEntity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#getForward",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#getId",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#level",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/player/LocalPlayer#position",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/GameRenderer#mainCamera",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/RenderPipelines#GUI_TEXTURED",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/renderer/SubmitNodeCollector#submitText",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#literal",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/network/chat/MutableComponent#getVisualOrderText",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#fromNamespaceAndPath",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#getPath",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/PackType#CLIENT_RESOURCES",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/Resource#open",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/ResourceManager#getResource",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/ResourceManager#listResources",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/damagesource/DamageSource#getEntity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/damagesource/DamageSource#getSourcePosition",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/effect/MobEffects#BLINDNESS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getEyeHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getId",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getBbHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getEyeY",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getHealth",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getId",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getLastDamageSource",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getMaxHealth",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getX",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#getZ",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/LivingEntity#isAlive",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#fallDistance",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getHealth",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getId",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getLastDamageSource",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#isInWater",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#isPassenger",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#level",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#onClimbable",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/ClipContext#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/ClipContext$Block#COLLIDER",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/ClipContext$Fluid#ANY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/ClipContext$Fluid#NONE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#clip",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getEntities",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/BlockHitResult#getType",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/EntityHitResult#getEntity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/HitResult$Type#MISS",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec2#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec2#add",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec2#negated",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec2#x",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec2#y",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#add",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#distanceTo",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#subtract",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#x",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#y",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#z",
+      "kind": "field",
+      "uses": 3
+    }
+  ],
+  "warnings": []
+}
