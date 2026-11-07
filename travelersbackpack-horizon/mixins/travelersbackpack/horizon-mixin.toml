@@ -1,0 +1,285 @@
+[mod]
+id = "travelersbackpack"
+version = "11.4.3"
+priority = 100
+
+# Raw targets are exact functions of one Horizon commit: build on that commit.
+[compatibility]
+horizon_revision = "a46ce6898bd72016e061aaec1afc1375b384deac"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_travelersbackpack"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_travelersbackpack_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "hud"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_hud"
+helper = "hud.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" },
+  { name = "corners", ty = "&mut horizon_client::extras_hud::Corners", value = "&mut *corners" },
+]
+
+[[injection]]
+id = "command"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_command"
+helper = "command.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "command", ty = "&str", value = "command" },
+  { name = "ran", ty = "&mut bool", value = "&mut *ran" },
+]
+
+[[injection]]
+id = "key"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_key"
+helper = "key.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "key", ty = "&str", value = "key" },
+  { name = "pressed", ty = "bool", value = "pressed" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Off: @Inject(TAIL) on AbstractContainerScreen.extractContents (AbstractContainerScreenMixin.renderContents)
+#   No Horizon function mapped for AbstractContainerScreen.extractContents (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "abstract-container-screen-mixin-render-contents"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Hud.extractCrosshair (HudMixin.onExtractCrosshair)
+#   No Horizon function mapped for Hud.extractCrosshair (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "hud-mixin-on-extract-crosshair"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on HumanoidMobRenderer.extractHumanoidRenderState (HumoanoidMobRenderer.render)
+#   No Horizon function mapped for HumanoidMobRenderer.extractHumanoidRenderState (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "humoanoid-mob-renderer-render"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ItemStack.overrideOtherStackedOnMe (ItemStackMixin.afterOverrideOtherStackedOnMe)
+#   No Horizon function mapped for ItemStack.overrideOtherStackedOnMe (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-stack-mixin-after-override-other-stacked-on-me"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Invoker on LevelResource.<init> (LevelResourceMixin.invokeInit)
+#   No Horizon function mapped for LevelResource.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "level-resource-mixin-invoke-init"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on LivingEntity.dropAllDeathLoot (LivingEntityPriorityMixin.drop)
+#   No Horizon function mapped for LivingEntity.dropAllDeathLoot (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "living-entity-priority-mixin-drop"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on LocalPlayer.aiStep (LocalPlayerMixin.afterInputTick)
+#   No Horizon function mapped for LocalPlayer.aiStep (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "local-player-mixin-after-input-tick"
+# kind = "AFTER_CALL"
+# target = "TODO"
+
+[[injection]]
+id = "mob-entity-mixin-initialize"
+kind = "RETURN"
+target = "horizon_client::mobs::creaking_heart::finalize_spawn"
+helper = "mob-entity-mixin-initialize.rs"
+bindings = [
+  { name = "value", ty = "()", value = "$value" },
+]
+
+[[injection]]
+id = "player-mixin-ability-tick"
+kind = "RETURN"
+target = "horizon_client::attack_strength::AttackStrength::tick"
+helper = "player-mixin-ability-tick.rs"
+bindings = [
+  { name = "value", ty = "bool", value = "$value" },
+]
+
+[[injection]]
+id = "player-mixin-attack"
+kind = "HEAD"
+target = "horizon_client::game::Game<'_>::attack"
+helper = "player-mixin-attack.rs"
+bindings = [
+  { name = "this", ty = "&mut Game<'_>", value = "&mut *self" },
+]
+
+# Off: @Inject(RETURN) on Player.getFlyingSpeed (PlayerMixin.getFlyingSpeed)
+#   No Horizon function mapped for Player.getFlyingSpeed (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "player-mixin-get-flying-speed"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Player.readAdditionalSaveData (PlayerMixin.fromTag)
+#   No Horizon function mapped for Player.readAdditionalSaveData (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "player-mixin-from-tag"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ShulkerBoxBlockEntity.canPlaceItemThroughFace (ShulkerBoxBlockEntityMixin.canInsert)
+#   No Horizon function mapped for ShulkerBoxBlockEntity.canPlaceItemThroughFace (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "shulker-box-block-entity-mixin-can-insert"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Enderman.isBeingStaredBy (EndermanEntityMixin.isPlayerStaring)
+#   No Horizon function mapped for Enderman.isBeingStaredBy (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "enderman-entity-mixin-is-player-staring"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on ExperienceOrb.playerTouch (ExperienceOrbEntityMixin.onPlayerCollision)
+#   No Horizon function mapped for ExperienceOrb.playerTouch (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "experience-orb-entity-mixin-on-player-collision"
+# kind = "AFTER_CALL"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Mob.setTarget (GhastEntityMixin.setTarget)
+#   No Horizon function mapped for Mob.setTarget (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "ghast-entity-mixin-set-target"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on LootTable.getRandomItems (LootTableMixin.setTarget)
+#   No Horizon function mapped for LootTable.getRandomItems (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "loot-table-mixin-set-target"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SmallFireball.onHitEntity (SmallFireballEntityMixin.onEntityHit)
+#   No Horizon function mapped for SmallFireball.onHitEntity (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "small-fireball-entity-mixin-on-entity-hit"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Entity.isInWater (EntityMixin.travelersbackpack$isInWater)
+#   No Horizon function mapped for Entity.isInWater (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "entity-mixin-is-in-water"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Entity.isInvulnerable (EntityMixin.travelersbackpack$isInvulnerable)
+#   No Horizon function mapped for Entity.isInvulnerable (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "entity-mixin-is-invulnerable"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Entity.onBelowWorld (EntityMixin.travelersbackpack$onBelowWorld)
+#   No Horizon function mapped for Entity.onBelowWorld (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "entity-mixin-on-below-world"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on ItemEntity.playerTouch (ItemEntityMixin.playerTouch)
+#   No Horizon function mapped for ItemEntity.playerTouch (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-mixin-player-touch"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ItemEntity.setItem (ItemEntityMixin.travelersbackpack$onSetItem)
+#   No Horizon function mapped for ItemEntity.setItem (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-mixin-on-set-item"
+# kind = "RETURN"
+# target = "TODO"
+
+[[injection]]
+id = "item-entity-mixin-on-tick"
+kind = "HEAD"
+target = "horizon_client::entities::ItemEntity::inside_block"
+helper = "item-entity-mixin-on-tick.rs"
+bindings = [
+  { name = "this", ty = "&ItemEntity", value = "&*self" },
+  { name = "world", ty = "&World", value = "world" },
+  { name = "collision", ty = "&BlockCollisionRegistry<'_>", value = "collision" },
+]
+
+# Off: @Inject(HEAD) on ItemEntity.fireImmune (ItemEntityMixin.travelersbackpack$fireImmune)
+#   No Horizon function mapped for ItemEntity.fireImmune (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-mixin-fire-immune"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ItemEntity.ignoreExplosion (ItemEntityMixin.travelersbackpack$ignoreExplosion)
+#   No Horizon function mapped for ItemEntity.ignoreExplosion (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-entity-mixin-ignore-explosion"
+# kind = "HEAD"
+# target = "TODO"
