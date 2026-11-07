@@ -1,0 +1,171 @@
+[mod]
+id = "continuity"
+version = "3.0.1+26.3"
+priority = 100
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_continuity"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_continuity_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "frame"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_frame"
+helper = "frame.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "elapsed", ty = "std::time::Duration", value = "elapsed" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Off: @Inject(RETURN) on AtlasManager.prepareSharedState (AtlasManagerMixin.continuity$onReturnPrepareSharedState)
+#   No Horizon function mapped for AtlasManager.prepareSharedState (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "atlas-manager-mixin-on-return-prepare-shared-state"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on AtlasManager.reload (AtlasManagerMixin.continuity$onHeadReload)
+#   No Horizon function mapped for AtlasManager.reload (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "atlas-manager-mixin-on-head-reload"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on AtlasManager.reload (AtlasManagerMixin.continuity$onReturnReload)
+#   No Horizon function mapped for AtlasManager.reload (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "atlas-manager-mixin-on-return-reload"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on CuboidItemModelWrapper.<init> (CuboidItemModelWrapperMixin.onReturnInit)
+#   No Horizon function mapped for CuboidItemModelWrapper.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "cuboid-item-model-wrapper-mixin-on-return-init"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on CuboidItemModelWrapper.update (CuboidItemModelWrapperMixin.onReturnUpdate)
+#   No Horizon function mapped for CuboidItemModelWrapper.update (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "cuboid-item-model-wrapper-mixin-on-return-update"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @WrapOperation(NEW) on Unbaked.bake (CuboidItemModelWrapperUnbakedMixin.wrapModelCtor)
+#   No Horizon function mapped for Unbaked.bake (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "cuboid-item-model-wrapper-unbaked-mixin-wrap-model-ctor"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on MultiPackResourceManager.<init> (MultiPackResourceManagerMixin.continuity$onTailInit)
+#   No Horizon function mapped for MultiPackResourceManager.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "multi-pack-resource-manager-mixin-on-tail-init"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on MultiPackResourceManager.getResource (MultiPackResourceManagerMixin.continuity$redirectGetResourceId)
+#   No Horizon function mapped for MultiPackResourceManager.getResource (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "multi-pack-resource-manager-mixin-redirect-get-resource-id"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on MultiPackResourceManager.getResourceStack (MultiPackResourceManagerMixin.continuity$redirectGetResourceStackId)
+#   No Horizon function mapped for MultiPackResourceManager.getResourceStack (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "multi-pack-resource-manager-mixin-redirect-get-resource-stack-id"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on SpriteLoader.loadAndStitch (SpriteLoaderMixin.continuity$modifySupplier)
+#   No Horizon function mapped for SpriteLoader.loadAndStitch (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sprite-loader-mixin-modify-supplier"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on SpriteLoader.loadAndStitch (SpriteLoaderMixin.continuity$modifyFunction)
+#   No Horizon function mapped for SpriteLoader.loadAndStitch (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sprite-loader-mixin-modify-function"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on SpriteLoader.stitch (SpriteLoaderMixin.continuity$onReturnStitch)
+#   No Horizon function mapped for SpriteLoader.stitch (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sprite-loader-mixin-on-return-stitch"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyVariable(LOAD) on SpriteSourceList.<init> (SpriteSourceListMixin.continuity$modifySources)
+#   No Horizon function mapped for SpriteSourceList.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sprite-source-list-mixin-modify-sources"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on SpriteSourceList.list (SpriteSourceListMixin.continuity$afterLoadSources)
+#   `horizon_client_render::atlas_sources::list` has a closure in its body: horizon-mixins doesn't rewrite such bodies with BEFORE_CALL. A HEAD hook on it, or a BEFORE_CALL on a function it calls, may work instead.
+# [[injection]]
+# id = "sprite-source-list-mixin-after-load-sources"
+# kind = "BEFORE_CALL"
+# target = "horizon_client_render::atlas_sources::list"
+
+# Off: @Invoker on StateHolder.getNullableValue (StateHolderAccessor.continuity$getNullableValue)
+#   No Horizon function mapped for StateHolder.getNullableValue (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "state-holder-accessor-get-nullable-value"
+# kind = "INVOKE"
+# target = "TODO"
