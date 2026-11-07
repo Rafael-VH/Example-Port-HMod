@@ -6,6 +6,9 @@ Workspace para **portear mods Java (loader Fabric) de Minecraft** a **[Horizon](
 
 ## Estructura del repositorio
 
+- `docs/` — guías de referencia de ports (paso a paso, decisiones, verificación). Ejemplo: [docs/mr_dynamic_light.md](docs/mr_dynamic_light.md) (crear un `.hmod` desde data files).
+- `openspec/` — artefactos SDD (`config.yaml`, `project.md`, `changes/<change>/...`).
+
 Cada mod vive en su propia carpeta `<mod>-horizon/` y normalmente contiene:
 
 - `PORTING.md` — **fuente de verdad** del estado: qué está activo, qué falta, TODOs, licencia y pasos.
@@ -18,7 +21,7 @@ Cada mod vive en su propia carpeta `<mod>-horizon/` y normalmente contiene:
 ## Estado global
 
 | Métrica | Valor |
-|---|---:|
+| --- | ---: |
 | Mods en el workspace | 26 |
 | Con `.hnmod` (puerto completo listo) | 1 (`fabric_api-horizon`) |
 | Parciales / pendientes de completar | 25 (1 con `.hmod` de data generado: `mr_dynamic_light-horizon`, pendiente verificación runtime) |
@@ -27,6 +30,7 @@ Cada mod vive en su propia carpeta `<mod>-horizon/` y normalmente contiene:
 ## Estado por mod
 
 > **Leyenda**
+>
 > - **Listo (`.hnmod`)**: Horizon-Translator marcó el port como completo (`Ready to use? Yes`) y generó `.hnmod`. Aun así, verifica `PORTING.md` antes de usarlo.
 > - **Parcial**: no hay `.hnmod`; falta trabajo (mapeos de mixins/Horizon, lógica Java sin traducir, TODOs en código, y/o *data/assets* que requieren un content mod `.hmod`).
 > - **Iny. on/off**: inyecciones activas / comentadas (según `PORTING.md`).
@@ -34,7 +38,7 @@ Cada mod vive en su propia carpeta `<mod>-horizon/` y normalmente contiene:
 > - **TODOs (`todo/`)**: archivos en la carpeta `todo/` (no cuenta todos los TODOs inline; ver `PORTING.md`).
 
 | Mod | Estado | `.hnmod` | Iny. on/off | Traducido (métodos) | TODOs en `todo/` | Qué falta (resumen) / contexto |
-|---|---|:---:|:---:|:---:|:---:|---|
+| --- | --- | :---: | :---: | :---: | :---: | --- |
 | `ambientsounds-horizon` | Parcial | No | 1/1 | 20/259 | 1 | Completar mixins/lógica pendiente; ver `PORTING.md`. |
 | `betterend-horizon` | Parcial | No | 9/43 | 214/2864 | 43 | Muchos mixins sin mapeo + lógica/data/assets pendientes; ver `PORTING.md`. |
 | `betternether-horizon` | Parcial | No | 3/35 | 186/2580 | 35 | Muchos mixins sin mapeo (LavaFluid, worldgen/blocks, etc.) + inicializador/registry pendientes; ver `PORTING.md`. |
@@ -53,7 +57,7 @@ Cada mod vive en su propia carpeta `<mod>-horizon/` y normalmente contiene:
 | `itemphysiclite-horizon` | Parcial | No | 1/6 | 1/16 | 6 | Física/render de ítems pendiente; ver `PORTING.md`. |
 | `jeremyseqsdamageindicators-horizon` | Parcial | No | 6/0 | 4/48 | 0 | Sin `todo/`, pero hay TODOs inline (HUD/tick/render) y assets que requieren `.hmod`; ver `PORTING.md`. |
 | `lithostitched-horizon` | Parcial | No | 2/116 | 42/1532 | 116 | Muy alto nº de hooks/worldgen/datapack sin mapeo; ver `PORTING.md`. |
-| `mr_dynamic_light-horizon` | Parcial (data `.hmod` generado) | No | 1/0 | 0/0 | 0 | Se generó `mr_dynamic_light.hmod` con los 20 data files del JAR (`diesse` functions/predicates + tags `minecraft:load|tick`, `item/light|light_5`). Falta **verificación runtime en Horizon 26.3** (soporte de mcfunction/predicate/tags en content mods `.hmod`); ver `PORTING.md`. |
+| `mr_dynamic_light-horizon` | Parcial (data `.hmod` generado) | No | 1/0 | 0/0 | 0 | Se generó `mr_dynamic_light.hmod` con los 20 data files del JAR (`diesse` functions/predicates + tags `minecraft:load/tick`, `item/light,light_5`). Falta **verificación runtime en Horizon 26.3** (soporte de mcfunction/predicate/tags en content mods `.hmod`); ver `PORTING.md`. |
 | `mr_dynamic_lightscreepermeyt-horizon` | Parcial | No | 1/0 | 0/0 | 0 | Sin `.hnmod`; faltan data files/contenido (`.hmod`) según `PORTING.md`. |
 | `presencefootsteps-horizon` | Parcial | No | 5/6 | 40/482 | 6 | Sonido/pasos/acústica + hooks pendientes; ver `PORTING.md`. |
 | `sound_physics_remastered-horizon` | Parcial | No | 5/16 | 14/436 | 16 | Audio/oclusión/reverb + mixins pendientes; ver `PORTING.md`. |
@@ -69,9 +73,11 @@ Según Horizon-Translator:
 1. Abrir `PORTING.md` del mod y revisar **“What each part became”**, **TODOs/limits** y **licencia**.
 2. Completar lo pendiente en `mixins/<modid>/` (inyecciones comentadas, `todo/*`, `game_side.rs`, `runtime.rs`, etc.) y/o aportar los **data/assets** mediante un content mod `.hmod` cuando el reporte lo indique.
 3. Cuando el port esté completo, generar/obtener el `.hnmod` o compilar el bundle con el launcher de Horizon:
+
    ```bash
    horizon-launcher native-build "<carpeta-del-mod>" --trust-native-code
    ```
+
 4. Validar en Horizon (launcher + build de native mods). Los native mods se compilan con permisos del usuario: **solo compilar código confiable**.
 
 > Nota: Horizon-Translator genera `.hnmod` automáticamente solo en puertos completos; los parciales (la mayoría) quedan como bundle hasta terminar el trabajo.
@@ -80,6 +86,7 @@ Según Horizon-Translator:
 
 - Horizon apunta a paridad con MC Java 26.3 y usa `horizon-mixins`/native mods; las APIs/mapeos dependen del commit/versión de Horizon usado por el translator (ver `PORTING.md` de cada mod).
 - Antes de retomar un mod, revisa también `report/translation.md` y `report/report.json` dentro de su carpeta para priorizar trabajo real vs. bloqueos de mapeo/API.
+- Referencia de proceso (port de data files → `.hmod`): [docs/mr_dynamic_light.md](docs/mr_dynamic_light.md).
 
 ## Próximos pasos sugeridos
 
