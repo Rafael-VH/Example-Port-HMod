@@ -1,0 +1,417 @@
+[mod]
+id = "betterend"
+version = "26.302.1"
+priority = 100
+
+# Raw targets are exact functions of one Horizon commit: build on that commit.
+[compatibility]
+horizon_revision = "a46ce6898bd72016e061aaec1afc1375b384deac"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_betterend"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_betterend_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "frame"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_frame"
+helper = "frame.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "elapsed", ty = "std::time::Duration", value = "elapsed" },
+]
+
+[[injection]]
+id = "command"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_command"
+helper = "command.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "command", ty = "&str", value = "command" },
+  { name = "ran", ty = "&mut bool", value = "&mut *ran" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Off: @Accessor on AbstractSoundInstance.volume (AbstractSoundInstanceAccessor.setVolume)
+#   No Horizon function mapped for AbstractSoundInstance.volume (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "abstract-sound-instance-accessor-set-volume"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on BiomeColors.getAverageWaterColor (BiomeColorsMixin.be_getWaterColor)
+#   No Horizon function mapped for BiomeColors.getAverageWaterColor (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "biome-colors-mixin-be-get-water-color"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on BlockStateModelLoader.lambda$loadBlockStates$0 (BlockStateModelLoaderMixin.be_switchModelOnLoad)
+#   No Horizon function mapped for BlockStateModelLoader.lambda$loadBlockStates$0 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "block-state-model-loader-mixin-be-switch-model-on-load"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on CapeLayer.submit (CapeLayerMixin.be_checkCustomElytra)
+#   No Horizon function mapped for CapeLayer.submit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "cape-layer-mixin-be-check-custom-elytra"
+# kind = "HEAD"
+# target = "TODO"
+
+[[injection]]
+id = "game-renderer-mixin-be-wobble-for-infusion-hint"
+kind = "RETURN"
+target = "horizon_client_render::camera::bob_hurt"
+helper = "game-renderer-mixin-be-wobble-for-infusion-hint.rs"
+bindings = [
+  { name = "value", ty = "()", value = "$value" },
+]
+
+# Off: @Inject(RETURN) on ItemStack.getTooltipLines (ItemStackMixin.be_getTooltip)
+#   No Horizon function mapped for ItemStack.getTooltipLines (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "item-stack-mixin-be-get-tooltip"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on LevelRenderer.executeSolid (LevelRendererMixin.be_captureSolidRenderPass)
+#   No Horizon function mapped for LevelRenderer.executeSolid (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "level-renderer-mixin-be-capture-solid-render-pass"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on LevelRenderer.executeSolid (LevelRendererMixin.be_releaseSolidRenderPass)
+#   No Horizon function mapped for LevelRenderer.executeSolid (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "level-renderer-mixin-be-release-solid-render-pass"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Minecraft.getSituationalMusic (MinecraftClientMixin.be_getEndMusic)
+#   No Horizon function mapped for Minecraft.getSituationalMusic (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "minecraft-client-mixin-be-get-end-music"
+# kind = "HEAD"
+# target = "TODO"
+
+[[injection]]
+id = "music-tracker-mixin-be-on-tick"
+kind = "HEAD"
+target = "horizon_client::music::MusicManager::tick"
+cancellable = true
+helper = "music-tracker-mixin-be-on-tick.rs"
+bindings = [
+  { name = "this", ty = "&mut MusicManager", value = "&mut *self" },
+  { name = "music", ty = "&Option<&Music>", value = "&music" },
+  { name = "volume", ty = "f32", value = "volume" },
+  { name = "loading", ty = "bool", value = "loading" },
+  { name = "sounds", ty = "&mut impl Sounds", value = "&mut *sounds" },
+]
+
+# Off: @Inject(HEAD) on ChorusFlowerBlock.canSurvive (ChorusFlowerBlockMixin.be_canSurvive)
+#   No Horizon function mapped for ChorusFlowerBlock.canSurvive (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chorus-flower-block-mixin-be-can-survive"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ChorusFlowerBlock.randomTick (ChorusFlowerBlockMixin.be_randomTick)
+#   No Horizon function mapped for ChorusFlowerBlock.randomTick (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chorus-flower-block-mixin-be-random-tick"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ChorusFlowerBlock.placeDeadFlower (ChorusFlowerBlockMixin.be_placeDeadFlower)
+#   No Horizon function mapped for ChorusFlowerBlock.placeDeadFlower (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chorus-flower-block-mixin-be-place-dead-flower"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on ChorusPlantBlock.getStateForPlacement (ChorusPlantBlockMixin.be_getStateForPlacement)
+#   No Horizon function mapped for ChorusPlantBlock.getStateForPlacement (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chorus-plant-block-mixin-be-get-state-for-placement"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on ChorusPlantBlock.getStateWithConnections (ChorusPlantBlockMixin.be_getStateForPlacement)
+#   No Horizon function mapped for ChorusPlantBlock.getStateWithConnections (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chorus-plant-block-mixin-be-get-state-for-placement-2"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ChorusPlantBlock.canSurvive (ChorusPlantBlockMixin.be_canSurvive)
+#   No Horizon function mapped for ChorusPlantBlock.canSurvive (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chorus-plant-block-mixin-be-can-survive"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on ChorusPlantBlock.updateShape (ChorusPlantBlockMixin.be_updateShape)
+#   No Horizon function mapped for ChorusPlantBlock.updateShape (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chorus-plant-block-mixin-be-update-shape"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ChorusPlantFeature.place (ChorusPlantFeatureMixin.be_place)
+#   No Horizon function mapped for ChorusPlantFeature.place (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chorus-plant-feature-mixin-be-place"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on CraftingMenu.stillValid (CraftingMenuMixin.be_stillValid)
+#   No Horizon function mapped for CraftingMenu.stillValid (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "crafting-menu-mixin-be-still-valid"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on EndCityStructure.findGenerationPoint (EndCityFeatureMixin.be_findGenerationPoint)
+#   No Horizon function mapped for EndCityStructure.findGenerationPoint (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "end-city-feature-mixin-be-find-generation-point"
+# kind = "HEAD"
+# target = "TODO"
+
+[[injection]]
+id = "end-dragon-fight-mixin-be-try-respawn-dragon"
+kind = "HEAD"
+target = "horizon_client::game::dragon::Game<'_>::try_respawn"
+cancellable = true
+helper = "end-dragon-fight-mixin-be-try-respawn-dragon.rs"
+bindings = [
+  { name = "this", ty = "&mut Game<'_>", value = "&mut *self" },
+]
+
+# Off: @Inject(HEAD) on EndPlatformFeature.createEndPlatform (EndPlatformFeatureMixin.be_createEndSpawnPlatform)
+#   No Horizon function mapped for EndPlatformFeature.createEndPlatform (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "end-platform-feature-mixin-be-create-end-spawn-platform"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on EndPodiumFeature.place (EndPodiumFeatureMixin.be_place)
+#   No Horizon function mapped for EndPodiumFeature.place (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "end-podium-feature-mixin-be-place"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on EndPodiumFeature.place (EndPodiumFeatureMixin.be_setPosOnGround)
+#   No Horizon function mapped for EndPodiumFeature.place (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "end-podium-feature-mixin-be-set-pos-on-ground"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on EndPortalBlock.getPortalDestination (EndPortalBlockMixin.be_changeSpawnInEnd)
+#   No Horizon function mapped for EndPortalBlock.getPortalDestination (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "end-portal-block-mixin-be-change-spawn-in-end"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on EndSpike.getHeight (EndSpikeMixin.be_getSpikeHeight)
+#   No Horizon function mapped for EndSpike.getHeight (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "end-spike-mixin-be-get-spike-height"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Enderman.isBeingStaredBy (EnderManMixin.be_isLookingAtMe)
+#   No Horizon function mapped for Enderman.isBeingStaredBy (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "ender-man-mixin-be-is-looking-at-me"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ServerLevel.getRespawnData (LevelMixin.be_getRespawnData)
+#   No Horizon function mapped for ServerLevel.getRespawnData (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "level-mixin-be-get-respawn-data"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on LivingEntity.createLivingAttributes (LivingEntityMixin.be_addLivingAttributes)
+#   No Horizon function mapped for LivingEntity.createLivingAttributes (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "living-entity-mixin-be-add-living-attributes"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on LivingEntity.tickEffects (LivingEntityMixin.be_applyEffects)
+#   No Horizon function mapped for LivingEntity.tickEffects (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "living-entity-mixin-be-apply-effects"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on LivingEntity.canBeAffected (LivingEntityMixin.be_canBeAffected)
+#   No Horizon function mapped for LivingEntity.canBeAffected (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "living-entity-mixin-be-can-be-affected"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on LivingEntity.hurtServer (LivingEntityMixin.be_hurt)
+#   No Horizon function mapped for LivingEntity.hurtServer (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "living-entity-mixin-be-hurt"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on LivingEntity.dealDefaultKnockback (LivingEntityMixin.be_increaseKnockback)
+#   No Horizon function mapped for LivingEntity.dealDefaultKnockback (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "living-entity-mixin-be-increase-knockback"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @Accessor on NoiseBasedChunkGenerator.settings (NoiseBasedChunkGeneratorAccessor.be_getSettings)
+#   No Horizon function mapped for NoiseBasedChunkGenerator.settings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-based-chunk-generator-accessor-be-get-settings"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on NoiseBasedChunkGenerator.getBaseHeight (NoiseBasedChunkGeneratorHeightMixin.be_getBaseHeight)
+#   No Horizon function mapped for NoiseBasedChunkGenerator.getBaseHeight (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-based-chunk-generator-height-mixin-be-get-base-height"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on NoiseBasedChunkGenerator.getBaseColumn (NoiseBasedChunkGeneratorHeightMixin.be_getBaseColumn)
+#   No Horizon function mapped for NoiseBasedChunkGenerator.getBaseColumn (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-based-chunk-generator-height-mixin-be-get-base-column"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on NoiseBasedChunkGenerator.doFill (NoiseBasedChunkGeneratorTerrainMixin.be_islandTerrain)
+#   No Horizon function mapped for NoiseBasedChunkGenerator.doFill (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-based-chunk-generator-terrain-mixin-be-island-terrain"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on NoiseBasedChunkGenerator.iterateNoiseColumn (NoiseBasedChunkGeneratorTerrainMixin.be_islandTerrain)
+#   No Horizon function mapped for NoiseBasedChunkGenerator.iterateNoiseColumn (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-based-chunk-generator-terrain-mixin-be-island-terrain-2"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on PlayerAdvancements.award (PlayerAdvancementsMixin.be_award)
+#   `horizon_client::game::advancements::Game<'_>::award` has a closure in its body: horizon-mixins doesn't rewrite such bodies with AFTER_CALL. A HEAD hook on it, or a AFTER_CALL on a function it calls, may work instead.
+# [[injection]]
+# id = "player-advancements-mixin-be-award"
+# kind = "AFTER_CALL"
+# target = "horizon_client::game::advancements::Game<'_>::award"
+
+# Off: @Inject(HEAD) on ServerPlayer.findRespawnPositionAndUseSpawnBlock (PlayerMixin.be_findRespawnAndUseSpawnBlock)
+#   No Horizon function mapped for ServerPlayer.findRespawnPositionAndUseSpawnBlock (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "player-mixin-be-find-respawn-and-use-spawn-block"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Redirect(INVOKE) on ServerLevel.<init>* (ServerLevelMixin.be_hasEnderDragonFight)
+#   No Horizon function mapped for ServerLevel.<init>* (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "server-level-mixin-be-has-ender-dragon-fight"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ServerLevel.<init>* (ServerLevelMixin.be_onServerWorldInit)
+#   No Horizon function mapped for ServerLevel.<init>* (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "server-level-mixin-be-on-server-world-init"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on ServerLevel.tickPrecipitation (ServerLevelMixin.be_modifyTickState)
+#   No Horizon function mapped for ServerLevel.tickPrecipitation (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "server-level-mixin-be-modify-tick-state"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ServerPlayerGameMode.destroyBlock (ServerPlayerGameModeMixin.be_resonanceDestroyBlock)
+#   No Horizon function mapped for ServerPlayerGameMode.destroyBlock (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "server-player-game-mode-mixin-be-resonance-destroy-block"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on EndSpikeFeature.place (SpikeFeatureMixin.be_place)
+#   No Horizon function mapped for EndSpikeFeature.place (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "spike-feature-mixin-be-place"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on EndSpikeFeature.placeSpike (SpikeFeatureMixin.be_placeSpike)
+#   No Horizon function mapped for EndSpikeFeature.placeSpike (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "spike-feature-mixin-be-place-spike"
+# kind = "HEAD"
+# target = "TODO"
+
+[[injection]]
+id = "world-gen-region-mixin-be-alter-block-check"
+kind = "HEAD"
+target = "horizon_world::worldgen::placement::context::ensure_can_write"
+cancellable = true
+helper = "world-gen-region-mixin-be-alter-block-check.rs"
+bindings = [
+  { name = "this", ty = "&mut context", value = "&mut *self" },
+  { name = "_position", ty = "&[i32; 3]", value = "&_position" },
+]
