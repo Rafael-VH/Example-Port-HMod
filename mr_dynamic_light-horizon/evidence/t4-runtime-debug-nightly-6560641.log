@@ -1,0 +1,26 @@
+﻿# T4 runtime evidence — mr_dynamic_light.hmod (BLOCKED)
+# Source: Horizon Debug instance logs (redacted)
+# Instance: Debug (C:\Users\<user>\AppData\Roaming\horizon\instances\debug)
+# Version: Horizon Nightly 2026-11-07 · 6560641 (nightly-2026-11-07-6560641)
+# World: t4_dynamic_light (creative), local integrated server
+# Date: 2026-11-07 (session)
+# Redactions: local username/paths normalized; player name retained as in-game test handle.
+
+[12:41:37] [Render thread/INFO]: Horizon: content mods switched live: {} -> {"mr_dynamic_light"}
+[12:41:42] [pack-reload/INFO]: Horizon: block sprites: 1301 layers at 64 px (largest 64 px, budget 256 MiB)
+[12:41:44] [Render thread/INFO]: Horizon renderer: Microsoft Basic Render Driver (Dx12, Cpu)
+[12:41:46] [Render thread/INFO]: Horizon renderer: rebuilt on the same device (82 shader modules, layouts and pipelines kept)
+[12:41:47] [Render thread/INFO]: Horizon: content mods switched live: resources reloaded in 9202 ms
+...
+[12:45:16] [Server thread/INFO]: Starting integrated minecraft server version 26.3
+[12:45:32] [Server thread/INFO]: <player>[/127.0.0.1:0] logged in with entity id 1 at (5.5, 139.0, 8.5)
+[12:46:02] [Server thread/INFO]: [Not Secure] [<player>] t4 probe
+[12:46:02] [Render thread/INFO]: [CHAT] ID inválido
+[12:46:02] [Render thread/INFO]: [CHAT] function diesse:dl:main<--[AQUÍ]
+[12:46:02] [Render thread/INFO]: [CHAT] [<player>] t4 probe
+[12:46:21] [Render thread/INFO]: [CHAT] ID inválido
+[12:46:21] [Render thread/INFO]: [CHAT] function diesse:dl:reset<--[AQUÍ]
+
+# Chat/API structured error (from game_messages):
+# /function diesse:dl:reset and /function diesse:dl:main => translate "argument.id.invalid" (ID inválido), command.context.here; function ID underlined/unresolved.
+# Interpretation: content mod package loaded live, but mcfunction IDs from data/diesse/function/dl/* are not registered/resolvable by Horizon runtime in this nightly. T4 mcfunction/load|tick execution = BLOCKED/FAIL.

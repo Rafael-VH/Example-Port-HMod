@@ -27,11 +27,11 @@ Native mods run with your rights and aren't sandboxed: build only code you have 
 
 ## Ready to use?
 
-**Parcial (avance realizado):** el bundle nativo no es un `.hnmod` completo, pero se generó un **content mod `.hmod`** con los 20 data files que faltaban (ver abajo). **Pendiente verificación runtime** en Horizon 26.3.
+**Parcial (bloqueado en runtime):** el bundle nativo no es un `.hnmod` completo. Se generó un **content mod `.hmod`** con los 20 data files del JAR. El mod **carga/activa en vivo** en Horizon Nightly `2026-11-07 · 6560641`, pero **no resuelve IDs de `mcfunction`** (`/function diesse:dl:reset|main` → `argument.id.invalid`), por lo que no se confirma ejecución de `minecraft:load/tick` ni paridad funcional. Ver **evidencia T4** abajo.
 
 ### Estado original (translator)
 
-- 20 data files (recipes, loot, tags, worldgen…) need a content mod (.hmod), which this tool doesn't make. **(atendido con `.hmod` candidato, pendiente validar soporte runtime)**
+- 20 data files (recipes, loot, tags, worldgen…) need a content mod (.hmod), which this tool doesn't make. **(atendido con `.hmod`; runtime verificado en nightly 6560641: carga live OK, funciones `mcfunction` no resolubles — bloqueador T4, ver evidencia)**
 
 ## Licence
 
@@ -74,11 +74,12 @@ The decompiled source was only used for the conversion and has been deleted.
 
 - [x] T1: extracción desde JAR y conteo/paths verificados (20 archivos bajo `data/`).
 - [x] T2: `.hmod` generado (sin `cargo-horizon-mod` en este entorno; no se ejecutó `cargo horizon-mod check`).
+- [x] **T4 runtime (ejecutado, BLOQUEADO):** instancia **Debug**, Horizon Nightly `nightly-2026-11-07-6560641` (`6560641`), mundo creativo `t4_dynamic_light`. El content mod cargó en vivo (`content mods switched live: {} -> {"mr_dynamic_light"}`, `resources reloaded in 9202 ms`). Al ejecutar `/function diesse:dl:main` y `/function diesse:dl:reset`, Horizon respondió **`argument.id.invalid` / “ID inválido”** (función no registrada/resoluble). **No se confirma** ejecución de `minecraft:load/tick` ni paridad funcional. Evidencia (redactada): [`evidence/t4-runtime-debug-nightly-6560641.log`](evidence/t4-runtime-debug-nightly-6560641.log). Log fuente original (instancia Debug): `C:\Users\<user>\AppData\Roaming\horizon\instances\debug\logs\latest.log`.
 
-### Pendiente / riesgo (bloqueador potencial)
+### Bloqueador / siguiente paso
 
-- [ ] **T4 runtime:** confirmar en Horizon 26.3 que el content mod `.hmod` carga **`mcfunction`/`predicate`** y ejecuta tags **`minecraft:load/tick`**. Horizon `docs/mods.md` menciona funciones en el contexto de datos/recarga, pero el soporte efectivo para este datapack debe validarse en juego.
-- Si no hay soporte: documentar evidencia y definir alternativa soportada (p. ej. mecanismo de data pack de Horizon, o reimplementación native) — **no asumir paridad**.
+- **Bloqueador:** soporte runtime de `mcfunction` (y validar también `predicate`/tags de función `load|tick`) desde content mods `.hmod` en este nightly de Horizon. El empaquetado de data es correcto a nivel de contenido; falta resolución/ejecución por el runtime.
+- **Alternativas a evaluar (sin asumir paridad):** mecanismo de datapack nativo/soportado por Horizon para `data/*/function|predicate|tags`, o reimplementación native del comportamiento de luz dinámica; revisar estado actual en `E:\Horizon\Repositorios\horizon` (`docs/mods.md`, issues/commits) y/o reportar con evidencia.
 
 ### Uso previsto (a validar)
 

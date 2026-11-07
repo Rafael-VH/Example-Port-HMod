@@ -24,7 +24,7 @@ Cada mod vive en su propia carpeta `<mod>-horizon/` y normalmente contiene:
 | --- | ---: |
 | Mods en el workspace | 26 |
 | Con `.hnmod` (puerto completo listo) | 1 (`fabric_api-horizon`) |
-| Parciales / pendientes de completar | 25 (1 con `.hmod` de data generado: `mr_dynamic_light-horizon`, pendiente verificación runtime) |
+| Parciales / pendientes de completar | 25 (1 con `.hmod` generado pero **runtime bloqueado**: `mr_dynamic_light-horizon`, mcfunction no resoluble en nightly 6560641; ver evidencia) |
 | Fuente de estado por mod | `*/PORTING.md` + `*/report/` |
 
 ## Estado por mod
@@ -57,7 +57,7 @@ Cada mod vive en su propia carpeta `<mod>-horizon/` y normalmente contiene:
 | `itemphysiclite-horizon` | Parcial | No | 1/6 | 1/16 | 6 | Física/render de ítems pendiente; ver `PORTING.md`. |
 | `jeremyseqsdamageindicators-horizon` | Parcial | No | 6/0 | 4/48 | 0 | Sin `todo/`, pero hay TODOs inline (HUD/tick/render) y assets que requieren `.hmod`; ver `PORTING.md`. |
 | `lithostitched-horizon` | Parcial | No | 2/116 | 42/1532 | 116 | Muy alto nº de hooks/worldgen/datapack sin mapeo; ver `PORTING.md`. |
-| `mr_dynamic_light-horizon` | Parcial (data `.hmod` generado) | No | 1/0 | 0/0 | 0 | Se generó `mr_dynamic_light.hmod` con los 20 data files del JAR (`diesse` functions/predicates + tags `minecraft:load/tick`, `item/light,light_5`). Falta **verificación runtime en Horizon 26.3** (soporte de mcfunction/predicate/tags en content mods `.hmod`); ver `PORTING.md`. |
+| `mr_dynamic_light-horizon` | Parcial (runtime bloqueado) | No | 1/0 | 0/0 | 0 | `.hmod` con 20 data files (`diesse` functions/predicates + tags `minecraft:load/tick`, `item/light,light_5`) **carga live** en Nightly 6560641, pero `/function diesse:dl:*` → `argument.id.invalid` (mcfunction no resoluble). T4 **bloqueado**; ver `PORTING.md` y `evidence/t4-runtime-debug-nightly-6560641.log`. |
 | `mr_dynamic_lightscreepermeyt-horizon` | Parcial | No | 1/0 | 0/0 | 0 | Sin `.hnmod`; faltan data files/contenido (`.hmod`) según `PORTING.md`. |
 | `presencefootsteps-horizon` | Parcial | No | 5/6 | 40/482 | 6 | Sonido/pasos/acústica + hooks pendientes; ver `PORTING.md`. |
 | `sound_physics_remastered-horizon` | Parcial | No | 5/16 | 14/436 | 16 | Audio/oclusión/reverb + mixins pendientes; ver `PORTING.md`. |

@@ -1,15 +1,15 @@
 change: mr-dynamic-light
 branch: port/mr-dynamic-light
-status: apply_in_progress
-current_phase: apply
+status: blocked_runtime
+current_phase: verify
 phases:
   explore: done
   proposal: done
   specs: done
   design: done
   tasks: done
-  apply: partial  # T1-T3 done, T4 runtime pending
-  verify: pending
+  apply: done
+  verify: blocked  # T4 runtime executed; mcfunction IDs not resolvable in .hmod (nightly 6560641)
   archive: pending
 preflight:
   execution_mode: interactive
@@ -17,8 +17,9 @@ preflight:
   chained_pr_strategy: auto-forecast
   review_budget_lines: 800
   chain_strategy: pending
-updated_at: "2026-04-10"
+updated_at: "2026-11-07"
 artifacts:
   - mr_dynamic_light-horizon/hmod_src/horizon-mod.toml
   - mr_dynamic_light-horizon/mr_dynamic_light.hmod
-notes: "20 data files extracted/packaged; cargo-horizon-mod check not run (tool unavailable). Runtime verification in Horizon 26.3 pending (mcfunction/predicate/load|tick support)."
+  - mr_dynamic_light-horizon/evidence/t4-runtime-debug-nightly-6560641.log
+notes: "T4 runtime (Debug, nightly-2026-11-07-6560641, world t4_dynamic_light): content mod loads live, but /function diesse:dl:reset|main => argument.id.invalid. mcfunction/predicate/load|tick runtime support in .hmod blocked pending Horizon support or native/datapack alternative. cargo-horizon-mod check still not run."
