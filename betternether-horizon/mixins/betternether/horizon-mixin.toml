@@ -1,0 +1,296 @@
+[mod]
+id = "betternether"
+version = "26.302.1"
+priority = 100
+
+# Raw targets are exact functions of one Horizon commit: build on that commit.
+[compatibility]
+horizon_revision = "a46ce6898bd72016e061aaec1afc1375b384deac"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_betternether"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_betternether_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "command"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_command"
+helper = "command.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "command", ty = "&str", value = "command" },
+  { name = "ran", ty = "&mut bool", value = "&mut *ran" },
+]
+
+# Off: @Inject(HEAD) on LavaFluid.animateTick (LavaFluidMixin.displayTick)
+#   No Horizon function mapped for LavaFluid.animateTick (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "lava-fluid-mixin-display-tick"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on Minecraft.<init>* (MinecraftClientMixin.onInit)
+#   No Horizon function mapped for Minecraft.<init>* (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "minecraft-client-mixin-on-init"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on AvatarRenderer.<init> (PlayerArmorMixin.bn_useThinArmorLayers)
+#   No Horizon function mapped for AvatarRenderer.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "player-armor-mixin-bn-use-thin-armor-layers"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on ArmorStandRenderer.<init>* (StandArmorMixin.onInit)
+#   No Horizon function mapped for ArmorStandRenderer.<init>* (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "stand-armor-mixin-on-init"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Accessor on LayerDefinition.mesh (TexturedModelDataMixin.getMesh)
+#   No Horizon function mapped for LayerDefinition.mesh (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "textured-model-data-mixin-get-mesh"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on AbstractFurnaceBlockEntity.getBurnDuration (AbstractFurnaceBlockEntityMixin.betternether$creditCrystalBurn)
+#   No Horizon function mapped for AbstractFurnaceBlockEntity.getBurnDuration (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "abstract-furnace-block-entity-mixin-credit-crystal-burn"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on AbstractFurnaceBlockEntity.getTotalCookTime (AbstractFurnaceBlockEntityMixin.betternether$getTotalCookTime)
+#   No Horizon function mapped for AbstractFurnaceBlockEntity.getTotalCookTime (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "abstract-furnace-block-entity-mixin-get-total-cook-time"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on BlockAgeProcessor.processBlock (BlockAgeProcessorMixin.bn_processBlock)
+#   No Horizon function mapped for BlockAgeProcessor.processBlock (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "block-age-processor-mixin-bn-process-block"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Accessor on BlockBehaviour.properties (BlockBehaviourAccessor.getProperties)
+#   No Horizon function mapped for BlockBehaviour.properties (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "block-behaviour-accessor-get-properties"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Block.dropResources (BlockBehaviourMixin.bn_getDrops)
+#   No Horizon function mapped for Block.dropResources (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "block-behaviour-mixin-bn-get-drops"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Accessor on Properties.offsetFunction (BlockBehaviourPropertiesAccessor.betternether$getOffsetFunction)
+#   No Horizon function mapped for Properties.offsetFunction (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "block-behaviour-properties-accessor-get-offset-function"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Properties.offsetFunction (BlockBehaviourPropertiesAccessor.betternether$setOffsetFunction)
+#   No Horizon function mapped for Properties.offsetFunction (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "block-behaviour-properties-accessor-set-offset-function"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on CopperGolemAi.initIdleActivity (CopperGolemAiMixin.bn_acceptWoodenChests)
+#   No Horizon function mapped for CopperGolemAi.initIdleActivity (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "copper-golem-ai-mixin-bn-accept-wooden-chests"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on CraftingMenu.stillValid (CraftingScreenHandlerMixin.canUse)
+#   No Horizon function mapped for CraftingMenu.stillValid (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "crafting-screen-handler-mixin-can-use"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on DefaultAttributes.getSupplier (DefaultAttributeRegistryMixin.getAttribute)
+#   No Horizon function mapped for DefaultAttributes.getSupplier (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "default-attribute-registry-mixin-get-attribute"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on DefaultAttributes.hasSupplier (DefaultAttributeRegistryMixin.hasDefinition)
+#   No Horizon function mapped for DefaultAttributes.hasSupplier (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "default-attribute-registry-mixin-has-definition"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on DeltaFeature.isClear (DeltaFeatureMixin.checkBlock)
+#   No Horizon function mapped for DeltaFeature.isClear (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "delta-feature-mixin-check-block"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Bootstrap.run (FlatLevelGeneratorPresetsMixin.bcl_run)
+#   No Horizon function mapped for Bootstrap.run (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "flat-level-generator-presets-mixin-bcl-run"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on LightningRodBlock.onLightningStrike (LightningRodBlockMixin.bn_onLightningStrike)
+#   No Horizon function mapped for LightningRodBlock.onLightningStrike (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "lightning-rod-block-mixin-bn-on-lightning-strike"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on LiquidBlock.shouldSpreadLiquid (LiquidBlockMixin.bn_shouldSpreadLiquid)
+#   The call it hooks (Lnet/minecraft/world/level/Level;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z) isn't mapped to a Rust function.
+# [[injection]]
+# id = "liquid-block-mixin-bn-should-spread-liquid"
+# kind = "BEFORE_CALL"
+# target = "horizon_world::level::fluids::Sim<'_, L>::should_spread_liquid"
+
+# Off: @Inject(HEAD) on MapItem.update (MapMixin.bn_update)
+#   No Horizon function mapped for MapItem.update (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "map-mixin-bn-update"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on MappedRegistry.freeze (MappedRegistryMixin.bn_debug)
+#   No Horizon function mapped for MappedRegistry.freeze (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mapped-registry-mixin-bn-debug"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on MushroomBlock.canSurvive (MushroomMixin.canStay)
+#   No Horizon function mapped for MushroomBlock.canSurvive (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mushroom-mixin-can-stay"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on MushroomBlock.performBonemeal (MushroomMixin.growStructure)
+#   No Horizon function mapped for MushroomBlock.performBonemeal (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mushroom-mixin-grow-structure"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on NetherWartBlock.mayPlaceOn (NetherWartMixin.canStay)
+#   No Horizon function mapped for NetherWartBlock.mayPlaceOn (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "nether-wart-mixin-can-stay"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on NetherWartBlock.randomTick (NetherWartMixin.bn_randomTick)
+#   No Horizon function mapped for NetherWartBlock.randomTick (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "nether-wart-mixin-bn-random-tick"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ServerPlayer.findRespawnPositionAndUseSpawnBlock (PlayerEntityMixin.bn_statueRespawn)
+#   No Horizon function mapped for ServerPlayer.findRespawnPositionAndUseSpawnBlock (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "player-entity-mixin-bn-statue-respawn"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on PortalShape.findAnyShape (PortalShapeMixin.bn_findAnyShape)
+#   No Horizon function mapped for PortalShape.findAnyShape (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "portal-shape-mixin-bn-find-any-shape"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on PortalShape.isValid (PortalShapeMixin.bn_isValid)
+#   No Horizon function mapped for PortalShape.isValid (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "portal-shape-mixin-bn-is-valid"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on PortalShape.isComplete (PortalShapeMixin.bn_isComplete)
+#   No Horizon function mapped for PortalShape.isComplete (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "portal-shape-mixin-bn-is-complete"
+# kind = "HEAD"
+# target = "TODO"
+
+[[injection]]
+id = "portal-shape-mixin-bn-create-portal-blocks"
+kind = "HEAD"
+target = "horizon_world::level::portal::Sim<'_, L>::create_portal_blocks"
+cancellable = true
+helper = "portal-shape-mixin-bn-create-portal-blocks.rs"
+bindings = [
+  { name = "this", ty = "&mut Sim<'_, L>", value = "&mut *self" },
+  { name = "shape", ty = "&PortalShape", value = "shape" },
+]
+
+# Off: @WrapOperation(INVOKE) on Player.createAttributes (PlayerMixin.wover_test_createAttributes)
+#   No Horizon function mapped for Player.createAttributes (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "player-mixin-wover-test-create-attributes"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on Player.getDestroySpeed (PlayerMixin.wover_test_getDestroySpeed)
+#   No Horizon function mapped for Player.getDestroySpeed (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "player-mixin-wover-test-get-destroy-speed"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on PiglinAi.isWearingSafeArmor (PiglinAiMixin.bn_isWearingSafeArmor)
+#   No Horizon function mapped for PiglinAi.isWearingSafeArmor (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "piglin-ai-mixin-bn-is-wearing-safe-armor"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on PiglinBrute.populateDefaultEquipmentSlots (PiglinBruteMixin.bn_populateDefaultEquipmentSlots)
+#   No Horizon function mapped for PiglinBrute.populateDefaultEquipmentSlots (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "piglin-brute-mixin-bn-populate-default-equipment-slots"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Piglin.populateDefaultEquipmentSlots (PiglinMixin.bn_populateDefaultEquipmentSlots)
+#   No Horizon function mapped for Piglin.populateDefaultEquipmentSlots (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "piglin-mixin-bn-populate-default-equipment-slots"
+# kind = "HEAD"
+# target = "TODO"
