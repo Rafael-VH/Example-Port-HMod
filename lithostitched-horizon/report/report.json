@@ -1,0 +1,5286 @@
+{
+  "id": "lithostitched",
+  "name": "Lithostitched",
+  "version": "2.0.6",
+  "jar": "lithostitched-2.0.6-fabric-26.3.jar",
+  "verdict": "Partly convertible",
+  "counts": {
+    "auto": 2,
+    "content": 1,
+    "needs-mapping": 116,
+    "needs-translation": 21,
+    "unsupported": 5
+  },
+  "intermediary": false,
+  "entrypoints": {
+    "main": [
+      "dev.worldgen.lithostitched.impl.platform.fabric.LithostitchedFabric"
+    ],
+    "client": [
+      "dev.worldgen.lithostitched.impl.platform.fabric.LithostitchedFabricClient"
+    ]
+  },
+  "features": [
+    {
+      "category": "access",
+      "in": "lithostitched.ct",
+      "detail": "access widener (opens private game fields)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Native helpers already see the game's fields, once each field is mapped."
+    },
+    {
+      "category": "event",
+      "in": "dev/worldgen/lithostitched/impl/platform/fabric/LithostitchedFabric",
+      "detail": "PayloadTypeRegistry.clientboundPlay",
+      "horizon": null,
+      "status": "unsupported",
+      "note": "Horizon speaks the vanilla protocol; custom packets aren't supported."
+    },
+    {
+      "category": "event",
+      "in": "dev/worldgen/lithostitched/impl/platform/fabric/LithostitchedFabric",
+      "detail": "PayloadTypeRegistry.register",
+      "horizon": null,
+      "status": "unsupported",
+      "note": "Horizon speaks the vanilla protocol; custom packets aren't supported."
+    },
+    {
+      "category": "event",
+      "in": "dev/worldgen/lithostitched/impl/platform/fabric/LithostitchedFabric",
+      "detail": "ServerTickEvents.START_LEVEL_TICK",
+      "horizon": "hook `tick`",
+      "status": "auto",
+      "note": "The tick hook runs in every Game, the server's too: run server logic only when `!self.native_window()`."
+    },
+    {
+      "category": "event",
+      "in": "dev/worldgen/lithostitched/impl/platform/fabric/LithostitchedFabricClient",
+      "detail": "ClientPlayNetworking.registerGlobalReceiver",
+      "horizon": null,
+      "status": "unsupported",
+      "note": "Custom packets aren't supported."
+    },
+    {
+      "category": "event",
+      "in": "dev/worldgen/lithostitched/impl/platform/fabric/LithostitchedFabricClient",
+      "detail": "ClientTickEvents.START_LEVEL_TICK",
+      "horizon": "hook `tick`",
+      "status": "auto",
+      "note": "The Fabric API layer (jfabricapi.rs) runs START_CLIENT_TICK, then the level ticks (START/END_LEVEL_TICK, while in a world), then END_CLIENT_TICK, from Horizon's tick hook, in the window's Game only."
+    },
+    {
+      "category": "class",
+      "in": "dev/worldgen/lithostitched/impl/worldgen/biomeinjector/internal/InjectorBiomeSource",
+      "detail": "extends BiomeSource",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "dev/worldgen/lithostitched/impl/worldgen/blockpredicate/BlockStatePredicate",
+      "detail": "extends StateTestingPredicate",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "dev/worldgen/lithostitched/impl/worldgen/material/condition/SlopeCondition$1",
+      "detail": "extends LazyXZCondition",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "dev/worldgen/lithostitched/impl/worldgen/poolelement/DelegatingPoolElement",
+      "detail": "extends StructurePoolElement",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "dev/worldgen/lithostitched/impl/worldgen/structure/AlternateJigsawStructure",
+      "detail": "extends Structure",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "dev/worldgen/lithostitched/impl/worldgen/structure/DelegatingStructure",
+      "detail": "extends Structure",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "event",
+      "in": "dev/worldgen/lithostitched/impl/worldgen/structure/StructureAttributeHandler",
+      "detail": "ServerPlayNetworking.canSend",
+      "horizon": null,
+      "status": "unsupported",
+      "note": "Custom packets aren't supported."
+    },
+    {
+      "category": "event",
+      "in": "dev/worldgen/lithostitched/impl/worldgen/structure/StructureAttributeHandler",
+      "detail": "ServerPlayNetworking.send",
+      "horizon": null,
+      "status": "unsupported",
+      "note": "Custom packets aren't supported."
+    },
+    {
+      "category": "class",
+      "in": "dev/worldgen/lithostitched/impl/worldgen/tree/foliageplacer/BranchedMegaJungleFoliagePlacer",
+      "detail": "extends MegaJungleFoliagePlacer",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "dev/worldgen/lithostitched/impl/worldgen/tree/foliageplacer/BranchedMegaPineFoliagePlacer",
+      "detail": "extends MegaPineFoliagePlacer",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "dev/worldgen/lithostitched/impl/worldgen/tree/rootplacer/LargeMangroveRootPlacer",
+      "detail": "extends MangroveRootPlacer",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/client/ClientLevelMixin",
+      "detail": "mixin into ClientLevel with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/client/EnvironmentAttributeSystemMixin.applyStructureAttributes",
+      "detail": "@Inject(INVOKE) on EnvironmentAttributeSystem.addDynamicLayers at Lnet/minecraft/world/level/dimension/DimensionType;timelines()Lnet/minecraft/core/HolderSet;",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for EnvironmentAttributeSystem.addDynamicLayers: run `match`. The call it hooks (DimensionType.timelines) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/client/IntegratedServerMixin.initServer",
+      "detail": "@Inject(INVOKE) on IntegratedServer.initServer at Lnet/minecraft/client/server/IntegratedServer;loadLevel()V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for IntegratedServer.initServer: run `match`. The call it hooks (IntegratedServer.loadLevel) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/client/MusicManagerMixin.applyVolumeMultiplier",
+      "detail": "@WrapOperation(INVOKE) on MusicManager.tick at Lnet/minecraft/client/Minecraft;getMusicVolume()F",
+      "horizon": "WRAP_OPERATION on horizon_client::music::MusicManager::tick",
+      "status": "needs-mapping",
+      "note": "The call it hooks (Minecraft.getMusicVolume) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/BeardifierMixin.overrideTerrainAdaptation",
+      "detail": "@WrapOperation(INVOKE) on Beardifier.forStructuresInChunk at Ljava/util/List;add(Ljava/lang/Object;)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for Beardifier.forStructuresInChunk: run `match`. The call it hooks (List.add) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/BiomeAccessor.getClimateSettings",
+      "detail": "@Accessor on Biome.climateSettings",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Biome.climateSettings: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/BiomeAccessor.setClimateSettings",
+      "detail": "@Accessor on Biome.climateSettings",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Biome.climateSettings: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/BiomeAccessor.getSpecialEffects",
+      "detail": "@Accessor on Biome.specialEffects",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Biome.specialEffects: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/BiomeAccessor.setSpecialEffects",
+      "detail": "@Accessor on Biome.specialEffects",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Biome.specialEffects: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/BiomeAccessor.setGenerationSettings",
+      "detail": "@Accessor on Biome.generationSettings",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Biome.generationSettings: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/BiomeAccessor.setAttributes",
+      "detail": "@Accessor on Biome.attributes",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Biome.attributes: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/BiomeGenerationSettingsAccessor.createGenerationSettings",
+      "detail": "@Invoker on BiomeGenerationSettings.<init>",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for BiomeGenerationSettings.<init>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/BiomeGenerationSettingsAccessor.getCarvers",
+      "detail": "@Accessor on BiomeGenerationSettings.carvers",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for BiomeGenerationSettings.carvers: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/BiomeSourceInvoker.getCodec",
+      "detail": "@Invoker on BiomeSource.codec",
+      "horizon": "INVOKE",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] INVOKE of the Rust method. No Horizon function known for BiomeSource.codec: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/BlockPredicateMixin.addBlockPredicateHolderReferences",
+      "detail": "@ModifyExpressionValue(INVOKE) on BlockPredicate.<clinit> at Lcom/mojang/serialization/Codec;dispatch(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for BlockPredicate.<clinit>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/ChunkGeneratorAccessor.getBiomeSource",
+      "detail": "@Accessor on ChunkGenerator.biomeSource",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for ChunkGenerator.biomeSource: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/ChunkGeneratorAccessor.setBiomeSource",
+      "detail": "@Accessor on ChunkGenerator.biomeSource",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for ChunkGenerator.biomeSource: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/ChunkGeneratorAccessor.getGetter",
+      "detail": "@Accessor on ChunkGenerator.generationSettingsGetter",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for ChunkGenerator.generationSettingsGetter: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/ChunkGeneratorAccessor.setFeaturesPerStep",
+      "detail": "@Accessor on ChunkGenerator.featuresPerStep",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for ChunkGenerator.featuresPerStep: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/ChunkMapMixin.wrapNoiseRouter",
+      "detail": "@WrapOperation(INVOKE) on ChunkMap.<init> at Lnet/minecraft/world/level/levelgen/RandomState;create(Lnet/minecraft/core/HolderGetter;JLnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;)Lnet/minecraft/world/level/levelgen/RandomState;",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ChunkMap.<init>: run `match`. The call it hooks (RandomState.create) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/DimensionTypeAccessor.setAttributes",
+      "detail": "@Accessor on DimensionType.attributes",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for DimensionType.attributes: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/EnvironmentAttributeMapBuilderMixin",
+      "detail": "mixin into Builder with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/GameTestServerMixin.initServer",
+      "detail": "@Inject(INVOKE) on GameTestServer.initServer at Lnet/minecraft/gametest/framework/GameTestServer;loadLevel()V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for GameTestServer.initServer: run `match`. The call it hooks (GameTestServer.loadLevel) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/HolderReferenceAccessor.setValue",
+      "detail": "@Accessor on Reference.value",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Reference.value: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/JigsawStructureAccessor.setPoolAliases",
+      "detail": "@Accessor on JigsawStructure.poolAliases",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for JigsawStructure.poolAliases: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/JigsawStructureAccessor.getPoolAliases",
+      "detail": "@Accessor on JigsawStructure.poolAliases",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for JigsawStructure.poolAliases: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/JigsawStructureMixin.init",
+      "detail": "@Redirect(INVOKE) on JigsawStructure.findGenerationPoint at Lnet/minecraft/world/level/levelgen/structure/pools/JigsawPlacement;addPieces(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/core/BlockPos;ZLjava/util/Optional;Lnet/minecraft/world/level/levelgen/structure/structures/JigsawStructure$MaxDistance;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)Ljava/util/Optional;",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "A redirect is a WRAP_OPERATION that doesn't call `original`. No Horizon function known for JigsawStructure.findGenerationPoint: run `match`. The call it hooks (JigsawPlacement.addPieces) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/MappedRegistryAccessor.lithostitched$getRegistrationInfos",
+      "detail": "@Accessor on MappedRegistry.registrationInfos",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for MappedRegistry.registrationInfos: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/MappedRegistryAccessor.getByValue",
+      "detail": "@Accessor on MappedRegistry.byValue",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for MappedRegistry.byValue: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/MaterialRuleContextMixin",
+      "detail": "mixin into MaterialRuleContext with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/MobSpawnSettingsAccessor.getSpawnsByCategory",
+      "detail": "@Accessor on MobSpawnSettings.spawnsByCategory",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for MobSpawnSettings.spawnsByCategory: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/MobSpawnSettingsAccessor.setSpawnsByCategory",
+      "detail": "@Accessor on MobSpawnSettings.spawnsByCategory",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for MobSpawnSettings.spawnsByCategory: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/MultiNoiseBiomeSourceAccessor.getParameters",
+      "detail": "@Accessor on MultiNoiseBiomeSource.parameters",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for MultiNoiseBiomeSource.parameters: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/MultiNoiseBiomeSourceAccessor.setParameters",
+      "detail": "@Accessor on MultiNoiseBiomeSource.parameters",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for MultiNoiseBiomeSource.parameters: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/NoiseBasedChunkGeneratorAccessor.setSettings",
+      "detail": "@Accessor on NoiseBasedChunkGenerator.settings",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for NoiseBasedChunkGenerator.settings: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/NoiseBasedChunkGeneratorMixin.fixSampledBiomeY",
+      "detail": "@WrapOperation(INVOKE) on NoiseBasedChunkGenerator.spawnOriginalMobs at Lnet/minecraft/core/BlockPos;atY(I)Lnet/minecraft/core/BlockPos;",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for NoiseBasedChunkGenerator.spawnOriginalMobs: run `match`. The call it hooks (BlockPos.atY) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/NoiseBasedChunkGeneratorMixin.fillBands",
+      "detail": "@Inject(HEAD) on NoiseBasedChunkGenerator.buildTerrain",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for NoiseBasedChunkGenerator.buildTerrain: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/NoiseGeneratorSettingsAccessor.setNoiseRouter",
+      "detail": "@Accessor on NoiseGeneratorSettings.noiseRouter",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for NoiseGeneratorSettings.noiseRouter: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/NoiseGeneratorSettingsAccessor.setAquifers",
+      "detail": "@Accessor on NoiseGeneratorSettings.aquifers",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for NoiseGeneratorSettings.aquifers: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/PlacedFeatureAccessor.setFeature",
+      "detail": "@Accessor on PlacedFeature.feature",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for PlacedFeature.feature: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/PoolAliasLookupMixin.lithostitched$allowDuplicateEntries",
+      "detail": "@Redirect(INVOKE) on PoolAliasLookup.create at Lcom/google/common/collect/ImmutableMap$Builder;build()Lcom/google/common/collect/ImmutableMap;",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "A redirect is a WRAP_OPERATION that doesn't call `original`. No Horizon function known for PoolAliasLookup.create: run `match`. The call it hooks (Builder.build) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/RandomStateAccessor.getRandom",
+      "detail": "@Accessor on RandomState.random",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for RandomState.random: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/SinglePoolElementAccessor.getTemplate",
+      "detail": "@Accessor on SinglePoolElement.template",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for SinglePoolElement.template: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/SinglePoolElementAccessor.getProcessors",
+      "detail": "@Accessor on SinglePoolElement.processors",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for SinglePoolElement.processors: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/SinglePoolElementAccessor.setProcessors",
+      "detail": "@Accessor on SinglePoolElement.processors",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for SinglePoolElement.processors: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/StructureProcessorListAccessor.setProcessors",
+      "detail": "@Accessor on StructureProcessorList.list",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for StructureProcessorList.list: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/StructureSetAccessor.setStructures",
+      "detail": "@Accessor on StructureSet.structures",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for StructureSet.structures: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/StructureTemplatePoolAccessor.getRawTemplates",
+      "detail": "@Accessor on StructureTemplatePool.rawTemplates",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for StructureTemplatePool.rawTemplates: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/StructureTemplatePoolAccessor.getVanillaTemplates",
+      "detail": "@Accessor on StructureTemplatePool.templates",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for StructureTemplatePool.templates: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/StructureTemplatePoolAccessor.setRawTemplates",
+      "detail": "@Accessor on StructureTemplatePool.rawTemplates",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for StructureTemplatePool.rawTemplates: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/StructureTemplatePoolAccessor.setVanillaTemplates",
+      "detail": "@Accessor on StructureTemplatePool.templates",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for StructureTemplatePool.templates: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/StructureTemplatePoolMixin",
+      "detail": "mixin into StructureTemplatePool with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/TimelineAccessor.getTracks",
+      "detail": "@Accessor on Timeline.tracks",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Timeline.tracks: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/TimelineAccessor.setTracks",
+      "detail": "@Accessor on Timeline.tracks",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for Timeline.tracks: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/TreeFeatureAccessor.lithostitched$setDecorators",
+      "detail": "@Accessor on TreeFeature.decorators",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for TreeFeature.decorators: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/bandlands/MaterialSystemMixin",
+      "detail": "mixin into MaterialSystem with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/compat/terrablender/NoiseBasedChunkGeneratorMixin",
+      "detail": "mixin into NoiseBasedChunkGenerator with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/mnbs/MNBSMixin.wrapCodec",
+      "detail": "@Redirect(INVOKE) on MultiNoiseBiomeSource.<clinit> at Lcom/mojang/serialization/MapCodec;xmap(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "A redirect is a WRAP_OPERATION that doesn't call `original`. No Horizon function known for MultiNoiseBiomeSource.<clinit>: run `match`. The call it hooks (MapCodec.xmap) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/mnbs/MNBSPLMixin.wrapCodec",
+      "detail": "@Redirect(INVOKE) on MultiNoiseBiomeSourceParameterList.<clinit> at Lcom/mojang/serialization/codecs/RecordCodecBuilder;create(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "A redirect is a WRAP_OPERATION that doesn't call `original`. No Horizon function known for MultiNoiseBiomeSourceParameterList.<clinit>: run `match`. The call it hooks (RecordCodecBuilder.create) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/mnbs/ParameterListAccessor.lithostitched$setValues",
+      "detail": "@Accessor on ParameterList.values",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for ParameterList.values: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/mnbs/ParameterListAccessor.lithostitched$index",
+      "detail": "@Accessor on ParameterList.index",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for ParameterList.index: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/neoforge/ServerLifecycleHooksMixin",
+      "detail": "mixin into MinecraftServer with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/predicate/PendingRegistrationMixin.loadFromResource",
+      "detail": "@Inject(INVOKE) on PendingRegistration.loadFromResource at Lcom/mojang/serialization/Decoder;parse(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for PendingRegistration.loadFromResource: run `match`. The call it hooks (Decoder.parse) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/predicate/ResourceManagerRegistryLoadTaskMixin.load",
+      "detail": "@ModifyExpressionValue(NEW) on ResourceManagerRegistryLoadTask.lambda$load$2 at net/minecraft/resources/RegistryLoadTask$PendingRegistration",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for ResourceManagerRegistryLoadTask.lambda$load$2: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/DesertPyramidStructureMixin.applyProcessorToDesertTempleSand",
+      "detail": "@WrapOperation(INVOKE) on DesertPyramidStructure.afterPlace at Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION on horizon_world::worldgen::structure::temple::<DesertPyramidPiece as LegacyPiece>::after_place",
+      "status": "needs-mapping",
+      "note": "The call it hooks (WorldGenLevel.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/DesertPyramidStructureMixin.applyProcessorToDesertTempleSand",
+      "detail": "@WrapOperation(INVOKE) on DesertPyramidStructure.placeSuspiciousSand at Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for DesertPyramidStructure.placeSuspiciousSand: run `match`. The call it hooks (WorldGenLevel.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/EndCityPieceMixin.addShipwreckProcessor",
+      "detail": "@ModifyReturnValue(RETURN) on EndCityPiece.makeSettings",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for EndCityPiece.makeSettings: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/IglooPieceMixin.addShipwreckProcessor",
+      "detail": "@ModifyReturnValue(RETURN) on IglooPiece.makeSettings",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for IglooPiece.makeSettings: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/MineshaftCorridorMixin.applyProcessorToSpawner",
+      "detail": "@WrapOperation(INVOKE) on MineShaftCorridor.postProcess at Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for MineShaftCorridor.postProcess: run `match`. The call it hooks (WorldGenLevel.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/MineshaftCorridorMixin.applyProcessorToColumn",
+      "detail": "@WrapOperation(INVOKE) on MineShaftCorridor.fillPillarDownOrChainUp at Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for MineShaftCorridor.fillPillarDownOrChainUp: run `match`. The call it hooks (WorldGenLevel.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/MineshaftCorridorMixin.applyProcessorToColumn",
+      "detail": "@WrapOperation(INVOKE) on MineShaftCorridor.fillColumnDown at Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for MineShaftCorridor.fillColumnDown: run `match`. The call it hooks (WorldGenLevel.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/MineshaftCorridorMixin.applyProcessorToChains",
+      "detail": "@WrapOperation(INVOKE) on MineShaftCorridor.fillPillarDownOrChainUp at Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor;fillColumnBetween(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos$MutableBlockPos;II)V",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for MineShaftCorridor.fillPillarDownOrChainUp: run `match`. The call it hooks (MineShaftCorridor.fillColumnBetween) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/MineshaftCorridorMixin.useMineshaftExtensionsTag",
+      "detail": "@WrapOperation(INVOKE) on MineShaftCorridor.placeDoubleLowerOrUpperSupport at Lnet/minecraft/world/level/block/state/BlockState;is(Ljava/lang/Object;)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for MineShaftCorridor.placeDoubleLowerOrUpperSupport: run `match`. The call it hooks (BlockState.is) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/MineshaftPieceMixin.applyProcessor",
+      "detail": "@WrapOperation(INVOKE) on MineShaftPiece.setPlanksBlock at Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for MineShaftPiece.setPlanksBlock: run `match`. The call it hooks (WorldGenLevel.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/MonsterThroneMixin.applyProcessorToSpawner",
+      "detail": "@WrapOperation(INVOKE) on MonsterThrone.postProcess at Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for MonsterThrone.postProcess: run `match`. The call it hooks (WorldGenLevel.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/NetherFossilPieceMixin.addShipwreckProcessor",
+      "detail": "@ModifyReturnValue(RETURN) on NetherFossilPiece.makeSettings",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for NetherFossilPiece.makeSettings: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/NetherFossilPieceMixin.applyProcessorToDriedGhast",
+      "detail": "@WrapOperation(INVOKE) on NetherFossilPiece.placeDriedGhast at Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for NetherFossilPiece.placeDriedGhast: run `match`. The call it hooks (WorldGenLevel.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/OceanRuinPieceMixin.addShipwreckProcessor",
+      "detail": "@ModifyReturnValue(RETURN) on OceanRuinPiece.makeSettings",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for OceanRuinPiece.makeSettings: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/PortalRoomMixin.applyProcessorToSpawner",
+      "detail": "@WrapOperation(INVOKE) on PortalRoom.postProcess at Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for PortalRoom.postProcess: run `match`. The call it hooks (WorldGenLevel.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/RuinedPortalPieceMixin.addRuinedPortalProcessor",
+      "detail": "@ModifyReturnValue(RETURN) on RuinedPortalPiece.makeSettings",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for RuinedPortalPiece.makeSettings: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/RuinedPortalPieceMixin.applyProcessorToExtraBits",
+      "detail": "@WrapOperation(INVOKE) on RuinedPortalPiece.maybeAddVines at Lnet/minecraft/world/level/LevelAccessor;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for RuinedPortalPiece.maybeAddVines: run `match`. The call it hooks (LevelAccessor.setBlockAndUpdate) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/RuinedPortalPieceMixin.applyProcessorToExtraBits",
+      "detail": "@WrapOperation(INVOKE) on RuinedPortalPiece.maybeAddLeavesAbove at Lnet/minecraft/world/level/LevelAccessor;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for RuinedPortalPiece.maybeAddLeavesAbove: run `match`. The call it hooks (LevelAccessor.setBlockAndUpdate) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/RuinedPortalPieceMixin.applyProcessorToExtraBits",
+      "detail": "@WrapOperation(INVOKE) on RuinedPortalPiece.placeNetherrackOrMagma at Lnet/minecraft/world/level/LevelAccessor;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for RuinedPortalPiece.placeNetherrackOrMagma: run `match`. The call it hooks (LevelAccessor.setBlockAndUpdate) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/RuinedPortalPieceMixin.applyLeavesExtensionTag",
+      "detail": "@WrapOperation(INVOKE) on RuinedPortalPiece.maybeAddLeavesAbove at Lnet/minecraft/world/level/block/state/BlockState;is(Ljava/lang/Object;)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for RuinedPortalPiece.maybeAddLeavesAbove: run `match`. The call it hooks (BlockState.is) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/ShipwreckPieceMixin.addShipwreckProcessor",
+      "detail": "@ModifyReturnValue(RETURN) on ShipwreckPiece.makeSettings",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ShipwreckPiece.makeSettings: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/StructurePieceMixin.applyProcessor",
+      "detail": "@WrapOperation(INVOKE) on StructurePiece.placeBlock at Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for StructurePiece.placeBlock: run `match`. The call it hooks (WorldGenLevel.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/StructurePieceMixin.applyProcessor",
+      "detail": "@WrapOperation(INVOKE) on StructurePiece.fillColumnDown at Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for StructurePiece.fillColumnDown: run `match`. The call it hooks (WorldGenLevel.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/StructurePieceMixin.applyProcessor",
+      "detail": "@WrapOperation(INVOKE) on StructurePiece.createChest at Lnet/minecraft/world/level/ServerLevelAccessor;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION on horizon_world::worldgen::structure::legacy::PieceFrame::create_chest",
+      "status": "needs-mapping",
+      "note": "The call it hooks (ServerLevelAccessor.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/StructureStartMixin.storeReferencePos",
+      "detail": "@Inject(INVOKE) on StructureStart.placeInChunk at Lnet/minecraft/world/level/levelgen/structure/StructurePiece;postProcess(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/core/BlockPos;)V",
+      "horizon": "BEFORE_CALL on horizon_world::worldgen::structure::start::place_in_chunk",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. The call it hooks (StructurePiece.postProcess) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/WoodlandMansionPieceMixin.addShipwreckProcessor",
+      "detail": "@ModifyReturnValue(RETURN) on WoodlandMansionPiece.makeSettings",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for WoodlandMansionPiece.makeSettings: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/processor/WoodlandMansionStructureMixin.applyProcessorToWoodlandMansionExtension",
+      "detail": "@WrapOperation(INVOKE) on WoodlandMansionStructure.afterPlace at Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+      "horizon": "WRAP_OPERATION on horizon_world::worldgen::structure::mansion::after_place",
+      "status": "needs-mapping",
+      "note": "The call it hooks (WorldGenLevel.setBlock) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/NetherFossilStructureMixin.useTemplateList",
+      "detail": "@WrapOperation(INVOKE) on NetherFossilStructure.findGenerationPoint at Ljava/util/Optional;of(Ljava/lang/Object;)Ljava/util/Optional;",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for NetherFossilStructure.findGenerationPoint: run `match`. The call it hooks (Optional.of) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/RuinedPortalStructureMixin.useStandardTemplateList",
+      "detail": "@Redirect(INVOKE) on RuinedPortalStructure.findGenerationPoint at Lnet/minecraft/resources/Identifier;withDefaultNamespace(Ljava/lang/String;)Lnet/minecraft/resources/Identifier;",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "A redirect is a WRAP_OPERATION that doesn't call `original`. No Horizon function known for RuinedPortalStructure.findGenerationPoint: run `match`. The call it hooks (Identifier.withDefaultNamespace) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/RuinedPortalStructureMixin.useGiantTemplateList",
+      "detail": "@Redirect(INVOKE) on RuinedPortalStructure.findGenerationPoint at Lnet/minecraft/resources/Identifier;withDefaultNamespace(Ljava/lang/String;)Lnet/minecraft/resources/Identifier;",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "A redirect is a WRAP_OPERATION that doesn't call `original`. No Horizon function known for RuinedPortalStructure.findGenerationPoint: run `match`. The call it hooks (Identifier.withDefaultNamespace) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/ShipwreckStructureMixin.useTemplateList",
+      "detail": "@WrapOperation(INVOKE) on ShipwreckStructure.generatePieces at Lnet/minecraft/world/level/levelgen/structure/structures/ShipwreckPieces;addRandomPiece(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;Z)Lnet/minecraft/world/level/levelgen/structure/structures/ShipwreckPieces$ShipwreckPiece;",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ShipwreckStructure.generatePieces: run `match`. The call it hooks (ShipwreckPieces.addRandomPiece) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/FloorRoomCollectionMixin",
+      "detail": "mixin into FloorRoomCollection with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/PiecePlacerMixin.addFirstFloorRegistries",
+      "detail": "@WrapOperation(NEW) on MansionPiecePlacer.createMansion at net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$FirstFloorRoomCollection",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for MansionPiecePlacer.createMansion: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/PiecePlacerMixin.addSecondFloorRegistries",
+      "detail": "@WrapOperation(NEW) on MansionPiecePlacer.createMansion at net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SecondFloorRoomCollection",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for MansionPiecePlacer.createMansion: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/PiecePlacerMixin.addThirdFloorRegistries",
+      "detail": "@WrapOperation(NEW) on MansionPiecePlacer.createMansion at net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$ThirdFloorRoomCollection",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for MansionPiecePlacer.createMansion: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/WoodlandMansionPieceMixin.convertStringToId",
+      "detail": "@Inject(HEAD) on WoodlandMansionPiece.makeLocation",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for WoodlandMansionPiece.makeLocation: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/WoodlandMansionStructureMixin.injectRegistriesForTemplateList",
+      "detail": "@Inject(HEAD) on WoodlandMansionStructure.generatePieces",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for WoodlandMansionStructure.generatePieces: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/FirstFloorMixin.use1x1TemplateList",
+      "detail": "@Inject(HEAD) on FirstFloorRoomCollection.get1x1",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for FirstFloorRoomCollection.get1x1: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/FirstFloorMixin.use1x1SecretTemplateList",
+      "detail": "@Inject(HEAD) on FirstFloorRoomCollection.get1x1Secret",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for FirstFloorRoomCollection.get1x1Secret: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/FirstFloorMixin.use1x2SideTemplateList",
+      "detail": "@Inject(HEAD) on FirstFloorRoomCollection.get1x2SideEntrance",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for FirstFloorRoomCollection.get1x2SideEntrance: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/FirstFloorMixin.use1x2FrontTemplateList",
+      "detail": "@Inject(HEAD) on FirstFloorRoomCollection.get1x2FrontEntrance",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for FirstFloorRoomCollection.get1x2FrontEntrance: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/FirstFloorMixin.use1x2SecretTemplateList",
+      "detail": "@Inject(HEAD) on FirstFloorRoomCollection.get1x2Secret",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for FirstFloorRoomCollection.get1x2Secret: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/FirstFloorMixin.use2x2TemplateList",
+      "detail": "@Inject(HEAD) on FirstFloorRoomCollection.get2x2",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for FirstFloorRoomCollection.get2x2: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/FirstFloorMixin.use2x2SecretTemplateList",
+      "detail": "@Inject(HEAD) on FirstFloorRoomCollection.get2x2Secret",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for FirstFloorRoomCollection.get2x2Secret: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/SecondFloorMixin.use1x1TemplateList",
+      "detail": "@Inject(HEAD) on SecondFloorRoomCollection.get1x1",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for SecondFloorRoomCollection.get1x1: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/SecondFloorMixin.use1x1SecretTemplateList",
+      "detail": "@Inject(HEAD) on SecondFloorRoomCollection.get1x1Secret",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for SecondFloorRoomCollection.get1x1Secret: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/SecondFloorMixin.use1x2SideTemplateList",
+      "detail": "@Inject(HEAD) on SecondFloorRoomCollection.get1x2SideEntrance",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for SecondFloorRoomCollection.get1x2SideEntrance: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/SecondFloorMixin.use1x2FrontTemplateList",
+      "detail": "@Inject(HEAD) on SecondFloorRoomCollection.get1x2FrontEntrance",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for SecondFloorRoomCollection.get1x2FrontEntrance: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/SecondFloorMixin.use1x2SecretTemplateList",
+      "detail": "@Inject(HEAD) on SecondFloorRoomCollection.get1x2Secret",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for SecondFloorRoomCollection.get1x2Secret: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/SecondFloorMixin.use2x2TemplateList",
+      "detail": "@Inject(HEAD) on SecondFloorRoomCollection.get2x2",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for SecondFloorRoomCollection.get2x2: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/SecondFloorMixin.use2x2SecretTemplateList",
+      "detail": "@Inject(HEAD) on SecondFloorRoomCollection.get2x2Secret",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for SecondFloorRoomCollection.get2x2Secret: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/template/mansion/floor/ThirdFloorMixin",
+      "detail": "mixin into ThirdFloorRoomCollection with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/timeline/BiomeMixin.addTimelineField",
+      "detail": "@ModifyExpressionValue(INVOKE) on Biome.<clinit> at Lcom/mojang/serialization/codecs/RecordCodecBuilder;create(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for Biome.<clinit>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/timeline/EnvironmentAttributeProbeMixin.clearTimelineWeights",
+      "detail": "@Inject(HEAD) on EnvironmentAttributeProbe.tick",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for EnvironmentAttributeProbe.tick: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/timeline/EnvironmentAttributeProbeMixin.collectTimelineWeights",
+      "detail": "@Inject(TAIL) on EnvironmentAttributeProbe.lambda$tick$0",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for EnvironmentAttributeProbe.lambda$tick$0: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/timeline/EnvironmentAttributeSystemBuilderMixin",
+      "detail": "mixin into Builder with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/timeline/EnvironmentAttributeSystemMixin.addBiomeTimelines",
+      "detail": "@Inject(TAIL) on EnvironmentAttributeSystem.addDynamicLayers",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon has no TAIL: RETURN runs at every exit, early ones too. No Horizon function known for EnvironmentAttributeSystem.addDynamicLayers: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/timeline/EnvironmentAttributeSystemValueSamplerMixin.removeBiomeTimelineLayers",
+      "detail": "@ModifyExpressionValue(MIXINEXTRAS:EXPRESSION) on ValueSampler.computeValuePositional",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for ValueSampler.computeValuePositional: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/timeline/EnvironmentAttributeSystemValueSamplerMixin.removeBiomeTimelineLayers",
+      "detail": "@ModifyExpressionValue(MIXINEXTRAS:EXPRESSION) on ValueSampler.computeValueNotPositional",
+      "horizon": "MODIFY_EXPRESSION_VALUE",
+      "status": "needs-mapping",
+      "note": "Selects an exact Rust expression: pick it in the target function. No Horizon function known for ValueSampler.computeValueNotPositional: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/timeline/EnvironmentAttributeSystemValueSamplerMixin.applyBiomeTimelineLayers",
+      "detail": "@WrapOperation(INVOKE) on ValueSampler.computeValuePositional at Lnet/minecraft/world/attribute/EnvironmentAttribute;sanitizeValue(Ljava/lang/Object;)Ljava/lang/Object;",
+      "horizon": "WRAP_OPERATION",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ValueSampler.computeValuePositional: run `match`. The call it hooks (EnvironmentAttribute.sanitizeValue) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/timeline/SpatialAttributeInterpolatorMixin",
+      "detail": "mixin into SpatialAttributeInterpolator with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/common/villager/VillagerTypeMixin.useBiomeTags",
+      "detail": "@ModifyReturnValue(RETURN) on VillagerType.byBiome",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for VillagerType.byBiome: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/lithostitched/mixin/server/DedicatedServerMixin.initServer",
+      "detail": "@Inject(INVOKE) on DedicatedServer.initServer at Lnet/minecraft/server/dedicated/DedicatedServer;loadLevel()V",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for DedicatedServer.initServer: run `match`. The call it hooks (DedicatedServer.loadLevel) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "content",
+      "in": "jar resources",
+      "detail": "0 asset files, 80 data files",
+      "horizon": "content mod (.hmod)",
+      "status": "content",
+      "note": "Recipes, loot, tags, models, textures, worldgen: horizon-port-pack carries these."
+    }
+  ],
+  "mappedCalls": [
+    {
+      "java": "net/minecraft/client/Minecraft#getInstance",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "`self`"
+    },
+    {
+      "java": "net/minecraft/client/sounds/MusicManager#tick",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::music::MusicManager::tick (suggested)"
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#BLOCK",
+      "kind": "field",
+      "uses": 1,
+      "horizon": "content"
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#scheduleTick",
+      "kind": "method",
+      "uses": 2,
+      "horizon": "horizon_world::level::Behaviours::schedule_tick (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/ExtraCodecs#nonEmptyList",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_command::component::non_empty_list (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#ceil",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client_render::hud_layout::ceil (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#clamp",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client_render::chat::clamp (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#floor",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "horizon_client_render::gfx::occlusion::floor (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#lerp",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::stepped_interpolation::lerp (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityType#getCategory",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::mobs::Mob::category (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/WorldGenLevel#getSeed",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "horizon_world::worldgen::structure::legacy::seed (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/block/Block#withPropertiesOf",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "horizon_world::worldgen::structure::processor::with_properties_of (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/block/Rotation#getRandom",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "horizon_world::worldgen::structure::Rotation::random (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/ChunkGenerator#getBaseColumn",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::worldgen::generator::Pipeline<R>::base_column (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/ChunkGenerator#getFirstFreeHeight",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "horizon_world::worldgen::structure::start_checks::first_free_height (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure#afterPlace",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::worldgen::structure::legacy::after_place (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructurePiece#createChest",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::worldgen::structure::legacy::PieceFrame::create_chest (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructurePiece#reorient",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::worldgen::structure::legacy::reorient (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructureStart#placeInChunk",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::worldgen::structure::start::place_in_chunk (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/DesertPyramidStructure#afterPlace",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::worldgen::structure::temple::<DesertPyramidPiece as LegacyPiece>::after_place (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionStructure#afterPlace",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::worldgen::structure::mansion::after_place (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/PosRuleTest#test",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::worldgen::structure::processor::PosRule::test (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor#processBlock",
+      "kind": "method",
+      "uses": 5,
+      "horizon": "horizon_world::worldgen::structure::processor::process_block (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate#placeInWorld",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::worldgen::structure::processor::place_in_world (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/rule/blockentity/RuleBlockEntityModifier#apply",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "horizon_world::worldgen::structure::processor::Modifier::apply (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#intersects",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_core::geometry::Aabb::intersects_corners (suggested)"
+    }
+  ],
+  "unmappedCalls": [
+    {
+      "java": "com/google/common/collect/ImmutableMap$Builder#build",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/serialization/Decoder#parse",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/serialization/MapCodec#xmap",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "com/mojang/serialization/codecs/RecordCodecBuilder#create",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "java/util/List#add",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "java/util/Optional#of",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/SharedConstants#getCurrentVersion",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/WorldVersion#packVersion",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/advancements/predicates/StatePropertiesPredicate#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/advancements/predicates/StatePropertiesPredicate#CODEC",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/advancements/predicates/StatePropertiesPredicate#matches",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getCameraEntity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getMusicVolume",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#level",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/gui/components/debug/DebugScreenDisplayer#addLine",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/components/debug/DebugScreenEntries#register",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/multiplayer/ClientLevel#registryAccess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/server/IntegratedServer#initServer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/server/IntegratedServer#loadLevel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#<init>",
+      "kind": "method",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#ZERO",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#above",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#atY",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#below",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getX",
+      "kind": "method",
+      "uses": 20
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getY",
+      "kind": "method",
+      "uses": 22
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getZ",
+      "kind": "method",
+      "uses": 20
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#mutable",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#offset",
+      "kind": "method",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#relative",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#subtract",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#toShortString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#above",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#getX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#getY",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#getZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#immutable",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#move",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#relative",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#set",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#setX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#setY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#setZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/DefaultedRegistry#byNameCodec",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/core/DefaultedRegistry#registryKeySet",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#DOWN",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Direction#EAST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#NORTH",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#SOUTH",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#UP",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Direction#WEST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#getStepY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#getUnitVec3i",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#values",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction$Axis#X",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/Direction$Axis#Z",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/Direction$Axis#getNegative",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction$Plane#HORIZONTAL",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction$Plane#stream",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder#direct",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/core/Holder#is",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/core/Holder#unwrapKey",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/core/Holder#value",
+      "kind": "method",
+      "uses": 55
+    },
+    {
+      "java": "net/minecraft/core/Holder$Direct#value",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder$Reference#isBound",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder$Reference#key",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/core/Holder$Reference#value",
+      "kind": "method",
+      "uses": 10
+    },
+    {
+      "java": "net/minecraft/core/HolderGetter#get",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/HolderLookup$RegistryLookup#get",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/HolderLookup$RegistryLookup#listElements",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/HolderSet#contains",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/core/HolderSet#direct",
+      "kind": "method",
+      "uses": 14
+    },
+    {
+      "java": "net/minecraft/core/HolderSet#get",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/HolderSet#iterator",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/core/HolderSet#size",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/HolderSet#stream",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/core/IdMap#iterator",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/MappedRegistry#byValue",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/MappedRegistry#registrationInfos",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/QuartPos#fromBlock",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/core/QuartPos#toBlock",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/RegistrationInfo#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/RegistrationInfo#lifecycle",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Registry#asHolderIdMap",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Registry#byNameCodec",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/core/Registry#entrySet",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Registry#get",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Registry#getOptional",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/core/Registry#getOrThrow",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Registry#getTagOrEmpty",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Registry#listElements",
+      "kind": "method",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/core/Registry#registrationInfo",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Registry#stream",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/RegistryAccess#createSerializationContext",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/RegistryAccess#lookupOrThrow",
+      "kind": "method",
+      "uses": 15
+    },
+    {
+      "java": "net/minecraft/core/SectionPos#sectionRelative",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Vec3i#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Vec3i#ZERO",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Vec3i#get",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Vec3i#getX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Vec3i#getY",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Vec3i#getZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Vec3i#multiply",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Vec3i#offsetCodec",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#BIOME_SOURCE",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#BLOCK_PREDICATE_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#BLOCK_STATE_PROVIDER_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#DENSITY_FUNCTION_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#ENTITY_TYPE",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#ENVIRONMENT_ATTRIBUTE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#FEATURE_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#FOLIAGE_PLACER_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#MATERIAL_CONDITION_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#MATERIAL_RULE_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#PLACEMENT_MODIFIER_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#POOL_ALIAS_BINDING_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#REGISTRY",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#ROOT_PLACER_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#RULE_BLOCK_ENTITY_MODIFIER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#STRUCTURE_POOL_ELEMENT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#STRUCTURE_PROCESSOR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#STRUCTURE_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#VILLAGER_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#BIOME",
+      "kind": "field",
+      "uses": 15
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#BIOME_SOURCE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#BLOCK",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#DENSITY_FUNCTION",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#DIMENSION",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#DIMENSION_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#ENTITY_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#ENVIRONMENT_ATTRIBUTE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#FEATURE",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#LEVEL_STEM",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#LOOT_TABLE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#MATERIAL_RULE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#NOISE",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#PLACED_FEATURE",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#PROCESSOR_LIST",
+      "kind": "field",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#STRUCTURE",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#STRUCTURE_SET",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#TEMPLATE_POOL",
+      "kind": "field",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#TIMELINE",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#VILLAGER_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#levelStemToLevel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#levelToLevelStem",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/registries/codec/RegistryCodecs#holder",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/core/registries/codec/RegistryCodecs#holderSet",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/data/worldgen/Pools#EMPTY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/data/worldgen/placement/NetherPlacements#LARGE_BASALT_COLUMNS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/gametest/framework/GameTestServer#initServer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/gametest/framework/GameTestServer#loadLevel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/CompoundTag#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/NbtOps#INSTANCE",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/network/codec/ByteBufCodecs#TAG",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/codec/StreamCodec#composite",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#CODEC",
+      "kind": "field",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#equals",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#fromNamespaceAndPath",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#getNamespace",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#getPath",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#hashCode",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#parse",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#toString",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#withDefaultNamespace",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#withPrefix",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/resources/RegistryLoadTask$PendingRegistration#loadFromResource",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/RegistryLoadTask$PendingRegistration#value",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/RegistryOps#retrieveGetter",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/ResourceKey#codec",
+      "kind": "method",
+      "uses": 9
+    },
+    {
+      "java": "net/minecraft/resources/ResourceKey#create",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/resources/ResourceKey#createRegistryKey",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/ResourceKey#identifier",
+      "kind": "method",
+      "uses": 12
+    },
+    {
+      "java": "net/minecraft/resources/ResourceKey#registryKey",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/ResourceManagerRegistryLoadTask#lambda$load$2",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#getLevel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#getStructureTemplateManager",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#getWorldGenSettings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/MinecraftServer#registryAccess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/dedicated/DedicatedServer#initServer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/dedicated/DedicatedServer#loadLevel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ChunkMap#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerChunkCache#getGenerator",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerChunkCache#getLevel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerChunkCache#randomState",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#dimension",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getChunk",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getChunkSource",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getServer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#isLoaded",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#players",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#registryAccess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#structureManager",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/level/ServerPlayer#blockPosition",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/WorldGenRegion#getChunk",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/WorldGenRegion#registryAccess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/network/ServerGamePacketListenerImpl#getPlayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/PackType#SERVER_DATA",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/metadata/pack/PackFormat#major",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BiomeTags#IS_OVERWORLD",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#BASE_STONE_OVERWORLD",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#FEATURES_CANNOT_REPLACE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/TagKey#create",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/util/ExtraCodecs#NON_NEGATIVE_INT",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/util/ExtraCodecs#PATTERN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/ExtraCodecs#POSITIVE_INT",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/util/ExtraCodecs#compactListCodec",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/util/ExtraCodecs#intRange",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/util/InclusiveRange#<init>",
+      "kind": "method",
+      "uses": 12
+    },
+    {
+      "java": "net/minecraft/util/InclusiveRange#INT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/InclusiveRange#codec",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/InclusiveRange#isValueInRange",
+      "kind": "method",
+      "uses": 15
+    },
+    {
+      "java": "net/minecraft/util/InclusiveRange#maxInclusive",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/util/InclusiveRange#minInclusive",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/util/Interval#INFINITE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Interval#of",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/util/Interval#ofExact",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Mth#cos",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/util/Mth#length",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/util/Mth#randomBetween",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/util/Mth#randomBetweenInclusive",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Mth#sin",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/util/Mth#sqrt",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#create",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#forkPositional",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#nextDouble",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#nextFloat",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#nextInt",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#nextLong",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/SequencedPriorityIterator#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/SequencedPriorityIterator#add",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/SequencedPriorityIterator#hasNext",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/SequencedPriorityIterator#next",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/StringRepresentable#fromEnum",
+      "kind": "method",
+      "uses": 11
+    },
+    {
+      "java": "net/minecraft/util/StringRepresentable#fromValues",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/util/Util#memoize",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/random/Weighted#value",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/random/Weighted#weight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/random/WeightedList#builder",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/util/random/WeightedList#codec",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/util/random/WeightedList#getRandom",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/util/random/WeightedList#getRandomOrThrow",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/random/WeightedList#nonEmptyCodec",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/util/random/WeightedList#of",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/util/random/WeightedList#unwrap",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/random/WeightedList$Builder#add",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/util/random/WeightedList$Builder#build",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/util/valueproviders/ConstantInt#of",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/util/valueproviders/FloatProvider#sample",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/util/valueproviders/FloatProviders#codec",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/valueproviders/IntProvider#maxInclusive",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/valueproviders/IntProvider#minInclusive",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/valueproviders/IntProvider#sample",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/util/valueproviders/IntProviders#POSITIVE_CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/valueproviders/IntProviders#codec",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/util/valueproviders/UniformInt#of",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/attribute/AttributeType#spatialLerp",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/AttributeType#stateChangeLerp",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/AttributeTypes#BOOLEAN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttribute#builder",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttribute#isPositional",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttribute#isSpatiallyInterpolated",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttribute#sanitizeValue",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttribute#type",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttribute$Builder#build",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttribute$Builder#defaultValue",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttribute$Builder#syncable",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeLayer$TimeBased#applyTimeBased",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap#CODEC_ONLY_POSITIONAL",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap#EMPTY",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap#NETWORK_CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap#builder",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap#contains",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap#get",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap#keySet",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap$Builder#build",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap$Builder#modify",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap$Builder#putAll",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap$Builder#set",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap$Entry#applyModifier",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap$Entry#argument",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeMap$Entry#modifier",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeProbe#lambda$tick$0",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeProbe#tick",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeSystem#addDynamicLayers",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeSystem$Builder#addTimeBasedLayer",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeSystem$ValueSampler#computeValueNotPositional",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeSystem$ValueSampler#computeValuePositional",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributes#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributes#FOG_END_DISTANCE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributes#NATURAL_MOB_SPAWNS",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/attribute/LerpFunction#apply",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/attribute/modifier/MobSpawnSettingsModifier#overlay",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#blockPosition",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityType#builtInRegistryHolder",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityType#getKey",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityTypes#PIG",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityTypes#SKELETON",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityTypes#SPIDER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/EntityTypes#ZOMBIE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/MobCategory#MISC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/npc/villager/VillagerType#byBiome",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/ChunkPos#getMinBlockX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/ChunkPos#getMinBlockZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/ChunkPos#x",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/ChunkPos#z",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#clockManager",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getBiomeManager",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getUncachedNoiseBiome",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#registryAccess",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/LevelAccessor#getRandom",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/LevelAccessor#isStateAtPosition",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/LevelAccessor#setBlockAndUpdate",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/LevelHeightAccessor#getMaxY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/LevelHeightAccessor#getMinY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/LevelHeightAccessor#isOutsideBuildHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/LevelReader#registryAccess",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/NoiseColumn#getBlock",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/ServerLevelAccessor#setBlock",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/StructureManager#fillStartsForStructure",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/StructureManager#getStructureWithPieceAt",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/WorldGenLevel#ensureCanWrite",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/WorldGenLevel#getBlockEntity",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/WorldGenLevel#getBlockState",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/WorldGenLevel#getChunkSource",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/WorldGenLevel#getHeight",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/WorldGenLevel#getLevel",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/WorldGenLevel#isEmptyBlock",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/WorldGenLevel#isOutsideBuildHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/WorldGenLevel#registryAccess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/WorldGenLevel#setBlock",
+      "kind": "method",
+      "uses": 16
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#<clinit>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#CODEC",
+      "kind": "field",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#LIST_CODEC",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#attributes",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#climateSettings",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#generationSettings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#getAttributes",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#getGenerationSettings",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#specialEffects",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome$ClimateSettings#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome$ClimateSettings#downfall",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome$ClimateSettings#hasPrecipitation",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome$ClimateSettings#temperature",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome$ClimateSettings#temperatureModifier",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome$TemperatureModifier#CODEC",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeGenerationSettings#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeGenerationSettings#carvers",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeGenerationSettings#features",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeGenerationSettings#hasFeature",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeManager#getNoiseBiomeAtPosition",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeResolver#getNoiseBiome",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSource#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSource#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSource#addDebugInfo",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSource#codec",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSource#createResolver",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSource#possibleBiomes",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects#dryFoliageColorOverride",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects#foliageColorOverride",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects#grassColorModifier",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects#grassColorOverride",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects#waterColor",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects$Builder#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects$Builder#build",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects$Builder#dryFoliageColorOverride",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects$Builder#foliageColorOverride",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects$Builder#grassColorModifier",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects$Builder#grassColorOverride",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects$Builder#waterColor",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/BiomeSpecialEffects$GrassColorModifier#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biomes#PALE_GARDEN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Climate$ParameterList#codec",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Climate$ParameterList#findValue",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Climate$ParameterList#index",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Climate$ParameterList#values",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Climate$RTree#create",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Climate$Sampler#sample",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Climate$TargetPoint#continentalness",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Climate$TargetPoint#depth",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Climate$TargetPoint#erosion",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Climate$TargetPoint#humidity",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Climate$TargetPoint#temperature",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Climate$TargetPoint#weirdness",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/FeatureSorter#buildFeaturesPerStep",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MobSpawnSettings#allSpawnCosts",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MobSpawnSettings#definedCategories",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MobSpawnSettings#getMobsInCategory",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MobSpawnSettings#spawnsByCategory",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MobSpawnSettings$Builder#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MobSpawnSettings$Builder#addAllCosts",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MobSpawnSettings$Builder#addAllSpawns",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MobSpawnSettings$Builder#addSpawn",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MobSpawnSettings$Builder#build",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MobSpawnSettings$MobSpawnCost#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MobSpawnSettings$SpawnerData#count",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MobSpawnSettings$SpawnerData#type",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MultiNoiseBiomeSource#<clinit>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MultiNoiseBiomeSource#parameters",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MultiNoiseBiomeSourceParameterList#<clinit>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MultiNoiseBiomeSourceParameterList#parameters",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/biome/MultiNoiseBiomeSourceParameterLists#OVERWORLD",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Block#builtInRegistryHolder",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/block/Block#defaultBlockState",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#AIR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#CAVE_AIR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#CHEST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#COBBLESTONE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#LAVA",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#MOSSY_COBBLESTONE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#SPAWNER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#VINE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#WATER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/JigsawBlock#canAttach",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/JigsawBlock#getFrontFacing",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Rotation#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Rotation#NONE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Rotation#getShuffled",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Rotation#rotate",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/VineBlock#EAST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/VineBlock#NORTH",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/VineBlock#SOUTH",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/VineBlock#UP",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/VineBlock#WEST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/VineBlock#getPropertyForFace",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/VineBlock#isAcceptableNeighbour",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/BlockEntityTypes#CHEST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/ChestBlockEntity#setLootTable",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/entity/SpawnerBlockEntity#setEntityId",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#CODEC",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#getBlock",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#getFluidState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#getValue",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#is",
+      "kind": "method",
+      "uses": 13
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#isAir",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#isSolid",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#setValue",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#trySetValue",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/properties/BlockStateProperties#AXIS",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/BulkSectionAccess#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/BulkSectionAccess#close",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/BulkSectionAccess#getSection",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/ChunkAccess#getAllReferences",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/ChunkAccess#getHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/ChunkGenerator#biomeSource",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/ChunkGenerator#featuresPerStep",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/ChunkGenerator#generationSettingsGetter",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/ChunkGenerator#getBiomeSource",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/ChunkGenerator#getMinY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/LevelChunkSection#setBlockState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/status/ChunkStatus#STRUCTURE_REFERENCES",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/dimension/DimensionType#Y_SIZE",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/dimension/DimensionType#attributes",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/dimension/DimensionType#timelines",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/dimension/LevelStem#generator",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Aquifer$Config#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Aquifer$Config#barrierNoise",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Aquifer$Config#exclusion",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Aquifer$Config#fluidLevelFloodednessNoise",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Aquifer$Config#fluidLevelSpreadNoise",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Aquifer$Config#lavaNoise",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Aquifer$Config#surfaceLevel",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Beardifier#forStructuresInChunk",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Beardifier$Rigid#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Column#scan",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Column$Range#ceiling",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Column$Range#floor",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Column$Range#height",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/GenerationStep$Decoration#CODEC",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/GenerationStep$Decoration#RAW_GENERATION",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/GenerationStep$Decoration#ordinal",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Heightmap$Types#CODEC",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Heightmap$Types#MOTION_BLOCKING_NO_LEAVES",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Heightmap$Types#OCEAN_FLOOR_WG",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Heightmap$Types#WORLD_SURFACE_WG",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/LegacyRandomSource#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator#buildTerrain",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator#generatorSettings",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator#settings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator#spawnOriginalMobs",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseGeneratorSettings#aquifers",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseGeneratorSettings#noiseRouter",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseGeneratorSettings#useLegacyRandomSource",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseRouter#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseRouter#chunkSurfaceLevel",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseRouter#continents",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseRouter#depth",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseRouter#erosion",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseRouter#finalDensity",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseRouter#ridges",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseRouter#temperature",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseRouter#vegetation",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Noises#TEMPERATURE_NETHER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Noises#VEGETATION_NETHER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/PositionalRandomFactory#at",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/PositionalRandomFactory#fromHashOf",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/RandomState#create",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/RandomState#createClimateSampler",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/RandomState#getOrCreateNoise",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/RandomState#random",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/RandomState#samplersWithContext",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/RandomState#surfaceSystem",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/VerticalAnchor#BOTTOM",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/WorldGenSettings#options",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/WorldGenerationContext#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/WorldOptions#seed",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/WorldgenRandom#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/WorldgenRandom#nextFloat",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/WorldgenRandom#nextIntBetweenInclusive",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/WorldgenRandom#setLargeFeatureWithSalt",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/WorldgenRandom#setSeed",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/blockpredicates/BlockPredicate#<clinit>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/blockpredicates/BlockPredicate#CODEC",
+      "kind": "field",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/blockpredicates/BlockPredicate#test",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/blockpredicates/StateTestingPredicate#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityBuffer#fill",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityBuffer#get",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityBuffer#set",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityBuffer#size",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction#CODEC",
+      "kind": "field",
+      "uses": 12
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction#compileSampler",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction#domainAxes",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction#equals",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction#range",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction#rewriteChildren",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunctions#zero",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunctions$HolderHolder#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunctions$HolderHolder#function",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensitySampler#sampleValue",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensitySampler#sampleVolume",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensitySamplerSet#sampleValue",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityVolume#blockX",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityVolume#blockY",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityVolume#blockZ",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityVolume#sizeX",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityVolume#sizeY",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityVolume#sizeZ",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DfRewriteRule#rewrite",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/SamplerContext#acquireBuffer",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/SamplerContext#builder",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/SamplerContext$Builder#build",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/SamplerContext$Builder#enableCaches",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/ScopedDensityBuffer#close",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/ScopedDensityBuffer#get",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/TreeFeature#decorators",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/TreeFeature#trunkProvider",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment#doubleTrunk",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment#pos",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment#radiusOffsetXZ",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter#set",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/foliageplacers/MegaJungleFoliagePlacer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/foliageplacers/MegaPineFoliagePlacer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/rootplacers/MangroveRootPlacement#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/rootplacers/MangroveRootPlacer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/rootplacers/RootPlacerType#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider#CODEC",
+      "kind": "field",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider#getState",
+      "kind": "method",
+      "uses": 7
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider#holderOf",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider#of",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/heightproviders/ConstantHeight#of",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/heightproviders/HeightProvider#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/heightproviders/HeightProvider#sample",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/material/MaterialRuleContext#getDensitiesInChunk",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/material/MaterialRuleContext#surfaceGradientX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/material/MaterialRuleContext#surfaceGradientZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/material/MaterialRuleContext$LazyXZCondition#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/material/MaterialRules#sequence",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/material/MaterialRules$DensityGetter#get",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/material/condition/ConditionEvaluator#test",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/material/condition/MaterialCondition#CODEC",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/material/condition/MaterialCondition#compile",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/material/rule/MaterialRule#HOLDER_CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/material/rule/SequenceRule#sequence",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/placement/PlacedFeature#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/placement/PlacedFeature#CODEC",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/placement/PlacedFeature#LIST_CODEC",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/placement/PlacedFeature#feature",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/placement/PlacedFeature#place",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/placement/PlacementContext#generator",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/placement/PlacementContext#getLevel",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#encapsulate",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#getCenter",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#getYSpan",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#intersectingChunks",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#intersects",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#isInside",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#maxX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#maxY",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#maxZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#minX",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#minY",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#minZ",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#moved",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece#addJunction",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece#getBoundingBox",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece#getElement",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece#getGroundLevelDelta",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece#getPosition",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece#getRotation",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece#move",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure#CODEC",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure#biomes",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure#findValidGenerationPoint",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure#spawnOverrides",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure#step",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure#terrainAdaptation",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationContext#biomeResolver",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationContext#chunkGenerator",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationContext#chunkPos",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationContext#couldStructureExistInColumn",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationContext#heightAccessor",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationContext#random",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationContext#randomState",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationContext#registryAccess",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationContext#seed",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationContext#structureTemplateManager",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationContext#validBiome",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationStub#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$GenerationStub#position",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/Structure$StructureSettings#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructurePiece#<init>",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructurePiece#fillColumnDown",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructurePiece#getBoundingBox",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructurePiece#placeBlock",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructurePiece#postProcess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructureSet#structures",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructureSet$StructureSelectionEntry#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructureSet$StructureSelectionEntry#structure",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructureStart#getPieces",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructureStart#getStructure",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/TerrainAdjustment#BEARD_BOX",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/TerrainAdjustment#BEARD_THIN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/TerrainAdjustment#BURY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/TerrainAdjustment#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/TerrainAdjustment#ENCAPSULATE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/TerrainAdjustment#NONE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/TerrainAdjustment#ordinal",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/TerrainAdjustment#values",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder#addPiece",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/DimensionPadding#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/DimensionPadding#ZERO",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/DimensionPadding#bottom",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/DimensionPadding#top",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/EmptyPoolElement#INSTANCE",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/JigsawJunction#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement#addPieces",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/ListPoolElement#getElements",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/SinglePoolElement#processors",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/SinglePoolElement#template",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement#CODEC",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement#getBoundingBox",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement#getGroundLevelDelta",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement#getProjection",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement#getShuffledJigsawBlocks",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement#getSize",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement#place",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement#setProjection",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool#getFallback",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool#getMaxSize",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool#getRandomTemplate",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool#getShuffledTemplates",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool#rawTemplates",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool#size",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool#templates",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection#RIGID",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasBinding#CODEC",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup#create",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup#lookup",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/DesertPyramidStructure#placeSuspiciousSand",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece#makeSettings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/IglooPieces$IglooPiece#makeSettings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/JigsawStructure#findGenerationPoint",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/JigsawStructure#poolAliases",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/JigsawStructure$MaxDistance#horizontal",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/JigsawStructure$MaxDistance#vertical",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor#fillColumnBetween",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor#fillColumnDown",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor#fillPillarDownOrChainUp",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor#placeDoubleLowerOrUpperSupport",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor#postProcess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece#setPlanksBlock",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces$MonsterThrone#postProcess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/NetherFossilPieces$NetherFossilPiece#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/NetherFossilPieces$NetherFossilPiece#makeSettings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/NetherFossilPieces$NetherFossilPiece#placeDriedGhast",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/NetherFossilStructure#findGenerationPoint",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece#makeSettings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type#getName",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece#makeSettings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece#maybeAddLeavesAbove",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece#maybeAddVines",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece#placeNetherrackOrMagma",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure#findGenerationPoint",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/ShipwreckPieces#addRandomPiece",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/ShipwreckPieces$ShipwreckPiece#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/ShipwreckPieces$ShipwreckPiece#makeSettings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/ShipwreckStructure#generatePieces",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/StrongholdPieces$PortalRoom#postProcess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$FirstFloorRoomCollection#get1x1",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$FirstFloorRoomCollection#get1x1Secret",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$FirstFloorRoomCollection#get1x2FrontEntrance",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$FirstFloorRoomCollection#get1x2Secret",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$FirstFloorRoomCollection#get1x2SideEntrance",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$FirstFloorRoomCollection#get2x2",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$FirstFloorRoomCollection#get2x2Secret",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionPiecePlacer#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionPiecePlacer#createMansion",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SecondFloorRoomCollection#get1x1",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SecondFloorRoomCollection#get1x1Secret",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SecondFloorRoomCollection#get1x2FrontEntrance",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SecondFloorRoomCollection#get1x2Secret",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SecondFloorRoomCollection#get1x2SideEntrance",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SecondFloorRoomCollection#get2x2",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SecondFloorRoomCollection#get2x2Secret",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$WoodlandMansionPiece#makeLocation",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$WoodlandMansionPiece#makeSettings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionStructure#generatePieces",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings#APPLY_WATERLOGGING",
+      "kind": "field",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings#CODEC",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/PosRuleTest#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings#addProcessor",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings#setLiquidSettings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings#setRandom",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings#setRotation",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorList#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorList#list",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType#DIRECT_CODEC",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType#LIST_CODEC",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType#LIST_OBJECT_CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType#SINGLE_CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate#getSize",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$JigsawBlockInfo#name",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$JigsawBlockInfo#placementPriority",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$JigsawBlockInfo#pool",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$JigsawBlockInfo#pos",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$JigsawBlockInfo#state",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo#<init>",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo#nbt",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo#pos",
+      "kind": "method",
+      "uses": 8
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo#state",
+      "kind": "method",
+      "uses": 6
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager#getOrCreate",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/rule/blockentity/Passthrough#INSTANCE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/templatesystem/rule/blockentity/RuleBlockEntityModifier#CODEC",
+      "kind": "field",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/synth/BlendedNoise#NOISE_SEED",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/synth/Noise#addToVolume",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/synth/Noise#get",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/synth/NormalNoise#createForLegacyNetherBiome",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/material/FluidState#getType",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/material/FluidState#isEmpty",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/storage/loot/BuiltInLootTables#SIMPLE_DUNGEON",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#contains",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#deflate",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#equals",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#getXsize",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#getYsize",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#getZsize",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#maxX",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#maxY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#maxZ",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#minX",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#minY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#minZ",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#move",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/AABB#of",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#scale",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#x",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#y",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#z",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/timeline/AttributeTrack#createCodec",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/timeline/Timeline#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/timeline/Timeline#attributes",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/timeline/Timeline#createTrackSampler",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/timeline/Timeline#tracks",
+      "kind": "method",
+      "uses": 2
+    }
+  ],
+  "warnings": []
+}

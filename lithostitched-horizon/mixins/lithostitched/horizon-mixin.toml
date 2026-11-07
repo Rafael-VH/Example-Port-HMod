@@ -1,0 +1,846 @@
+[mod]
+id = "lithostitched"
+version = "2.0.6"
+priority = 100
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_lithostitched"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_lithostitched_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+# Off: @Inject(INVOKE) on EnvironmentAttributeSystem.addDynamicLayers (EnvironmentAttributeSystemMixin.applyStructureAttributes)
+#   No Horizon function mapped for EnvironmentAttributeSystem.addDynamicLayers (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "environment-attribute-system-mixin-apply-structure-attributes"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on IntegratedServer.initServer (IntegratedServerMixin.initServer)
+#   No Horizon function mapped for IntegratedServer.initServer (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "integrated-server-mixin-init-server"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on MusicManager.tick (MusicManagerMixin.applyVolumeMultiplier)
+#   `horizon_client::music::MusicManager::tick` has a closure in its body: horizon-mixins doesn't rewrite such bodies with WRAP_OPERATION. A HEAD hook on it, or a WRAP_OPERATION on a function it calls, may work instead.
+# [[injection]]
+# id = "music-manager-mixin-apply-volume-multiplier"
+# kind = "WRAP_OPERATION"
+# target = "horizon_client::music::MusicManager::tick"
+
+# Off: @WrapOperation(INVOKE) on Beardifier.forStructuresInChunk (BeardifierMixin.overrideTerrainAdaptation)
+#   No Horizon function mapped for Beardifier.forStructuresInChunk (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "beardifier-mixin-override-terrain-adaptation"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Accessor on Biome.climateSettings (BiomeAccessor.getClimateSettings)
+#   No Horizon function mapped for Biome.climateSettings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "biome-accessor-get-climate-settings"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Biome.climateSettings (BiomeAccessor.setClimateSettings)
+#   No Horizon function mapped for Biome.climateSettings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "biome-accessor-set-climate-settings"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Biome.specialEffects (BiomeAccessor.getSpecialEffects)
+#   No Horizon function mapped for Biome.specialEffects (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "biome-accessor-get-special-effects"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Biome.specialEffects (BiomeAccessor.setSpecialEffects)
+#   No Horizon function mapped for Biome.specialEffects (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "biome-accessor-set-special-effects"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Biome.generationSettings (BiomeAccessor.setGenerationSettings)
+#   No Horizon function mapped for Biome.generationSettings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "biome-accessor-set-generation-settings"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Biome.attributes (BiomeAccessor.setAttributes)
+#   No Horizon function mapped for Biome.attributes (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "biome-accessor-set-attributes"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Invoker on BiomeGenerationSettings.<init> (BiomeGenerationSettingsAccessor.createGenerationSettings)
+#   No Horizon function mapped for BiomeGenerationSettings.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "biome-generation-settings-accessor-create-generation-settings"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Accessor on BiomeGenerationSettings.carvers (BiomeGenerationSettingsAccessor.getCarvers)
+#   No Horizon function mapped for BiomeGenerationSettings.carvers (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "biome-generation-settings-accessor-get-carvers"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Invoker on BiomeSource.codec (BiomeSourceInvoker.getCodec)
+#   No Horizon function mapped for BiomeSource.codec (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "biome-source-invoker-get-codec"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on BlockPredicate.<clinit> (BlockPredicateMixin.addBlockPredicateHolderReferences)
+#   No Horizon function mapped for BlockPredicate.<clinit> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "block-predicate-mixin-add-block-predicate-holder-references"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @Accessor on ChunkGenerator.biomeSource (ChunkGeneratorAccessor.getBiomeSource)
+#   No Horizon function mapped for ChunkGenerator.biomeSource (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-generator-accessor-get-biome-source"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on ChunkGenerator.biomeSource (ChunkGeneratorAccessor.setBiomeSource)
+#   No Horizon function mapped for ChunkGenerator.biomeSource (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-generator-accessor-set-biome-source"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on ChunkGenerator.generationSettingsGetter (ChunkGeneratorAccessor.getGetter)
+#   No Horizon function mapped for ChunkGenerator.generationSettingsGetter (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-generator-accessor-get-getter"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on ChunkGenerator.featuresPerStep (ChunkGeneratorAccessor.setFeaturesPerStep)
+#   No Horizon function mapped for ChunkGenerator.featuresPerStep (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-generator-accessor-set-features-per-step"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on ChunkMap.<init> (ChunkMapMixin.wrapNoiseRouter)
+#   No Horizon function mapped for ChunkMap.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-map-mixin-wrap-noise-router"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Accessor on DimensionType.attributes (DimensionTypeAccessor.setAttributes)
+#   No Horizon function mapped for DimensionType.attributes (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "dimension-type-accessor-set-attributes"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on GameTestServer.initServer (GameTestServerMixin.initServer)
+#   No Horizon function mapped for GameTestServer.initServer (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "game-test-server-mixin-init-server"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Accessor on Reference.value (HolderReferenceAccessor.setValue)
+#   No Horizon function mapped for Reference.value (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "holder-reference-accessor-set-value"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on JigsawStructure.poolAliases (JigsawStructureAccessor.setPoolAliases)
+#   No Horizon function mapped for JigsawStructure.poolAliases (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "jigsaw-structure-accessor-set-pool-aliases"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on JigsawStructure.poolAliases (JigsawStructureAccessor.getPoolAliases)
+#   No Horizon function mapped for JigsawStructure.poolAliases (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "jigsaw-structure-accessor-get-pool-aliases"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Redirect(INVOKE) on JigsawStructure.findGenerationPoint (JigsawStructureMixin.init)
+#   No Horizon function mapped for JigsawStructure.findGenerationPoint (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "jigsaw-structure-mixin-init"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Accessor on MappedRegistry.registrationInfos (MappedRegistryAccessor.lithostitched$getRegistrationInfos)
+#   No Horizon function mapped for MappedRegistry.registrationInfos (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mapped-registry-accessor-get-registration-infos"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on MappedRegistry.byValue (MappedRegistryAccessor.getByValue)
+#   No Horizon function mapped for MappedRegistry.byValue (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mapped-registry-accessor-get-by-value"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on MobSpawnSettings.spawnsByCategory (MobSpawnSettingsAccessor.getSpawnsByCategory)
+#   No Horizon function mapped for MobSpawnSettings.spawnsByCategory (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mob-spawn-settings-accessor-get-spawns-by-category"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on MobSpawnSettings.spawnsByCategory (MobSpawnSettingsAccessor.setSpawnsByCategory)
+#   No Horizon function mapped for MobSpawnSettings.spawnsByCategory (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mob-spawn-settings-accessor-set-spawns-by-category"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on MultiNoiseBiomeSource.parameters (MultiNoiseBiomeSourceAccessor.getParameters)
+#   No Horizon function mapped for MultiNoiseBiomeSource.parameters (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "multi-noise-biome-source-accessor-get-parameters"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on MultiNoiseBiomeSource.parameters (MultiNoiseBiomeSourceAccessor.setParameters)
+#   No Horizon function mapped for MultiNoiseBiomeSource.parameters (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "multi-noise-biome-source-accessor-set-parameters"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on NoiseBasedChunkGenerator.settings (NoiseBasedChunkGeneratorAccessor.setSettings)
+#   No Horizon function mapped for NoiseBasedChunkGenerator.settings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-based-chunk-generator-accessor-set-settings"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on NoiseBasedChunkGenerator.spawnOriginalMobs (NoiseBasedChunkGeneratorMixin.fixSampledBiomeY)
+#   No Horizon function mapped for NoiseBasedChunkGenerator.spawnOriginalMobs (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-based-chunk-generator-mixin-fix-sampled-biome-y"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on NoiseBasedChunkGenerator.buildTerrain (NoiseBasedChunkGeneratorMixin.fillBands)
+#   No Horizon function mapped for NoiseBasedChunkGenerator.buildTerrain (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-based-chunk-generator-mixin-fill-bands"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Accessor on NoiseGeneratorSettings.noiseRouter (NoiseGeneratorSettingsAccessor.setNoiseRouter)
+#   No Horizon function mapped for NoiseGeneratorSettings.noiseRouter (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-generator-settings-accessor-set-noise-router"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on NoiseGeneratorSettings.aquifers (NoiseGeneratorSettingsAccessor.setAquifers)
+#   No Horizon function mapped for NoiseGeneratorSettings.aquifers (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-generator-settings-accessor-set-aquifers"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on PlacedFeature.feature (PlacedFeatureAccessor.setFeature)
+#   No Horizon function mapped for PlacedFeature.feature (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "placed-feature-accessor-set-feature"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Redirect(INVOKE) on PoolAliasLookup.create (PoolAliasLookupMixin.lithostitched$allowDuplicateEntries)
+#   No Horizon function mapped for PoolAliasLookup.create (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "pool-alias-lookup-mixin-allow-duplicate-entries"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Accessor on RandomState.random (RandomStateAccessor.getRandom)
+#   No Horizon function mapped for RandomState.random (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "random-state-accessor-get-random"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on SinglePoolElement.template (SinglePoolElementAccessor.getTemplate)
+#   No Horizon function mapped for SinglePoolElement.template (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "single-pool-element-accessor-get-template"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on SinglePoolElement.processors (SinglePoolElementAccessor.getProcessors)
+#   No Horizon function mapped for SinglePoolElement.processors (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "single-pool-element-accessor-get-processors"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on SinglePoolElement.processors (SinglePoolElementAccessor.setProcessors)
+#   No Horizon function mapped for SinglePoolElement.processors (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "single-pool-element-accessor-set-processors"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on StructureProcessorList.list (StructureProcessorListAccessor.setProcessors)
+#   No Horizon function mapped for StructureProcessorList.list (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "structure-processor-list-accessor-set-processors"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on StructureSet.structures (StructureSetAccessor.setStructures)
+#   No Horizon function mapped for StructureSet.structures (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "structure-set-accessor-set-structures"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on StructureTemplatePool.rawTemplates (StructureTemplatePoolAccessor.getRawTemplates)
+#   No Horizon function mapped for StructureTemplatePool.rawTemplates (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "structure-template-pool-accessor-get-raw-templates"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on StructureTemplatePool.templates (StructureTemplatePoolAccessor.getVanillaTemplates)
+#   No Horizon function mapped for StructureTemplatePool.templates (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "structure-template-pool-accessor-get-vanilla-templates"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on StructureTemplatePool.rawTemplates (StructureTemplatePoolAccessor.setRawTemplates)
+#   No Horizon function mapped for StructureTemplatePool.rawTemplates (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "structure-template-pool-accessor-set-raw-templates"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on StructureTemplatePool.templates (StructureTemplatePoolAccessor.setVanillaTemplates)
+#   No Horizon function mapped for StructureTemplatePool.templates (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "structure-template-pool-accessor-set-vanilla-templates"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Timeline.tracks (TimelineAccessor.getTracks)
+#   No Horizon function mapped for Timeline.tracks (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "timeline-accessor-get-tracks"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on Timeline.tracks (TimelineAccessor.setTracks)
+#   No Horizon function mapped for Timeline.tracks (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "timeline-accessor-set-tracks"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on TreeFeature.decorators (TreeFeatureAccessor.lithostitched$setDecorators)
+#   No Horizon function mapped for TreeFeature.decorators (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "tree-feature-accessor-set-decorators"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Redirect(INVOKE) on MultiNoiseBiomeSource.<clinit> (MNBSMixin.wrapCodec)
+#   No Horizon function mapped for MultiNoiseBiomeSource.<clinit> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mnbs-mixin-wrap-codec"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Redirect(INVOKE) on MultiNoiseBiomeSourceParameterList.<clinit> (MNBSPLMixin.wrapCodec)
+#   No Horizon function mapped for MultiNoiseBiomeSourceParameterList.<clinit> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mnbspl-mixin-wrap-codec"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Accessor on ParameterList.values (ParameterListAccessor.lithostitched$setValues)
+#   No Horizon function mapped for ParameterList.values (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "parameter-list-accessor-set-values"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on ParameterList.index (ParameterListAccessor.lithostitched$index)
+#   No Horizon function mapped for ParameterList.index (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "parameter-list-accessor-index"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on PendingRegistration.loadFromResource (PendingRegistrationMixin.loadFromResource)
+#   No Horizon function mapped for PendingRegistration.loadFromResource (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "pending-registration-mixin-load-from-resource"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(NEW) on ResourceManagerRegistryLoadTask.lambda$load$2 (ResourceManagerRegistryLoadTaskMixin.load)
+#   No Horizon function mapped for ResourceManagerRegistryLoadTask.lambda$load$2 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "resource-manager-registry-load-task-mixin-load"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on DesertPyramidStructure.afterPlace (DesertPyramidStructureMixin.applyProcessorToDesertTempleSand)
+#   `horizon_world::worldgen::structure::temple::<DesertPyramidPiece as LegacyPiece>::after_place` has a `?` in its body: horizon-mixins doesn't rewrite such bodies with WRAP_OPERATION. A HEAD hook on it, or a WRAP_OPERATION on a function it calls, may work instead.
+# [[injection]]
+# id = "desert-pyramid-structure-mixin-apply-processor-to-desert-temple-sand"
+# kind = "WRAP_OPERATION"
+# target = "horizon_world::worldgen::structure::temple::<DesertPyramidPiece as LegacyPiece>::after_place"
+
+# Off: @WrapOperation(INVOKE) on DesertPyramidStructure.placeSuspiciousSand (DesertPyramidStructureMixin.applyProcessorToDesertTempleSand)
+#   No Horizon function mapped for DesertPyramidStructure.placeSuspiciousSand (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "desert-pyramid-structure-mixin-apply-processor-to-desert-temple-sand-2"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @ModifyReturnValue(RETURN) on EndCityPiece.makeSettings (EndCityPieceMixin.addShipwreckProcessor)
+#   No Horizon function mapped for EndCityPiece.makeSettings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "end-city-piece-mixin-add-shipwreck-processor"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyReturnValue(RETURN) on IglooPiece.makeSettings (IglooPieceMixin.addShipwreckProcessor)
+#   No Horizon function mapped for IglooPiece.makeSettings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "igloo-piece-mixin-add-shipwreck-processor"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on MineShaftCorridor.postProcess (MineshaftCorridorMixin.applyProcessorToSpawner)
+#   No Horizon function mapped for MineShaftCorridor.postProcess (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mineshaft-corridor-mixin-apply-processor-to-spawner"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on MineShaftCorridor.fillPillarDownOrChainUp (MineshaftCorridorMixin.applyProcessorToColumn)
+#   No Horizon function mapped for MineShaftCorridor.fillPillarDownOrChainUp (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mineshaft-corridor-mixin-apply-processor-to-column"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on MineShaftCorridor.fillColumnDown (MineshaftCorridorMixin.applyProcessorToColumn)
+#   No Horizon function mapped for MineShaftCorridor.fillColumnDown (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mineshaft-corridor-mixin-apply-processor-to-column-2"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on MineShaftCorridor.fillPillarDownOrChainUp (MineshaftCorridorMixin.applyProcessorToChains)
+#   No Horizon function mapped for MineShaftCorridor.fillPillarDownOrChainUp (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mineshaft-corridor-mixin-apply-processor-to-chains"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on MineShaftCorridor.placeDoubleLowerOrUpperSupport (MineshaftCorridorMixin.useMineshaftExtensionsTag)
+#   No Horizon function mapped for MineShaftCorridor.placeDoubleLowerOrUpperSupport (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mineshaft-corridor-mixin-use-mineshaft-extensions-tag"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on MineShaftPiece.setPlanksBlock (MineshaftPieceMixin.applyProcessor)
+#   No Horizon function mapped for MineShaftPiece.setPlanksBlock (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mineshaft-piece-mixin-apply-processor"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on MonsterThrone.postProcess (MonsterThroneMixin.applyProcessorToSpawner)
+#   No Horizon function mapped for MonsterThrone.postProcess (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "monster-throne-mixin-apply-processor-to-spawner"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @ModifyReturnValue(RETURN) on NetherFossilPiece.makeSettings (NetherFossilPieceMixin.addShipwreckProcessor)
+#   No Horizon function mapped for NetherFossilPiece.makeSettings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "nether-fossil-piece-mixin-add-shipwreck-processor"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on NetherFossilPiece.placeDriedGhast (NetherFossilPieceMixin.applyProcessorToDriedGhast)
+#   No Horizon function mapped for NetherFossilPiece.placeDriedGhast (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "nether-fossil-piece-mixin-apply-processor-to-dried-ghast"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @ModifyReturnValue(RETURN) on OceanRuinPiece.makeSettings (OceanRuinPieceMixin.addShipwreckProcessor)
+#   No Horizon function mapped for OceanRuinPiece.makeSettings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "ocean-ruin-piece-mixin-add-shipwreck-processor"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on PortalRoom.postProcess (PortalRoomMixin.applyProcessorToSpawner)
+#   No Horizon function mapped for PortalRoom.postProcess (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "portal-room-mixin-apply-processor-to-spawner"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @ModifyReturnValue(RETURN) on RuinedPortalPiece.makeSettings (RuinedPortalPieceMixin.addRuinedPortalProcessor)
+#   No Horizon function mapped for RuinedPortalPiece.makeSettings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "ruined-portal-piece-mixin-add-ruined-portal-processor"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on RuinedPortalPiece.maybeAddVines (RuinedPortalPieceMixin.applyProcessorToExtraBits)
+#   No Horizon function mapped for RuinedPortalPiece.maybeAddVines (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "ruined-portal-piece-mixin-apply-processor-to-extra-bits"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on RuinedPortalPiece.maybeAddLeavesAbove (RuinedPortalPieceMixin.applyProcessorToExtraBits)
+#   No Horizon function mapped for RuinedPortalPiece.maybeAddLeavesAbove (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "ruined-portal-piece-mixin-apply-processor-to-extra-bits-2"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on RuinedPortalPiece.placeNetherrackOrMagma (RuinedPortalPieceMixin.applyProcessorToExtraBits)
+#   No Horizon function mapped for RuinedPortalPiece.placeNetherrackOrMagma (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "ruined-portal-piece-mixin-apply-processor-to-extra-bits-3"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on RuinedPortalPiece.maybeAddLeavesAbove (RuinedPortalPieceMixin.applyLeavesExtensionTag)
+#   No Horizon function mapped for RuinedPortalPiece.maybeAddLeavesAbove (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "ruined-portal-piece-mixin-apply-leaves-extension-tag"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @ModifyReturnValue(RETURN) on ShipwreckPiece.makeSettings (ShipwreckPieceMixin.addShipwreckProcessor)
+#   No Horizon function mapped for ShipwreckPiece.makeSettings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "shipwreck-piece-mixin-add-shipwreck-processor"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on StructurePiece.placeBlock (StructurePieceMixin.applyProcessor)
+#   No Horizon function mapped for StructurePiece.placeBlock (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "structure-piece-mixin-apply-processor"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on StructurePiece.fillColumnDown (StructurePieceMixin.applyProcessor)
+#   No Horizon function mapped for StructurePiece.fillColumnDown (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "structure-piece-mixin-apply-processor-2"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on StructurePiece.createChest (StructurePieceMixin.applyProcessor)
+#   The call it hooks (Lnet/minecraft/world/level/ServerLevelAccessor;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z) isn't mapped to a Rust function.
+# [[injection]]
+# id = "structure-piece-mixin-apply-processor-3"
+# kind = "WRAP_OPERATION"
+# target = "horizon_world::worldgen::structure::legacy::PieceFrame::create_chest"
+
+# Off: @Inject(INVOKE) on StructureStart.placeInChunk (StructureStartMixin.storeReferencePos)
+#   `horizon_world::worldgen::structure::start::place_in_chunk` is generic: horizon-mixins rejects generic targets.
+# [[injection]]
+# id = "structure-start-mixin-store-reference-pos"
+# kind = "BEFORE_CALL"
+# target = "horizon_world::worldgen::structure::start::place_in_chunk"
+
+# Off: @ModifyReturnValue(RETURN) on WoodlandMansionPiece.makeSettings (WoodlandMansionPieceMixin.addShipwreckProcessor)
+#   No Horizon function mapped for WoodlandMansionPiece.makeSettings (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "woodland-mansion-piece-mixin-add-shipwreck-processor"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on WoodlandMansionStructure.afterPlace (WoodlandMansionStructureMixin.applyProcessorToWoodlandMansionExtension)
+#   `horizon_world::worldgen::structure::mansion::after_place` has a `?` in its body: horizon-mixins doesn't rewrite such bodies with WRAP_OPERATION. A HEAD hook on it, or a WRAP_OPERATION on a function it calls, may work instead.
+# [[injection]]
+# id = "woodland-mansion-structure-mixin-apply-processor-to-woodland-mansion-extension"
+# kind = "WRAP_OPERATION"
+# target = "horizon_world::worldgen::structure::mansion::after_place"
+
+# Off: @WrapOperation(INVOKE) on NetherFossilStructure.findGenerationPoint (NetherFossilStructureMixin.useTemplateList)
+#   No Horizon function mapped for NetherFossilStructure.findGenerationPoint (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "nether-fossil-structure-mixin-use-template-list"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Redirect(INVOKE) on RuinedPortalStructure.findGenerationPoint (RuinedPortalStructureMixin.useStandardTemplateList)
+#   No Horizon function mapped for RuinedPortalStructure.findGenerationPoint (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "ruined-portal-structure-mixin-use-standard-template-list"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Redirect(INVOKE) on RuinedPortalStructure.findGenerationPoint (RuinedPortalStructureMixin.useGiantTemplateList)
+#   No Horizon function mapped for RuinedPortalStructure.findGenerationPoint (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "ruined-portal-structure-mixin-use-giant-template-list"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on ShipwreckStructure.generatePieces (ShipwreckStructureMixin.useTemplateList)
+#   No Horizon function mapped for ShipwreckStructure.generatePieces (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "shipwreck-structure-mixin-use-template-list"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(NEW) on MansionPiecePlacer.createMansion (PiecePlacerMixin.addFirstFloorRegistries)
+#   No Horizon function mapped for MansionPiecePlacer.createMansion (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "piece-placer-mixin-add-first-floor-registries"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(NEW) on MansionPiecePlacer.createMansion (PiecePlacerMixin.addSecondFloorRegistries)
+#   No Horizon function mapped for MansionPiecePlacer.createMansion (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "piece-placer-mixin-add-second-floor-registries"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(NEW) on MansionPiecePlacer.createMansion (PiecePlacerMixin.addThirdFloorRegistries)
+#   No Horizon function mapped for MansionPiecePlacer.createMansion (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "piece-placer-mixin-add-third-floor-registries"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on WoodlandMansionPiece.makeLocation (WoodlandMansionPieceMixin.convertStringToId)
+#   No Horizon function mapped for WoodlandMansionPiece.makeLocation (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "woodland-mansion-piece-mixin-convert-string-to-id"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on WoodlandMansionStructure.generatePieces (WoodlandMansionStructureMixin.injectRegistriesForTemplateList)
+#   No Horizon function mapped for WoodlandMansionStructure.generatePieces (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "woodland-mansion-structure-mixin-inject-registries-for-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on FirstFloorRoomCollection.get1x1 (FirstFloorMixin.use1x1TemplateList)
+#   No Horizon function mapped for FirstFloorRoomCollection.get1x1 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "first-floor-mixin-use1x1-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on FirstFloorRoomCollection.get1x1Secret (FirstFloorMixin.use1x1SecretTemplateList)
+#   No Horizon function mapped for FirstFloorRoomCollection.get1x1Secret (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "first-floor-mixin-use1x1-secret-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on FirstFloorRoomCollection.get1x2SideEntrance (FirstFloorMixin.use1x2SideTemplateList)
+#   No Horizon function mapped for FirstFloorRoomCollection.get1x2SideEntrance (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "first-floor-mixin-use1x2-side-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on FirstFloorRoomCollection.get1x2FrontEntrance (FirstFloorMixin.use1x2FrontTemplateList)
+#   No Horizon function mapped for FirstFloorRoomCollection.get1x2FrontEntrance (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "first-floor-mixin-use1x2-front-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on FirstFloorRoomCollection.get1x2Secret (FirstFloorMixin.use1x2SecretTemplateList)
+#   No Horizon function mapped for FirstFloorRoomCollection.get1x2Secret (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "first-floor-mixin-use1x2-secret-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on FirstFloorRoomCollection.get2x2 (FirstFloorMixin.use2x2TemplateList)
+#   No Horizon function mapped for FirstFloorRoomCollection.get2x2 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "first-floor-mixin-use2x2-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on FirstFloorRoomCollection.get2x2Secret (FirstFloorMixin.use2x2SecretTemplateList)
+#   No Horizon function mapped for FirstFloorRoomCollection.get2x2Secret (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "first-floor-mixin-use2x2-secret-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SecondFloorRoomCollection.get1x1 (SecondFloorMixin.use1x1TemplateList)
+#   No Horizon function mapped for SecondFloorRoomCollection.get1x1 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "second-floor-mixin-use1x1-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SecondFloorRoomCollection.get1x1Secret (SecondFloorMixin.use1x1SecretTemplateList)
+#   No Horizon function mapped for SecondFloorRoomCollection.get1x1Secret (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "second-floor-mixin-use1x1-secret-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SecondFloorRoomCollection.get1x2SideEntrance (SecondFloorMixin.use1x2SideTemplateList)
+#   No Horizon function mapped for SecondFloorRoomCollection.get1x2SideEntrance (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "second-floor-mixin-use1x2-side-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SecondFloorRoomCollection.get1x2FrontEntrance (SecondFloorMixin.use1x2FrontTemplateList)
+#   No Horizon function mapped for SecondFloorRoomCollection.get1x2FrontEntrance (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "second-floor-mixin-use1x2-front-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SecondFloorRoomCollection.get1x2Secret (SecondFloorMixin.use1x2SecretTemplateList)
+#   No Horizon function mapped for SecondFloorRoomCollection.get1x2Secret (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "second-floor-mixin-use1x2-secret-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SecondFloorRoomCollection.get2x2 (SecondFloorMixin.use2x2TemplateList)
+#   No Horizon function mapped for SecondFloorRoomCollection.get2x2 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "second-floor-mixin-use2x2-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SecondFloorRoomCollection.get2x2Secret (SecondFloorMixin.use2x2SecretTemplateList)
+#   No Horizon function mapped for SecondFloorRoomCollection.get2x2Secret (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "second-floor-mixin-use2x2-secret-template-list"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(INVOKE) on Biome.<clinit> (BiomeMixin.addTimelineField)
+#   No Horizon function mapped for Biome.<clinit> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "biome-mixin-add-timeline-field"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on EnvironmentAttributeProbe.tick (EnvironmentAttributeProbeMixin.clearTimelineWeights)
+#   No Horizon function mapped for EnvironmentAttributeProbe.tick (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "environment-attribute-probe-mixin-clear-timeline-weights"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on EnvironmentAttributeProbe.lambda$tick$0 (EnvironmentAttributeProbeMixin.collectTimelineWeights)
+#   No Horizon function mapped for EnvironmentAttributeProbe.lambda$tick$0 (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "environment-attribute-probe-mixin-collect-timeline-weights"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on EnvironmentAttributeSystem.addDynamicLayers (EnvironmentAttributeSystemMixin.addBiomeTimelines)
+#   No Horizon function mapped for EnvironmentAttributeSystem.addDynamicLayers (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "environment-attribute-system-mixin-add-biome-timelines"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(MIXINEXTRAS:EXPRESSION) on ValueSampler.computeValuePositional (EnvironmentAttributeSystemValueSamplerMixin.removeBiomeTimelineLayers)
+#   No Horizon function mapped for ValueSampler.computeValuePositional (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "environment-attribute-system-value-sampler-mixin-remove-biome-timeline-layers"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @ModifyExpressionValue(MIXINEXTRAS:EXPRESSION) on ValueSampler.computeValueNotPositional (EnvironmentAttributeSystemValueSamplerMixin.removeBiomeTimelineLayers)
+#   No Horizon function mapped for ValueSampler.computeValueNotPositional (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "environment-attribute-system-value-sampler-mixin-remove-biome-timeline-layers-2"
+# kind = "MODIFY_EXPRESSION_VALUE"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on ValueSampler.computeValuePositional (EnvironmentAttributeSystemValueSamplerMixin.applyBiomeTimelineLayers)
+#   No Horizon function mapped for ValueSampler.computeValuePositional (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "environment-attribute-system-value-sampler-mixin-apply-biome-timeline-layers"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @ModifyReturnValue(RETURN) on VillagerType.byBiome (VillagerTypeMixin.useBiomeTags)
+#   No Horizon function mapped for VillagerType.byBiome (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "villager-type-mixin-use-biome-tags"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on DedicatedServer.initServer (DedicatedServerMixin.initServer)
+#   No Horizon function mapped for DedicatedServer.initServer (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "dedicated-server-mixin-init-server"
+# kind = "BEFORE_CALL"
+# target = "TODO"
