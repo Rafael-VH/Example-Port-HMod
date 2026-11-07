@@ -1,0 +1,24 @@
+change: mr-dynamic-light
+branch: port/mr-dynamic-light
+status: apply_in_progress
+current_phase: apply
+phases:
+  explore: done
+  proposal: done
+  specs: done
+  design: done
+  tasks: done
+  apply: partial  # T1-T3 done, T4 runtime pending
+  verify: pending
+  archive: pending
+preflight:
+  execution_mode: interactive
+  artifact_store: both
+  chained_pr_strategy: auto-forecast
+  review_budget_lines: 800
+  chain_strategy: pending
+updated_at: "2026-04-10"
+artifacts:
+  - mr_dynamic_light-horizon/hmod_src/horizon-mod.toml
+  - mr_dynamic_light-horizon/mr_dynamic_light.hmod
+notes: "20 data files extracted/packaged; cargo-horizon-mod check not run (tool unavailable). Runtime verification in Horizon 26.3 pending (mcfunction/predicate/load|tick support)."
