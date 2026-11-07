@@ -36,4 +36,5 @@ Port Java **Fabric** mods to **Horizon** (Minecraft: Java Edition 26.3 reimpleme
 - Native mods run with user rights and are not sandboxed — build/install only trusted code.
 - Never delete decompiled/source artifacts beyond what the tools/workflow already manage; keep provenance.
 - **Do not commit, push, create PRs, or run destructive git operations without explicit user confirmation.**
+- **When creating commits (after explicit user confirmation), always use the `git-commit` skill** to analyze diffs, stage appropriately, and generate Conventional Commits messages.
 - Prefer evidence-based statements: cite `PORTING.md`, file counts, tool output, or Horizon docs.
