@@ -1,0 +1,109 @@
+[mod]
+id = "enhancedvisuals"
+version = "1.8.35"
+priority = 100
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_enhancedvisuals"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_enhancedvisuals_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+# Off: @Inject(TAIL) on ClientPacketListener.handleRespawn (ClientPacketListenerMixin.handleRespawn)
+#   No Horizon function mapped for ClientPacketListener.handleRespawn (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "client-packet-listener-mixin-handle-respawn"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Accessor on Entity.wasEyeInWater (EntityAccessor.getWasEyeInWater)
+#   No Horizon function mapped for Entity.wasEyeInWater (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "entity-accessor-get-was-eye-in-water"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on ServerExplosion.hurtEntities (ExplosionMixin.onDetonate)
+#   No Horizon function mapped for ServerExplosion.hurtEntities (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "explosion-mixin-on-detonate"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on ServerExplosion.hurtEntities (ExplosionMixin.onDetonateFabric)
+#   No Horizon function mapped for ServerExplosion.hurtEntities (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "explosion-mixin-on-detonate-fabric"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on GameRenderer.render (GameRendererMixin.extractGuiEnd)
+#   Its target is the `frame` hook point, an empty function: AFTER_CALL has nothing inside it to select. Port it in the `frame` hook's helper.
+# [[injection]]
+# id = "game-renderer-mixin-extract-gui-end"
+# kind = "AFTER_CALL"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on Player.actuallyHurt (PlayerMixin.actuallyHurt)
+#   No Horizon function mapped for Player.actuallyHurt (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "player-mixin-actually-hurt"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Accessor on PostChain.passes (PostChainAccessor.getPasses)
+#   No Horizon function mapped for PostChain.passes (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "post-chain-accessor-get-passes"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on PostPass.customUniforms (PostPassAccessor.getCustomUniforms)
+#   No Horizon function mapped for PostPass.customUniforms (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "post-pass-accessor-get-custom-uniforms"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on Projectile.onHit (ProjectileMixin.onHit)
+#   No Horizon function mapped for Projectile.onHit (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "projectile-mixin-on-hit"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Accessor on SoundEngine.instanceToChannel (SoundEngineAccessor.getInstanceToChannel)
+#   No Horizon function mapped for SoundEngine.instanceToChannel (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sound-engine-accessor-get-instance-to-channel"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Invoker on SoundEngine.invokeCalculateVolume (SoundEngineAccessor.invokeCalculateVolume)
+#   No Horizon function mapped for SoundEngine.invokeCalculateVolume (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sound-engine-accessor-invoke-calculate-volume"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Accessor on SoundManager.soundEngine (SoundManagerAccessor.getSoundEngine)
+#   No Horizon function mapped for SoundManager.soundEngine (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "sound-manager-accessor-get-sound-engine"
+# kind = "GET"
+# target = "TODO"
