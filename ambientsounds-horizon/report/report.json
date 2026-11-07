@@ -1,0 +1,942 @@
+{
+  "id": "ambientsounds",
+  "name": "AmbientSounds",
+  "version": "6.3.11",
+  "jar": "AmbientSounds_FABRIC_v6.3.11_mc26.3.jar",
+  "verdict": "Partly convertible",
+  "counts": {
+    "auto": 0,
+    "content": 1,
+    "needs-mapping": 1,
+    "needs-translation": 3,
+    "unsupported": 0
+  },
+  "intermediary": false,
+  "entrypoints": {
+    "client": [
+      "team.creative.ambientsounds.AmbientSounds"
+    ]
+  },
+  "features": [
+    {
+      "category": "class",
+      "in": "team/creative/ambientsounds/AmbientSounds$1",
+      "detail": "extends SimplePreparableReloadListener",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "team/creative/ambientsounds/environment/pocket/AirPocketScanner$BlockPosInspection",
+      "detail": "extends BlockPos",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/ambientsounds/mixin/OggAudioStreamMixin",
+      "detail": "mixin into JOrbisAudioStream with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "team/creative/ambientsounds/mixin/SoundBufferLibraryAccessor.getResourceManager",
+      "detail": "@Accessor on SoundBufferLibrary.resourceManager",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for SoundBufferLibrary.resourceManager: run `match`."
+    },
+    {
+      "category": "content",
+      "in": "jar resources",
+      "detail": "203 asset files, 0 data files",
+      "horizon": "content mod (.hmod)",
+      "status": "content",
+      "note": "Recipes, loot, tags, models, textures, worldgen: horizon-port-pack carries these."
+    }
+  ],
+  "mappedCalls": [
+    {
+      "java": "net/minecraft/client/Minecraft#font",
+      "kind": "field",
+      "uses": 1,
+      "horizon": "`(implicit)`"
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getInstance",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "`self`"
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#player",
+      "kind": "field",
+      "uses": 1,
+      "horizon": "`self.native_player()`"
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager#isActive",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client_render::sound_engine::is_active (suggested)"
+    },
+    {
+      "java": "net/minecraft/client/sounds/WeighedSoundEvents#getSound",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client_render::sound_events::SoundRegistry::sound (suggested)"
+    },
+    {
+      "java": "net/minecraft/core/Direction#getOpposite",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::mobs::shulker::opposite (suggested)"
+    },
+    {
+      "java": "net/minecraft/nbt/NbtUtils#compareNbt",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client_core::nbt_path::compare_nbt (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#clamp",
+      "kind": "method",
+      "uses": 4,
+      "horizon": "horizon_client_render::chat::clamp (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getXRot",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "`self.native_player()?.pitch`"
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getYRot",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "`self.native_player()?.yaw`"
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getMaxY",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::game::Dim::max_y (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getMinY",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::game::Dim::min_y (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/Level#isRainingAt",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::level::weather::Behaviours::is_raining_at (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#coldEnoughToSnow",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::worldgen::structure::start::cold_enough_to_snow (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#canOcclude",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::worldgen::placement::context::can_occlude (suggested)"
+    }
+  ],
+  "unmappedCalls": [
+    {
+      "java": "net/minecraft/ChatFormatting#DARK_GREEN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/ChatFormatting#RESET",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/DeltaTracker#getGameTimeDeltaPartialTick",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getDeltaTracker",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getResourceManager",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#getSoundManager",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#isPaused",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#level",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#options",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Options#getSoundSourceVolume",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/GuiGraphicsExtractor#nextStratum",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/multiplayer/ClientLevel#dimension",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/multiplayer/ClientLevel#entitiesForRendering",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/multiplayer/ClientLevel#registryAccess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/resources/sounds/SoundInstance$Attenuation#NONE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/JOrbisAudioStream#<init>",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/sounds/JOrbisAudioStream#readChunk",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/LoopingAudioStream#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundBufferLibrary#resourceManager",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager#EMPTY_SOUND",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager#INTENTIONALLY_EMPTY_SOUND",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager#INTENTIONALLY_EMPTY_SOUND_EVENT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager#INTENTIONALLY_EMPTY_SOUND_LOCATION",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager#getSoundEvent",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager#play",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/sounds/SoundManager#stop",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#above",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#containing",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#distSqr",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#get",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getX",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getY",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getZ",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#<init>",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#getX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#getZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#set",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#setY",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/DefaultedRegistry#getOptional",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#DOWN",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Direction#EAST",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Direction#NORTH",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Direction#SOUTH",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Direction#UP",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Direction#WEST",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Direction#getAxis",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#getAxisDirection",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#ordinal",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Direction#values",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/core/Direction$AxisDirection#POSITIVE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder#equals",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder#hashCode",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder#is",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder#tags",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder#unwrapKey",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder#value",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/core/SectionPos#blockToSectionCoord",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/SectionPos#sectionToBlockCoord",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#ENTITY_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#BLOCK",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#FLUID",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/TagParser#parseCompoundFully",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#getString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#equals",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#getNamespace",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#getPath",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#parse",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#toString",
+      "kind": "method",
+      "uses": 5
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#tryBuild",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#tryParse",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/ResourceKey#identifier",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/server/packs/PackType#CLIENT_RESOURCES",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/Resource#open",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/Resource#sourcePackId",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/ResourceManager#getResource",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/ResourceManager#listResourceStacks",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/ResourceProvider#getResourceOrThrow",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/packs/resources/SimplePreparableReloadListener#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/sounds/SoundSource#AMBIENT",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/sounds/SoundSource#MASTER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/sounds/SoundSource#getName",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/sounds/SoundSource#values",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/BlockTags#LEAVES",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/FluidTags#WATER",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/TagKey#create",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/tags/TagKey#location",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/GsonHelper#convertToString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/ProblemReporter#DISCARDING",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#createThreadLocalInstance",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Util#backgroundExecutor",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Util#nonCriticalIoPool",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributeSystem#getValue",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/attribute/EnvironmentAttributes#SUN_ANGLE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#distanceToSqr",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#entityTags",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getCustomName",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getStringUUID",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getTeam",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#getType",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#hasCustomName",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#position",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#registryAccess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/Entity#saveWithoutId",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#blockPosition",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getEyePosition",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getEyeY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#getGameProfile",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#isEyeInFluid",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#level",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/entity/player/Player#position",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#dimension",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/Level#environmentAttributes",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getBiome",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getBlockState",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getBrightness",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getChunk",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getFluidState",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getMinSectionY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#getSeaLevel",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/Level#hasChunk",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#isRaining",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/Level#isThundering",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/LevelAccessor#isClientSide",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/LevelReader#canSeeSky",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/LevelReader#getBlockState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/LevelReader#getHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/LightLayer#BLOCK",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/LightLayer#SKY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#getBaseTemperature",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#getPrecipitationAt",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome$Precipitation#RAIN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Block#defaultBlockState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Block#getStateDefinition",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#AIR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#VOID_AIR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#getBlock",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#getFluidState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#getValue",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#is",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#isAir",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#isCollisionShapeFullBlock",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#isSolidRender",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#typeHolder",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/StateDefinition#getProperty",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/properties/Property#getValue",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/LevelChunk#getSections",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/LevelChunkSection#maybeHas",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Heightmap$Types#WORLD_SURFACE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/material/FluidState#is",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/storage/TagValueOutput#buildResult",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/storage/TagValueOutput#createWithContext",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#x",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#y",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/phys/Vec3#z",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/scores/PlayerTeam#getName",
+      "kind": "method",
+      "uses": 1
+    }
+  ],
+  "warnings": []
+}
