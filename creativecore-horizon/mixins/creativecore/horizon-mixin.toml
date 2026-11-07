@@ -1,0 +1,253 @@
+[mod]
+id = "creativecore"
+version = "2.14.24"
+priority = 100
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_creativecore"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_creativecore_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "command"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_command"
+helper = "command.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "command", ty = "&str", value = "command" },
+  { name = "ran", ty = "&mut bool", value = "&mut *ran" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "hud"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_hud"
+helper = "hud.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" },
+  { name = "corners", ty = "&mut horizon_client::extras_hud::Corners", value = "&mut *corners" },
+]
+
+[[injection]]
+id = "frame"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_frame"
+helper = "frame.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "elapsed", ty = "std::time::Duration", value = "elapsed" },
+]
+
+[[injection]]
+id = "key"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_key"
+helper = "key.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "key", ty = "&str", value = "key" },
+  { name = "pressed", ty = "bool", value = "pressed" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Off: @Inject(HEAD) on AbstractContainerScreen.mouseReleased (AbstractContainerScreenMixin.handleWhenYouReleaseMouse)
+#   No Horizon function mapped for AbstractContainerScreen.mouseReleased (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "abstract-container-screen-mixin-handle-when-you-release-mouse"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Accessor on ArgumentTypeInfos.BY_CLASS (ArgumentTypeInfosAccessor.getByClass)
+#   No Horizon function mapped for ArgumentTypeInfos.BY_CLASS (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "argument-type-infos-accessor-get-by-class"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Redirect(INVOKE) on ClientConfigurationPacketListenerImpl.handleConfigurationFinished (ClientConfigurationPacketListenerImplMixin.handleConfigurationFinished)
+#   No Horizon function mapped for ClientConfigurationPacketListenerImpl.handleConfigurationFinished (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "client-configuration-packet-listener-impl-mixin-handle-configuration-finished"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Inject(TAIL) on ComponentSerialization.bootstrap (ComponentSerializationMixin.register)
+#   No Horizon function mapped for ComponentSerialization.bootstrap (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "component-serialization-mixin-register"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on Connection.setupInboundProtocol (ConnectionMixin.setupInboundProtocol)
+#   No Horizon function mapped for Connection.setupInboundProtocol (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "connection-mixin-setup-inbound-protocol"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Invoker on FilePackResources.callGetPathFromLocation (FilePackResourcesAccessor.callGetPathFromLocation)
+#   No Horizon function mapped for FilePackResources.callGetPathFromLocation (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "file-pack-resources-accessor-call-get-path-from-location"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Accessor on FilePackResources.zipFileAccess (FilePackResourcesAccessor.getZipFileAccess)
+#   No Horizon function mapped for FilePackResources.zipFileAccess (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "file-pack-resources-accessor-get-zip-file-access"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on FixedPathPackResources.pathsForType (FixedPathPackResourcesAccessor.getPathsForType)
+#   No Horizon function mapped for FixedPathPackResources.pathsForType (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "fixed-path-pack-resources-accessor-get-paths-for-type"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @WrapOperation(NEW) on GuiGraphicsExtractor.<init> (GuiGraphicsExtractorMixin.modifyStackSize)
+#   No Horizon function mapped for GuiGraphicsExtractor.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "gui-graphics-extractor-mixin-modify-stack-size"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @WrapOperation(MIXINEXTRAS:EXPRESSION) on LivingEntity.completeUsingItem (LivingEntityMixin.hook)
+#   No Horizon function mapped for LivingEntity.completeUsingItem (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "living-entity-mixin-hook"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Invoker on ModNioPackResources.callGetFilename (ModNioResourcePackAccessor.callGetFilename)
+#   No Horizon function mapped for ModNioPackResources.callGetFilename (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mod-nio-resource-pack-accessor-call-get-filename"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Invoker on ModNioPackResources.callGetPath (ModNioResourcePackAccessor.callGetPath)
+#   No Horizon function mapped for ModNioPackResources.callGetPath (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mod-nio-resource-pack-accessor-call-get-path"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Accessor on MouseHandler.lastHandleMovementTime (MouseHandlerAccessor.getLastHandleMovementTime)
+#   No Horizon function mapped for MouseHandler.lastHandleMovementTime (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "mouse-handler-accessor-get-last-handle-movement-time"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on PathPackResources.root (PathPackResourcesAccessor.getRoot)
+#   No Horizon function mapped for PathPackResources.root (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "path-pack-resources-accessor-get-root"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @WrapOperation(INVOKE) on PlayerList.placeNewPlayer (PlayerListMixin.bind)
+#   `horizon_client::lan::hub::Hub::place_new_player` has a closure in its body: horizon-mixins doesn't rewrite such bodies with WRAP_OPERATION. A HEAD hook on it, or a WRAP_OPERATION on a function it calls, may work instead.
+# [[injection]]
+# id = "player-list-mixin-bind"
+# kind = "WRAP_OPERATION"
+# target = "horizon_client::lan::hub::Hub::place_new_player"
+
+# Off: @Accessor on ServerCommonPacketListenerImpl.connection (ServerCommonPacketListenerImplAccessor.getConnection)
+#   No Horizon function mapped for ServerCommonPacketListenerImpl.connection (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "server-common-packet-listener-impl-accessor-get-connection"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Redirect(INVOKE) on ServerConfigurationPacketListenerImpl.handleConfigurationFinished (ServerConfigurationPacketListenerImplMixin.handleConfigurationFinished)
+#   No Horizon function mapped for ServerConfigurationPacketListenerImpl.handleConfigurationFinished (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "server-configuration-packet-listener-impl-mixin-handle-configuration-finished"
+# kind = "WRAP_OPERATION"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on Shapes.joinUnoptimized (ShapesMixin.joinUnoptimized)
+#   `horizon_core::geometry::shape::join::VoxelShape::join_unoptimized` has a `?` in its body: horizon-mixins doesn't rewrite such bodies with BEFORE_CALL. A HEAD hook on it, or a BEFORE_CALL on a function it calls, may work instead.
+# [[injection]]
+# id = "shapes-mixin-join-unoptimized"
+# kind = "BEFORE_CALL"
+# target = "horizon_core::geometry::shape::join::VoxelShape::join_unoptimized"
+
+# Off: @Inject(INVOKE) on Shapes.joinIsNotEmpty (ShapesMixin.joinIsNotEmpty)
+#   `horizon_core::geometry::shape::join::VoxelShape::join_is_not_empty` has a `?` in its body: horizon-mixins doesn't rewrite such bodies with BEFORE_CALL. A HEAD hook on it, or a BEFORE_CALL on a function it calls, may work instead.
+# [[injection]]
+# id = "shapes-mixin-join-is-not-empty"
+# kind = "BEFORE_CALL"
+# target = "horizon_core::geometry::shape::join::VoxelShape::join_is_not_empty"
+
+# Off: @Invoker on SharedZipFileAccess.callGetOrCreateZipFile (SharedZipFileAccessAccessor.callGetOrCreateZipFile)
+#   No Horizon function mapped for SharedZipFileAccess.callGetOrCreateZipFile (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "shared-zip-file-access-accessor-call-get-or-create-zip-file"
+# kind = "INVOKE"
+# target = "TODO"
+
+# Off: @Accessor on StringSplitter.widthProvider (StringSplitterAccessor.getWidthProvider)
+#   No Horizon function mapped for StringSplitter.widthProvider (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "string-splitter-accessor-get-width-provider"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on VoxelShape.shape (VoxelShapeAccessor.setShape)
+#   No Horizon function mapped for VoxelShape.shape (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "voxel-shape-accessor-set-shape"
+# kind = "GET"
+# target = "TODO"
