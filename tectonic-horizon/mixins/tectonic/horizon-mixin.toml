@@ -1,0 +1,169 @@
+[mod]
+id = "tectonic"
+version = "3.0.31"
+priority = 100
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "port_tectonic"
+source = "runtime.rs"
+
+[[module]]
+id = "game_side"
+file = "crates/horizon-client/src/game.rs"
+name = "port_tectonic_game"
+source = "game_side.rs"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "command"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_command"
+helper = "command.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "command", ty = "&str", value = "command" },
+  { name = "ran", ty = "&mut bool", value = "&mut *ran" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Off: @ModifyVariable(HEAD) on Biome.getHeightAdjustedTemperature (BiomeMixin.tectonic$adjustSnowStart)
+#   No Horizon function mapped for Biome.getHeightAdjustedTemperature (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "biome-mixin-adjust-snow-start"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @Inject(INVOKE) on BlendingData.getHeightAtXZ (BlendingDataMixin.checkTerralithSurfaceBlocks)
+#   No Horizon function mapped for BlendingData.getHeightAtXZ (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "blending-data-mixin-check-terralith-surface-blocks"
+# kind = "BEFORE_CALL"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on ChunkAccess.getOrCreateOffsetList (ChunkAccessMixin.tectonic$stopHeightDecreasingLogSpam)
+#   No Horizon function mapped for ChunkAccess.getOrCreateOffsetList (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-access-mixin-stop-height-decreasing-log-spam"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(HEAD) on SerializableChunkData.parse (ChunkDataMixin.tectonic$parse)
+#   No Horizon function mapped for SerializableChunkData.parse (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-data-mixin-parse"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on SerializableChunkData.write (ChunkDataMixin.tectonic$write)
+#   No Horizon function mapped for SerializableChunkData.write (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "chunk-data-mixin-write"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Accessor on DimensionType.minY (DimensionTypeAccessor.setMinY)
+#   No Horizon function mapped for DimensionType.minY (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "dimension-type-accessor-set-min-y"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on DimensionType.height (DimensionTypeAccessor.setHeight)
+#   No Horizon function mapped for DimensionType.height (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "dimension-type-accessor-set-height"
+# kind = "GET"
+# target = "TODO"
+
+[[bridge]]
+id = "dimension-type-accessor-set-logical-height"
+kind = "SET"
+target = "horizon_client::game::Dim"
+member = "logical_height"
+
+# Off: @Inject(HEAD) on IOWorker.isOldChunk (IOWorkerMixin.tectonic$needsBlending)
+#   No Horizon function mapped for IOWorker.isOldChunk (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "io-worker-mixin-needs-blending"
+# kind = "HEAD"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on NoiseBasedChunkGenerator.<init> (NoiseBasedChunkGeneratorMixin.tectonic$fixLavaLevel)
+#   No Horizon function mapped for NoiseBasedChunkGenerator.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-based-chunk-generator-mixin-fix-lava-level"
+# kind = "RETURN"
+# target = "TODO"
+
+# Off: @Accessor on NoiseSettings.minY (NoiseSettingsAccessor.setMinY)
+#   No Horizon function mapped for NoiseSettings.minY (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-settings-accessor-set-min-y"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @Accessor on NoiseSettings.height (NoiseSettingsAccessor.setHeight)
+#   No Horizon function mapped for NoiseSettings.height (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noise-settings-accessor-set-height"
+# kind = "GET"
+# target = "TODO"
+
+# Off: @ModifyArg(INVOKE) on Noises.instantiate (NoisesMixin.tectonic$fixTectonicNoiseSeeds)
+#   No Horizon function mapped for Noises.instantiate (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "noises-mixin-fix-tectonic-noise-seeds"
+# kind = "MODIFY_ARG"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on StructurePiece.<init> (StructurePieceMixin.tectonic$lowerOceanMonuments)
+#   No Horizon function mapped for StructurePiece.<init> (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "structure-piece-mixin-lower-ocean-monuments"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @ModifyVariable(HEAD) on 2.modifyTemperature (TemperatureModifierMixin.tectonic$adjustSnowStart)
+#   No Horizon function mapped for 2.modifyTemperature (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "temperature-modifier-mixin-adjust-snow-start"
+# kind = "MODIFY_VARIABLE"
+# target = "TODO"
+
+# Off: @Inject(RETURN) on WorldCreationUiState.getNonEmptyList (WorldCreationUiStateMixin.tectonic$removeUnusablePresets)
+#   No Horizon function mapped for WorldCreationUiState.getNonEmptyList (run `match`, or map it in a --mappings file).
+# [[injection]]
+# id = "world-creation-ui-state-mixin-remove-unusable-presets"
+# kind = "RETURN"
+# target = "TODO"

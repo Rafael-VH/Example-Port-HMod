@@ -1,0 +1,1150 @@
+{
+  "id": "tectonic",
+  "name": "Tectonic",
+  "version": "3.0.31",
+  "jar": "tectonic-3.0.31-fabric-26.3.jar",
+  "verdict": "Partly convertible",
+  "counts": {
+    "auto": 1,
+    "content": 1,
+    "needs-mapping": 15,
+    "needs-translation": 6,
+    "unsupported": 0
+  },
+  "intermediary": false,
+  "entrypoints": {
+    "main": [
+      "dev.worldgen.tectonic.platform.fabric.TectonicFabric"
+    ],
+    "modmenu": [
+      "dev.worldgen.tectonic.compat.TectonicModMenuCompat"
+    ]
+  },
+  "features": [
+    {
+      "category": "access",
+      "in": "tectonic.ct",
+      "detail": "access widener (opens private game fields)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Native helpers already see the game's fields, once each field is mapped."
+    },
+    {
+      "category": "class",
+      "in": "dev/worldgen/tectonic/client/gui/PresetSelectorScreen$PresetList$Entry",
+      "detail": "extends Entry",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "dev/worldgen/tectonic/client/gui/PresetSelectorScreen$PresetList",
+      "detail": "extends ContainerObjectSelectionList",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No mapping for this superclass yet."
+    },
+    {
+      "category": "class",
+      "in": "dev/worldgen/tectonic/client/gui/PresetSelectorScreen",
+      "detail": "extends Screen",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "No general screen hook; simple option pages can use the settings hook."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/BiomeMixin.tectonic$adjustSnowStart",
+      "detail": "@ModifyVariable(HEAD) on Biome.getHeightAdjustedTemperature",
+      "horizon": "MODIFY_VARIABLE",
+      "status": "needs-mapping",
+      "note": "Selects a Rust local by name: pick it in the target function. No Horizon function known for Biome.getHeightAdjustedTemperature: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/BlendingDataMixin.checkTerralithSurfaceBlocks",
+      "detail": "@Inject(INVOKE) on BlendingData.getHeightAtXZ at Lnet/minecraft/core/BlockPos$MutableBlockPos;move(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;",
+      "horizon": "BEFORE_CALL",
+      "status": "needs-mapping",
+      "note": "Only whole statements, plain let initializers and block tails can be selected. No Horizon function known for BlendingData.getHeightAtXZ: run `match`. The call it hooks (MutableBlockPos.move) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/ChunkAccessMixin.tectonic$stopHeightDecreasingLogSpam",
+      "detail": "@Inject(HEAD) on ChunkAccess.getOrCreateOffsetList",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for ChunkAccess.getOrCreateOffsetList: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/ChunkDataMixin.tectonic$parse",
+      "detail": "@Inject(HEAD) on SerializableChunkData.parse",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for SerializableChunkData.parse: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/ChunkDataMixin.tectonic$write",
+      "detail": "@Inject(RETURN) on SerializableChunkData.write",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for SerializableChunkData.write: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/DimensionTypeAccessor.setMinY",
+      "detail": "@Accessor on DimensionType.minY",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for DimensionType.minY: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/DimensionTypeAccessor.setHeight",
+      "detail": "@Accessor on DimensionType.height",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for DimensionType.height: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/DimensionTypeAccessor.setLogicalHeight",
+      "detail": "@Accessor on DimensionType.logicalHeight",
+      "horizon": "GET on horizon_client::game::Dim::logical_height",
+      "status": "auto",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/HeightmapMixin",
+      "detail": "mixin into Heightmap with no injectors (interfaces or @Shadow only)",
+      "horizon": null,
+      "status": "needs-translation",
+      "note": "Usually adds an interface or fields to a game class: needs a manual change."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/IOWorkerMixin.tectonic$needsBlending",
+      "detail": "@Inject(HEAD) on IOWorker.isOldChunk",
+      "horizon": "HEAD",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for IOWorker.isOldChunk: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin.tectonic$fixLavaLevel",
+      "detail": "@Inject(RETURN) on NoiseBasedChunkGenerator.<init>",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for NoiseBasedChunkGenerator.<init>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/NoiseSettingsAccessor.setMinY",
+      "detail": "@Accessor on NoiseSettings.minY",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for NoiseSettings.minY: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/NoiseSettingsAccessor.setHeight",
+      "detail": "@Accessor on NoiseSettings.height",
+      "horizon": "GET",
+      "status": "needs-mapping",
+      "note": "A [[bridge]] GET (SET for a setter) on the Rust struct's field. No Horizon function known for NoiseSettings.height: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/NoisesMixin.tectonic$fixTectonicNoiseSeeds",
+      "detail": "@ModifyArg(INVOKE) on Noises.instantiate at Lnet/minecraft/world/level/levelgen/PositionalRandomFactory;fromHashOf(Lnet/minecraft/resources/Identifier;)Lnet/minecraft/util/RandomSource;",
+      "horizon": "MODIFY_ARG",
+      "status": "needs-mapping",
+      "note": "No Horizon function known for Noises.instantiate: run `match`. The call it hooks (PositionalRandomFactory.fromHashOf) isn't mapped to a Rust function yet."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/StructurePieceMixin.tectonic$lowerOceanMonuments",
+      "detail": "@ModifyVariable(HEAD) on StructurePiece.<init>",
+      "horizon": "MODIFY_VARIABLE",
+      "status": "needs-mapping",
+      "note": "Selects a Rust local by name: pick it in the target function. No Horizon function known for StructurePiece.<init>: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/TemperatureModifierMixin.tectonic$adjustSnowStart",
+      "detail": "@ModifyVariable(HEAD) on 2.modifyTemperature",
+      "horizon": "MODIFY_VARIABLE",
+      "status": "needs-mapping",
+      "note": "Selects a Rust local by name: pick it in the target function. No Horizon function known for 2.modifyTemperature: run `match`."
+    },
+    {
+      "category": "mixin",
+      "in": "dev/worldgen/tectonic/mixin/client/WorldCreationUiStateMixin.tectonic$removeUnusablePresets",
+      "detail": "@Inject(RETURN) on WorldCreationUiState.getNonEmptyList",
+      "horizon": "RETURN",
+      "status": "needs-mapping",
+      "note": "Horizon's RETURN runs at every normal exit and passes the return value on. No Horizon function known for WorldCreationUiState.getNonEmptyList: run `match`."
+    },
+    {
+      "category": "event",
+      "in": "dev/worldgen/tectonic/platform/fabric/TectonicFabric",
+      "detail": "CommandRegistrationCallback.EVENT",
+      "horizon": "hook `command`",
+      "status": "needs-translation",
+      "note": "Server commands. Horizon's command hook is client-side."
+    },
+    {
+      "category": "content",
+      "in": "jar resources",
+      "detail": "1 asset files, 0 data files",
+      "horizon": "content mod (.hmod)",
+      "status": "content",
+      "note": "Recipes, loot, tags, models, textures, worldgen: horizon-port-pack carries these."
+    }
+  ],
+  "mappedCalls": [
+    {
+      "java": "net/minecraft/client/Minecraft#getInstance",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "`self`"
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#spiralAround",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_world::worldgen::generator::spiral_around (suggested)"
+    },
+    {
+      "java": "net/minecraft/network/chat/MutableComponent#append",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::game::dedicated::append (suggested)"
+    },
+    {
+      "java": "net/minecraft/network/chat/MutableComponent#withStyle",
+      "kind": "method",
+      "uses": 3,
+      "horizon": "horizon_client_core::text::Text::with_style (suggested)"
+    },
+    {
+      "java": "net/minecraft/util/Mth#floor",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client_render::gfx::occlusion::floor (suggested)"
+    },
+    {
+      "java": "net/minecraft/world/level/dimension/DimensionType#logicalHeight",
+      "kind": "method",
+      "uses": 1,
+      "horizon": "horizon_client::game::Dim::logical_height (suggested)"
+    }
+  ],
+  "unmappedCalls": [
+    {
+      "java": "net/minecraft/ChatFormatting#BOLD",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/ChatFormatting#DARK_GRAY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/ChatFormatting#GRAY",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/ChatFormatting#GREEN",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/ChatFormatting#RED",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/ChatFormatting#YELLOW",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/SharedConstants#DEBUG_DISABLE_FLUID_GENERATION",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/Minecraft#gui",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/Gui#setScreen",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/components/Button#builder",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/gui/components/Button#extractRenderState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/components/Button#setX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/components/Button#setY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/components/Button$Builder#build",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/client/gui/components/Button$Builder#width",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/gui/components/ContainerObjectSelectionList#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/components/ContainerObjectSelectionList#updateSize",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/components/ContainerObjectSelectionList$Entry#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/components/Tooltip#create",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/layouts/GridLayout$RowHelper#addChild",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/layouts/HeaderAndFooterLayout#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/layouts/HeaderAndFooterLayout#addTitleHeader",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/layouts/HeaderAndFooterLayout#addToContents",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/layouts/HeaderAndFooterLayout#addToFooter",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/layouts/HeaderAndFooterLayout#arrangeElements",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/layouts/HeaderAndFooterLayout#getContentHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/layouts/HeaderAndFooterLayout#getHeaderHeight",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/layouts/HeaderAndFooterLayout#visitWidgets",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/layouts/LinearLayout#addChild",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/gui/layouts/LinearLayout#horizontal",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/gui/layouts/LinearLayout#spacing",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/client/gui/screens/Screen#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/screens/worldselection/WorldCreationUiState#getNonEmptyList",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/client/gui/screens/worldselection/WorldCreationUiState$WorldTypeEntry#preset",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#getLevel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#getPosition",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#sendFailure",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/CommandSourceStack#sendSystemMessage",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/Commands#LEVEL_GAMEMASTERS",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/Commands#hasPermission",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/commands/Commands#literal",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#ZERO",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#above",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#atY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#below",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#containing",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos#getZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#getX",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#getY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#getZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/BlockPos$MutableBlockPos#move",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#EAST",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Direction#SOUTH",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder#is",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder#unwrapKey",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Holder#value",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/core/HolderLookup$RegistryLookup#getOrThrow",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/Registry#getOrThrow",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/RegistryAccess#lookupOrThrow",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#DENSITY_FUNCTION_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/BuiltInRegistries#PLACEMENT_MODIFIER_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#BLOCK",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#DENSITY_FUNCTION",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#DIMENSION_TYPE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#NOISE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/core/registries/Registries#WORLD_PRESET",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/CompoundTag#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/CompoundTag#getIntOr",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/nbt/CompoundTag#getListOrEmpty",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/CompoundTag#getStringOr",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/CompoundTag#put",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/CompoundTag#putInt",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/CompoundTag#remove",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/IntTag#intValue",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/nbt/ListTag#iterator",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/ClickEvent$SuggestCommand#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/CommonComponents#GUI_CANCEL",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/CommonComponents#NEW_LINE",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#copy",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#literal",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#translatable",
+      "kind": "method",
+      "uses": 4
+    },
+    {
+      "java": "net/minecraft/network/chat/Component#translatableWithFallback",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/network/chat/ComponentUtils#wrapInSquareBrackets",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/HoverEvent$ShowText#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/MutableComponent#withColor",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Style#withClickEvent",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Style#withColor",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/network/chat/Style#withHoverEvent",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#fromNamespaceAndPath",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#getNamespace",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#getPath",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/resources/Identifier#withDefaultNamespace",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/ResourceKey#create",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/resources/ResourceKey#identifier",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerChunkCache#getGenerator",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getChunkSource",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#getSeed",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/server/level/ServerLevel#registryAccess",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/tags/TagKey#create",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/util/ExtraCodecs#POSITIVE_FLOAT",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/InclusiveRange#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/InclusiveRange#isValueInRange",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Interval#clamp",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Interval#max",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Interval#min",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Interval#ofExact",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/Mth#sqrt",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#nextInt",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/util/RandomSource#nextIntBetweenInclusive",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#OVERWORLD",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/Level#dimension",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome#getHeightAdjustedTemperature",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/biome/Biome$TemperatureModifier$2#modifyTemperature",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Block#defaultBlockState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#AIR",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/Blocks#LAVA",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/block/state/BlockState#is",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/ChunkAccess#getBlockState",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/ChunkAccess#getOrCreateOffsetList",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/status/ChunkStatus#byName",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/status/ChunkStatus#toString",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/storage/IOWorker#isOldChunk",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/storage/SerializableChunkData#parse",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/chunk/storage/SerializableChunkData#write",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/dimension/DimensionType#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/dimension/DimensionType#MIN_Y",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/dimension/DimensionType#height",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/dimension/DimensionType#minY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Aquifer$FluidStatus#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator#generatorSettings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseGeneratorSettings#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseGeneratorSettings#defaultFluid",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseGeneratorSettings#noiseSettings",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseGeneratorSettings#seaLevel",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseSettings#height",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/NoiseSettings#minY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/Noises#instantiate",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/PositionalRandomFactory#fromHashOf",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/RandomState#create",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/RandomState#getSampler",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/VerticalAnchor#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/VerticalAnchor#resolveY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/blending/BlendingData#getHeightAtXZ",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityBuffer#get",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityBuffer#set",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction#CODEC",
+      "kind": "field",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction#clamp",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction#compileSampler",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction#domainAxes",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction#range",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction#rewriteChildren",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunction$CompileContext#createNoiseSampler",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityFunctions#constant",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensitySampler#sampleValue",
+      "kind": "method",
+      "uses": 3
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensitySampler#sampleVolume",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityVolume#blockX",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityVolume#blockZ",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityVolume#sizeX",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityVolume#sizeY",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DensityVolume#sizeZ",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/DfRewriteRule#rewrite",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/SamplerContext#acquireBuffer",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/SamplerContext#builder",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/SamplerContext$Builder#build",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/SamplerContext$Builder#enableCaches",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/ScopedDensityBuffer#close",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/ScopedDensityBuffer#get",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/generator/ConstantFunction$Sampler#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/densityfunction/op/ClampFunction$Sampler#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/placement/PlacementContext#getMinGenY",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/BoundingBox#moved",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/StructurePiece#<init>",
+      "kind": "method",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/structure/pieces/StructurePieceType#OCEAN_MONUMENT_BUILDING",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/synth/Noise#get",
+      "kind": "method",
+      "uses": 2
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/synth/NormalNoise#CODEC",
+      "kind": "field",
+      "uses": 1
+    },
+    {
+      "java": "net/minecraft/world/level/levelgen/synth/NormalNoise#range",
+      "kind": "method",
+      "uses": 1
+    }
+  ],
+  "warnings": []
+}
