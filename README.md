@@ -7,7 +7,9 @@ Workspace para **portear mods Java (loader Fabric) de Minecraft** a **[Horizon](
 ## Estructura del repositorio
 
 - `docs/` — guías de referencia de ports (paso a paso, decisiones, verificación). Ejemplo: [docs/mr_dynamic_light.md](docs/mr_dynamic_light.md) (crear un `.hmod` desde data files).
+  - `docs/Investigación/` — registro vivo de problemas/soluciones (completa, parcial, sin solución temporal) con evidencia; consultarlo antes de un port y actualizarlo ante bloqueadores/fixes reutilizables.
 - `openspec/` — artefactos SDD (`config.yaml`, `project.md`, `changes/<change>/...`).
+- `AGENTS.md` — guía operativa del workspace (flujo por port, SDD/memoria, reglas git/seguridad, repos de referencia).
 
 Cada mod vive en su propia carpeta `<mod>-horizon/` y normalmente contiene:
 
@@ -57,7 +59,7 @@ Cada mod vive en su propia carpeta `<mod>-horizon/` y normalmente contiene:
 | `itemphysiclite-horizon` | Parcial | No | 1/6 | 1/16 | 6 | Física/render de ítems pendiente; ver `PORTING.md`. |
 | `jeremyseqsdamageindicators-horizon` | Parcial | No | 6/0 | 4/48 | 0 | Sin `todo/`, pero hay TODOs inline (HUD/tick/render) y assets que requieren `.hmod`; ver `PORTING.md`. |
 | `lithostitched-horizon` | Parcial | No | 2/116 | 42/1532 | 116 | Muy alto nº de hooks/worldgen/datapack sin mapeo; ver `PORTING.md`. |
-| `mr_dynamic_light-horizon` | Parcial (runtime bloqueado) | No | 1/0 | 0/0 | 0 | `.hmod` con 20 data files (`diesse` functions/predicates + tags `minecraft:load/tick`, `item/light,light_5`) **carga live** en Nightly 6560641, pero `/function diesse:dl:*` → `argument.id.invalid` (mcfunction no resoluble). T4 **bloqueado**; ver `PORTING.md` y `evidence/t4-runtime-debug-nightly-6560641.log`. |
+| `mr_dynamic_light-horizon` | Parcial (runtime bloqueado) | No | 1/0 | 0/0 | 0 | `.hmod` con 20 data files (`diesse` functions/predicates + tags `minecraft:load/tick`, `item/light,light_5`) **carga live** en Nightly 6560641, pero `/function diesse:dl:*` → `argument.id.invalid` (mcfunction no resoluble). T4 **bloqueado**; control datapack `Dynamic_light 0.8.zip` (Solución B, por mundo) disponible. Ver `PORTING.md` y `evidence/t4-runtime-debug-nightly-6560641.log`. |
 | `mr_dynamic_lightscreepermeyt-horizon` | Parcial | No | 1/0 | 0/0 | 0 | Sin `.hnmod`; faltan data files/contenido (`.hmod`) según `PORTING.md`. |
 | `presencefootsteps-horizon` | Parcial | No | 5/6 | 40/482 | 6 | Sonido/pasos/acústica + hooks pendientes; ver `PORTING.md`. |
 | `sound_physics_remastered-horizon` | Parcial | No | 5/16 | 14/436 | 16 | Audio/oclusión/reverb + mixins pendientes; ver `PORTING.md`. |
@@ -85,8 +87,9 @@ Según Horizon-Translator:
 ## Contexto útil
 
 - Horizon apunta a paridad con MC Java 26.3 y usa `horizon-mixins`/native mods; las APIs/mapeos dependen del commit/versión de Horizon usado por el translator (ver `PORTING.md` de cada mod).
-- Antes de retomar un mod, revisa también `report/translation.md` y `report/report.json` dentro de su carpeta para priorizar trabajo real vs. bloqueos de mapeo/API.
+- Antes de retomar un mod, revisa también `report/translation.md`, `report/report.json` y `docs/Investigación/` para priorizar trabajo real vs. bloqueos de mapeo/API/runtime.
 - Referencia de proceso (port de data files → `.hmod`): [docs/mr_dynamic_light.md](docs/mr_dynamic_light.md).
+- Registro de bloqueadores/soluciones reutilizables: [docs/Investigación/README.md](docs/Investigación/README.md).
 
 ## Próximos pasos sugeridos
 
