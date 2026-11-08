@@ -57,6 +57,7 @@ The decompiled source was only used for the conversion and has been deleted.
 
 - `hmod_src/` — fuente del content mod (extraída de `dynamic-light-0.8.jar`).
 - `mr_dynamic_light.hmod` — paquete (ZIP) con `horizon-mod.toml` + `data/` + metadata (`pack.mcmeta`, `pack.png`).
+- `Dynamic_light 0.8.zip` — **datapack de mundo / control (Solución B)**. Misma estructura/data que el `.hmod` (`pack.mcmeta` en raíz + 20 archivos `data/`, verificado idéntico byte a byte con `hmod_src/data/*`). Útil para prueba runtime del pipeline de datapacks de Horizon por mundo (`<mundo>/datapacks/` + `/reload`); **no reemplaza el objetivo `.hmod`** (cross-world).
 
 ### Data incluida (20 archivos, paridad con JAR)
 
@@ -83,8 +84,8 @@ The decompiled source was only used for the conversion and has been deleted.
 
 ### Uso previsto (a validar)
 
-1. Instalar/activar el content mod `mr_dynamic_light.hmod` en `horizon-mods/` (o flujo equivalente del launcher).
-2. Mantener/instalar el native bundle de esta carpeta si se desea el hook `mods` (listado). Validar convivencia de IDs/artefactos en Horizon.
+1. **`.hmod` (objetivo):** instalar/activar `mr_dynamic_light.hmod` en `horizon-mods/` (o flujo equivalente del launcher). Mantener/instalar el native bundle si se desea el hook `mods` (listado). Validar convivencia de IDs/artefactos en Horizon.
+2. **Datapack control (B, por mundo):** copiar `Dynamic_light 0.8.zip` a `<mundo>/datapacks/` (o extraer como carpeta con `pack.mcmeta`), habilitarlo, `/reload`, y probar funciones/tags/comportamiento. Sirve para aislar si el runtime de datapacks funciona cuando el `.hmod` no resuelve `diesse:dl/*`.
 3. Probar en mundo: tags `#minecraft:light`/`#minecraft:light_5`, y comportamiento de luz dinámica (portadores en mano, mobs en fuego/glow squid) según funciones/predicates.
 
 *Licencia del contenido original: CC0-1.0 (Diesse), ver JAR/fabric.mod.json.*
