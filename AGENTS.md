@@ -44,6 +44,72 @@ Regla de frescura (obligatoria al buscar contexto extra en estos repos):
 4. Update `PORTING.md` and root `README.md` when status/artifacts change (e.g., `.hmod` added, `.hnmod` produced, blocker evidenced).
 5. **Verification** (as applicable): file parity vs source JAR, `cargo horizon-mod check` for `.hmod` (if available), Horizon launcher `native-build` for native bundles, and runtime smoke test in Horizon 26.3. Record results.
 
+## Flujo de trabajo por port (recomendado)
+
+### 1) Preparación (antes de tocar un mod)
+- **Actualizar base local**: parte desde `main` actualizado.
+  - `git switch main` → `git pull --ff-only` (solo si hay remoto configurado y confirmado).
+- **Crear rama del port** (una rama por mod/unidad de trabajo): `port/<modid>` (ej. `port/mr-dynamic-light`).
+  - `git switch -c port/<modid>`
+- **Identificar baseline**: registrar commit base del port (hash) en notas/SDD cuando aplique.
+- **Leer fuente de verdad del mod**: `*/PORTING.md` primero, luego `report/translation.md`, `report/report.json`, `todo/` y artefactos existentes (`.hnmod`/`.hmod`/`mixins/`).
+- **Contexto extra** (si hace falta): usar clones locales en `E:\Horizon\Repositorios\horizon` y `E:\Horizon\Repositorios\Horizon-Translator` siguiendo la **regla de frescura** (verificar/actualizar si cambió la fecha de “Última verificación registrada”).
+
+### 2) Planificación (SDD para cambios no triviales)
+- **Preflight SDD** (obligatorio antes de trabajo SDD): confirmar/usar modo de ejecución, artifact store (`openspec`/`engram`/`both`), estrategia de PR/chained, y budget de review. Cachear decisiones de sesión.
+- **Init guard SDD**: asegurar `sdd-init`/contexto del proyecto antes de fases (`sdd-new/ff/continue/apply/verify/archive`).
+- **Crear change SDD** por port: `openspec/changes/<change>/` con artefactos necesarios (`proposal/spec/design/tasks/state` según el caso). Usar Engram en modo `both` cuando corresponda.
+- **Definir brecha y criterio de “hecho”**:
+  - Clasificar gap: `native/mixin/code`, `content/data/assets` (`.hmod`), o `bloqueador de soporte Horizon`.
+  - **No marcar “listo/completo” sin evidencia runtime real** cuando el comportamiento dependa del runtime de Horizon.
+
+### 3) Implementación (unidad mínima correcta)
+- **Un objetivo por iteración**: cerrar una brecha concreta (p. ej. empaquetar 20 data files en `.hmod`, corregir un mixin, traducir lógica acotada).
+- **Content/data (`.hmod`)**: extraer desde JAR con paridad de paths, crear `hmod_src/` + manifiesto `horizon-mod.toml`, empaquetar `.hmod`, verificar contenido (y `cargo horizon-mod check` si está disponible). Documentar decisiones (id, `api/side/capabilities/namespaces`, tags vanilla, convivencia con bundle nativo).
+- **Native/mixin/code**: cambios mínimos en `mixins/`, `runtime.rs`, `game_side.rs`, etc.; preservar comportamiento del mod fuente salvo incompatibilidad documentada.
+- **Bloqueadores**: si Horizon no soporta algo (p. ej. `mcfunction`/predicate/tags en `.hmod`), **no asumir paridad**. Registrar evidencia, alternativa evaluable y siguiente paso.
+- **No borrar fuentes/proveniencia** innecesariamente (JAR/report/decompiled según flujo).
+
+### 4) Verificación (registrar evidencia)
+- **Paridad/estructura**: conteo y paths vs JAR, contenido del `.hmod`/artefactos, manifiesto válido.
+- **Tooling (si disponible)**: `cargo horizon-mod check`, build/checks del launcher, etc.
+- **Runtime (cuando aplique)**: prueba mínima reproducible en Horizon 26.3/nightly objetivo (instancia/mundo de prueba). Registrar versión exacta, pasos y resultado.
+- **Resultado honesto**: `PASS`, `FAIL` o **`BLOQUEADO`** con evidencia (logs extractos/redactados si contienen rutas locales sensibles, screenshots/comandos).
+- Guardar evidencia en `*/evidence/` o ruta acordada y referenciarla desde `PORTING.md`.
+
+### 5) Documentación (en la misma rama, antes de integrar)
+- **`<mod>-horizon/PORTING.md`** = fuente de verdad: estado actual, qué cambió, artefactos, cómo instalar/probar, limitaciones, bloqueadores, versión/commit de Horizon, y enlaces a evidencia.
+- **`README.md` (raíz)**: actualizar tabla global y fila del mod con estado real (listo / parcial / `.hmod` generado / **runtime bloqueado**). Mantener enlaces a `PORTING.md`/docs/evidencia.
+- **`docs/`**: agregar/actualizar guía reutilizable si el port aporta un patrón nuevo (ej. data files → `.hmod`).
+- **SDD state/tasks**: reflejar progreso real (incl. tareas bloqueadas con evidencia), no “completado” ficticio.
+
+### 6) Commits (solo con confirmación explícita)
+- **No commit/push/PR/operaciones destructivas sin confirmación explícita.**
+- **Usar siempre la skill `git-commit`** para preparar commits (analizar diff, stage correcto, Conventional Commits).
+- **Agrupar por asociación** (cambios que viajan juntos):
+  - SDD/OpenSpec del change (si aplica) como unidad coherente.
+  - implementación/artefactos del port (código, `hmod_src`, `.hmod`, evidencia).
+  - docs transversales (`README`, `AGENTS`, guías, markdownlint) cuando sean una unidad separada.
+- Evitar commits mezclados por bloqueos de `index.lock` o procesos git concurrentes; si ocurre, verificar `status/log/show` y corregir antes de continuar.
+
+### 7) Integración a `main` (cuándo y cómo)
+- **Mergeable cuando**: hay unidad de trabajo documentada con estado verificable (completo **o** parcial/bloqueado) + `PORTING.md`/`README`/evidencia actualizados + commits claros.
+- **No esperar “perfección” para bloqueos reales**: si el bloqueo es de Horizon (con evidencia), integrar el estado documentado y seguir; reabrir en nueva rama cuando haya soporte.
+- **Integración** (confirmada por el usuario): merge `port/<modid>` → `main` (o PR si hay remoto/flujo de revisión). Resolver conflictos priorizando estado real/evidencia.
+- **Después del merge**: volver a `main` actualizado y crear la **siguiente** rama de port desde ahí. No encadenar nuevos ports sobre una rama vieja ya mergeada.
+- **Push/PR**: solo si el usuario lo confirma explícitamente.
+
+### 8) Siguiente port (bucle)
+1. Elegir objetivo por impacto/dependencias y viabilidad (libs/base antes que contenido complejo; considerar bloqueos ya conocidos, p. ej. `mcfunction` en `.hmod`).
+2. Repetir desde el paso 1 en rama nueva.
+3. Mantener coherencia global: `README`, SDD y evidencia siempre alineados con el estado real.
+
+### Definición rápida de estado (para README/PORTING)
+- **Listo**: artefacto requerido generado (`.hnmod`/flujo aplicable) y verificación suficiente documentada.
+- **Parcial**: faltan mixins/lógica/data/assets o verificación; `.hmod` puede existir.
+- **Runtime bloqueado**: empaquetado/carga parcial puede funcionar, pero una capacidad runtime necesaria falla con evidencia (no asumir paridad).
+- **Bloqueado (Horizon)**: falta soporte/API en Horizon/translator; documentar evidencia y alternativa.
+
 ## SDD / memory
 - Complete **SDD preflight** before SDD work (execution mode, artifact store, PR strategy, review budget). Cache choices for the session.
 - Planning/implementation artifacts go in `openspec/changes/<change>/` (and Engram when in `engram`/`hybrid` mode). Use `.engram/config.json` project `mods`.
