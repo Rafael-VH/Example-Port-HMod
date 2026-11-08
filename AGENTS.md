@@ -30,6 +30,8 @@ Regla de frescura (obligatoria al buscar contexto extra en estos repos):
   - `todo/` — unmapped/missing pieces (when present).
   - `*.jar` — original mod/datapack jar used for the port.
   - `<modid>.hnmod` — present only for **full ports** ready to build/install via Horizon launcher.
+- `docs/` — guías reutilizables por tipo de gap (ej. data files → `.hmod`).
+  - `docs/Investigación/` — **registro vivo** de problemas/soluciones (completa, parcial, sin solución temporal) con evidencia; consultarlo antes de un port y actualizarlo cuando aparezcan bloqueadores o fixes reutilizables.
 - `README.md` — workspace overview and per-mod status table (keep in sync when a mod’s state changes).
 - `openspec/` — SDD artifacts (`config.yaml`, `project.md`, `changes/<change>/...`).
 - `.engram/config.json` — Engram project binding (`mods`).
@@ -53,6 +55,7 @@ Regla de frescura (obligatoria al buscar contexto extra en estos repos):
   - `git switch -c port/<modid>`
 - **Identificar baseline**: registrar commit base del port (hash) en notas/SDD cuando aplique.
 - **Leer fuente de verdad del mod**: `*/PORTING.md` primero, luego `report/translation.md`, `report/report.json`, `todo/` y artefactos existentes (`.hnmod`/`.hmod`/`mixins/`).
+- **Consultar registro de investigación**: revisar `docs/Investigación/README.md` y los problemas relacionados antes de implementar (p. ej. `mcfunction`/predicate/tags en `.hmod`, gaps de data/assets, hooks nativos). Reutilizar soluciones/workarounds validados y evitar repetir diagnósticos.
 - **Contexto extra** (si hace falta): usar clones locales en `E:\Horizon\Repositorios\horizon` y `E:\Horizon\Repositorios\Horizon-Translator` siguiendo la **regla de frescura** (verificar/actualizar si cambió la fecha de “Última verificación registrada”).
 
 ### 2) Planificación (SDD para cambios no triviales)
@@ -68,6 +71,7 @@ Regla de frescura (obligatoria al buscar contexto extra en estos repos):
 - **Content/data (`.hmod`)**: extraer desde JAR con paridad de paths, crear `hmod_src/` + manifiesto `horizon-mod.toml`, empaquetar `.hmod`, verificar contenido (y `cargo horizon-mod check` si está disponible). Documentar decisiones (id, `api/side/capabilities/namespaces`, tags vanilla, convivencia con bundle nativo).
 - **Native/mixin/code**: cambios mínimos en `mixins/`, `runtime.rs`, `game_side.rs`, etc.; preservar comportamiento del mod fuente salvo incompatibilidad documentada.
 - **Bloqueadores**: si Horizon no soporta algo (p. ej. `mcfunction`/predicate/tags en `.hmod`), **no asumir paridad**. Registrar evidencia, alternativa evaluable y siguiente paso.
+- **Registrar en investigación (cuando aplique)**: si el problema es reutilizable para otros ports, crear/actualizar un archivo en `docs/Investigación/` (usar `plantilla-problema.md`) con síntoma, evidencia, análisis y estado de la solución (completa, parcial, sin solución temporal). Enlazarlo desde `PORTING.md`/evidencia del mod.
 - **No borrar fuentes/proveniencia** innecesariamente (JAR/report/decompiled según flujo).
 
 ### 4) Verificación (registrar evidencia)
@@ -81,6 +85,7 @@ Regla de frescura (obligatoria al buscar contexto extra en estos repos):
 - **`<mod>-horizon/PORTING.md`** = fuente de verdad: estado actual, qué cambió, artefactos, cómo instalar/probar, limitaciones, bloqueadores, versión/commit de Horizon, y enlaces a evidencia.
 - **`README.md` (raíz)**: actualizar tabla global y fila del mod con estado real (listo / parcial / `.hmod` generado / **runtime bloqueado**). Mantener enlaces a `PORTING.md`/docs/evidencia.
 - **`docs/`**: agregar/actualizar guía reutilizable si el port aporta un patrón nuevo (ej. data files → `.hmod`).
+- **`docs/Investigación/`**: actualizar el registro si se confirmó, refinó o cerró un problema/solución durante el port (y mantener el índice `docs/Investigación/README.md`).
 - **SDD state/tasks**: reflejar progreso real (incl. tareas bloqueadas con evidencia), no “completado” ficticio.
 
 ### 6) Commits (solo con confirmación explícita)
@@ -100,9 +105,9 @@ Regla de frescura (obligatoria al buscar contexto extra en estos repos):
 - **Push/PR**: solo si el usuario lo confirma explícitamente.
 
 ### 8) Siguiente port (bucle)
-1. Elegir objetivo por impacto/dependencias y viabilidad (libs/base antes que contenido complejo; considerar bloqueos ya conocidos, p. ej. `mcfunction` en `.hmod`).
+1. Elegir objetivo por impacto/dependencias y viabilidad (libs/base antes que contenido complejo; considerar bloqueos ya conocidos en `docs/Investigación/`, p. ej. `mcfunction`/predicate/tags en `.hmod`).
 2. Repetir desde el paso 1 en rama nueva.
-3. Mantener coherencia global: `README`, SDD y evidencia siempre alineados con el estado real.
+3. Mantener coherencia global: `README`, SDD, `docs/Investigación/` y evidencia siempre alineados con el estado real.
 
 ### Definición rápida de estado (para README/PORTING)
 - **Listo**: artefacto requerido generado (`.hnmod`/flujo aplicable) y verificación suficiente documentada.
